@@ -27,6 +27,12 @@ input[type="select"] {
     max-width: 280px;
 }
 
+@media (min-width: 1360px) {
+  .container {
+    max-width: 1235px;
+  }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
