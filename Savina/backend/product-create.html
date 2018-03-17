@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Savina Website | Admin page </title>
+
+    <!-- Bootstrap -->
+    <link href="../backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../backend/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../backend/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../backend/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../backend/build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- left navigation sidebar menu -->
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="glyphicon glyphicon-home"></i> <span>Savina Website</span></a>
+            </div>
+          
+            <div class="clearfix"></div>
+          
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+              <img src="/img/SiYoSa-Logo-notext.png" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+              <span>Welcome,</span>
+              <h2>Admin Savina</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+          
+            <br />
+          
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="index.html">Thống kê tổng hợp</a></li>
+                  <li><a href="login.html">Login</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i> Quản lý Category <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="category-main.html">Category Main</a></li>
+                  <li><a href="category-sub1.html">Category Sub 1</a></li>
+                  <li><a href="category-sub2.html">Category Sub 2</a></li>
+                  <li><a href="category-sub3.html">Category Sub 3</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="product-create.html">Tạo sản phẩm</a></li>
+                  <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i> Quản lý đơn hàng <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="order-create.html">Tạo đơn hàng</a></li>
+                  <li><a href="order-list.html">Danh sách đơn hàng</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-desktop"></i> Quản lý khách hàng <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="customer-group.html">Nhóm khách hàng</a></li>
+                  <li><a href="customer-list.html">Danh sách khách hàng</a></li>
+                  <li><a href="customer-create.html">Tạo khách hàng mới</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-table"></i> Quản lý các banner <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="banner-mainslider.html"> Main slider</a></li>
+                  <li><a href="banner-small.html">Các banner nhỏ</a></li>
+                  <li><a href="banner-left.html">Các banner trái</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-bar-chart-o"></i> Quản lý tin nhắn  <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="message-contact.html">Tin nhắn từ Contact</a></li>
+                  <li><a href="message-chat.html">Tin nhắn từ CHAT</a></li>
+                  <li><a href="message-other.html">Tin nhắn khác</a></li>
+                </ul>
+                </li>
+                <li><a><i class="fa fa-clone"></i>Quản lý hệ thống <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                  <li><a href="account-group.html">Tạo nhóm TK local</a></li>
+                  <li><a href="account-create.html">Tạo TK backend local</a></li>
+                  <li><a href="tracklogs.html">Tracking logs</a></li>
+                  <li><a href="get-link.html">Get link image</a></li>
+                  <li><a href="seo-management.html">Quản lý SEO</a></li>
+                </ul>
+                </li>
+              </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+          
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+            </div>
+          </div> 
+        <!-- /left navigation sidebar menu -->
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">Admin
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="javascript:;">Giúp đỡ</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+              <div class="page-title">
+                <div class="title_left">
+                  <h3>TẠO SẢN PHẨM MỚI</h3>
+                </div>
+                <div class="title_right">
+                  <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search for...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Search!</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="clearfix"></div>
+  
+              <div class="row">   
+                <div class="col-md-12 col-sm-12 col-xs-12">   <!-- Create new category -->
+                  <div class="x_panel">
+                    <div class="x_content">
+                        <br />
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Mã sản phẩm</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Tên sản phẩm</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Giá thuê theo block</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Thuộc Main Category</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <select class="form-control">
+                                  <option>Lựa chọn Main Category</option>
+                                  <option>XE CỘ</option>
+                                  <option>CÔNG CỤ, DỤNG CỤ</option>
+                                  <option>MẸ VÀ BÉ</option>
+                                  <option>CÔNG NGHIỆP XÂY DỰNG</option>
+                                </select>
+                              </div>
+                            </div>                            
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Mô tả nhanh</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                  <textarea class="resizable_textarea form-control" placeholder="độ dài trường nhập liệu tự động mở rộng..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">DS sản phẩm đi kèm</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select class="form-control">
+                                        <option>Chọn sản phẩm</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Thêm phụ kiện đi kèm</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                  <select class="form-control">
+                                      <option>Chọn sản phẩm</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                          </div>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Còn mới %</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                  <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                              </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn thành phố</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn quận/huyện</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn phường/xã</label>
+                              <div class="col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn hình đại diện</label>
+                              <div class="btn-group">
+                                <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-md-4 col-sm-4 col-xs-12">Add hình vào gallery</label>
+                              <div class="btn-group">
+                                <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="form-group">
+                                  <label class="control-label">Mô tả sản phẩm chi tiết</label>
+                                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                                      <ul class="dropdown-menu">
+                                      </ul>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                                      <ul class="dropdown-menu">
+                                        <li>
+                                          <a data-edit="fontSize 5">
+                                            <p style="font-size:17px">Huge</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a data-edit="fontSize 3">
+                                            <p style="font-size:14px">Normal</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a data-edit="fontSize 1">
+                                            <p style="font-size:11px">Small</p>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                                      <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                                      <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                                      <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
+                                      <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
+                                      <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                                      <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                                      <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                                      <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                                      <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+                                      <div class="dropdown-menu input-append">
+                                        <input class="span2" placeholder="URL" type="text" data-edit="createLink" />
+                                        <button class="btn" type="button">Add</button>
+                                      </div>
+                                      <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                                      <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                                    </div>
+                                  </div>
+                                  <div id="editor-one" class="editor-wrapper" style="min-height:105px"></div>
+                                  <textarea name="descr" id="descr" style="display:none;"></textarea>
+                              </div>
+                              <div class="form-group">
+                                  <label class="control-label">Thông số kỹ thuật</label>
+                                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                                      <ul class="dropdown-menu">
+                                      </ul>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                                      <ul class="dropdown-menu">
+                                        <li>
+                                          <a data-edit="fontSize 5">
+                                            <p style="font-size:17px">Huge</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a data-edit="fontSize 3">
+                                            <p style="font-size:14px">Normal</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a data-edit="fontSize 1">
+                                            <p style="font-size:11px">Small</p>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                                      <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                                      <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                                      <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
+                                      <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
+                                      <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                                      <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                                      <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                                      <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                                      <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+                                      <div class="dropdown-menu input-append">
+                                        <input class="span2" placeholder="URL" type="text" data-edit="createLink" />
+                                        <button class="btn" type="button">Add</button>
+                                      </div>
+                                      <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                                      <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                                    </div>
+                                  </div>
+                                  <div id="editor-one" class="editor-wrapper" style="min-height:105px"></div>
+                                  <textarea name="descr" id="descr" style="display:none;"></textarea>
+                              </div>
+                              <div class="form-group">
+                                  <label class="control-label">Hướng dẫn sử dụng</label>                                 
+                                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                                      <ul class="dropdown-menu">
+                                      </ul>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                                      <ul class="dropdown-menu">
+                                        <li>
+                                          <a data-edit="fontSize 5">
+                                            <p style="font-size:17px">Huge</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a data-edit="fontSize 3">
+                                            <p style="font-size:14px">Normal</p>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a data-edit="fontSize 1">
+                                            <p style="font-size:11px">Small</p>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                                      <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                                      <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                                      <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
+                                      <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
+                                      <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                                      <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                                      <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                                      <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                                      <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+                                      <div class="dropdown-menu input-append">
+                                        <input class="span2" placeholder="URL" type="text" data-edit="createLink" />
+                                        <button class="btn" type="button">Add</button>
+                                      </div>
+                                      <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+                                    </div>
+                
+                                    <div class="btn-group">
+                                      <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                                      <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                                    </div>
+                                  </div>
+                                  <div id="editor-one" class="editor-wrapper" style="min-height:105px"></div>
+                                  <textarea name="descr" id="descr" style="display:none;"></textarea>
+                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                      <label class="control-label col-md-4 col-sm-4 col-xs-12">Add link video youtube</label>
+                                      <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </form>
+                        <div class="ln_solid"></div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                              <button class="btn btn-primary" type="button">Hủy</button>
+                              <button class="btn btn-primary" type="reset">Reset</button>
+                              <button type="submit" class="btn btn-success">Tạo</button>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div> <!-- /Create new category -->
+
+
+            </div>
+          </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Savina - Bootstrap Admin Backend by <a href="http://siyosa.net">Siyosa Co., Ltd</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../backend/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../backend/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../backend/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../backend/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../backend/vendors/iCheck/icheck.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="../backend/build/js/custom.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../backend/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../backend/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../backend/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../backend/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../backend/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../backend/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../backend/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../backend/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../backend/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../backend/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../backend/vendors/pdfmake/build/vfs_fonts.js"></script>
+	
+  </body>
+</html>
