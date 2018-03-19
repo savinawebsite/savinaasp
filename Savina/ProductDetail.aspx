@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="ProductDetail.aspx.cs" Inherits="ProductDetail" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+    
     <!-- BREADCRUMB -->
 	<div id="breadcrumb">
 		<div class="container">
@@ -155,8 +157,8 @@
 								<div class="col-md-5 col-xs-12">
 									<span class="pickuptime-title">Ngày giờ lấy:</span>
 									<span class="returntime-title">Ngày giờ trả:</span>
-										<input type="text" class="form-control ProcessOn pickuptime-form" placeholder="chọn ngày lấy" name="ProcessOn" style="">
-										<input type="text" class="form-control ProcessOn returntime-form" placeholder="chọn ngày trả" name="ProcessOn">
+										<input type="text" class="form-control ProcessOn pickuptime-form" id="orderTimePickup" placeholder="thời gian lấy" name="ProcessOn" style="">                                         
+										<input type="text" class="form-control ProcessOn pickuptime-form" id="orderTimeReturn" placeholder="thời gian trả" name="ProcessOn">
 								</div>
 								<div class="col-md-7 col-xs-12">
 									<span>Số lượng:</span>
@@ -738,5 +740,34 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
+     <script type="text/javascript">
+		$(function () {
+		    $("#orderTimePickup").datetimepicker({
+		        format: "dd MM yyyy - hh:ii P",
+		        showMeridian: true,
+		        autoclose: true,
+		        todayBtn: true,
+		        pickerPosition: "bottom-left",
+		        daysOfWeekDisabled: "0,6"
+		    });
+		    $("#orderTimeReturn").datetimepicker({
+		        format: "dd MM yyyy - hh:ii P",
+		        showMeridian: true,
+		        autoclose: true,
+		        todayBtn: true,
+		        pickerPosition: "bottom-left",
+		        daysOfWeekDisabled: "0,6"
+		    });
+			//$(".pickuptime-form").datetimepicker({
+			//	format: "dd MM yyyy - hh:ii P",
+			//	showMeridian: true,
+			//	autoclose: true,
+			//	todayBtn: true,
+			//	pickerPosition: "bottom-left",
+			//	daysOfWeekDisabled: "0,6"				
+			//});			
+		});
+	</script>
+   
 </asp:Content>
 
