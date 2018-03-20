@@ -18,12 +18,6 @@
     <link href="../backend/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../backend/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- Datatables -->
-    <link href="../backend/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="../backend/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="../backend/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="../backend/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../backend/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
@@ -180,7 +174,7 @@
             <div class="">
               <div class="page-title">
                 <div class="title_left">
-                  <h3>DANH SÁCH SẢN PHẨM ĐANG CÓ</h3>
+                  <h3>DANH SÁCH ĐƠN HÀNG ĐANG CÓ</h3>
                 </div>
   
                 <div class="title_right">
@@ -199,89 +193,76 @@
 
                 <div class="col-md-12 col-sm-12 col-xs-12"> <!-- Table  -->
                     <div class="x_panel">
-                      <div class="x_title">
-                        <div class="col-md-6 col-sm-6 sol-xs-12">
-                            <p style="margin-bottom: 2px;">Số 1: Sản phẩm sẽ hiển thị ở group SẢN PHẨM MỚI NHẤT  </p>
-                            <p style="margin-bottom: 2px;">Số 2: Sản phẩm sẽ hiển thị ở group NHIỀU NGƯỜI TÌM NHẤT  </p>
-                            <p style="margin-bottom: 2px;">Số 3: Sản phẩm sẽ hiển thị ở group SẢN PHẨM ĐỘC, LẠ </p>
-                            <p style="margin-bottom: 2px;">Số 4: Sản phẩm sẽ hiển thị ở group CÓ GIÁ THUÊ RẺ NHẤT </p>
-                        </div>
-                        <div class="col-md-6 col-sm-6 sol-xs-12">
-                            <p style="margin-bottom: 2px;">Số 5: Sản phẩm sẽ hiển thị ở group SẢN PHẨM GẦN BẠN </p>
-                            <p style="margin-bottom: 2px;">Số 6: Sản phẩm sẽ hiển thị ở group RAO VẶT MIỄN PHÍ  </p>
-                            <p style="margin-bottom: 2px;">Số 7: Sản phẩm sẽ hiển thị ở group SẢN PHẨM CHO TẶNG </p> 
-                        </div>                      
-                        <div class="clearfix"></div>
-                      </div>
+
                       <div class="x_content">
                         <table id="datatable" class="table table-striped table-bordered">
                           <thead>
                             <tr>
-                              <th>Mã sản phẩm</th>
+                              <th>Mã đơn hàng</th>
+                              <th>Tên khách hàng</th>
                               <th>Tên sản phẩm</th>
-                              <th>Thuộc Sub-3</th>
-                              <th>Thuộc Sub-2</th>
-                              <th>Thuộc Sub-1</th>
-                              <th>Thuộc MainCategory</th>
-                              <th>Thuê theo block</th>
-                              <th>Thuê theo ngày</th>
-                              <th>Ngày tạo</th>
-                              <th>Hiển thị ở</th>
+                              <th>Ngày thuê</th>
+                              <th>Ngày trả</th>
+                              <th>Số lượng</th>
+                              <th>Loại thuê</th>
+                              <th>Thời gian tạo</th>                             
+                              <th>Gia hạn</th>
+                              <th>Trạng thái xử lý</th>
                               <th>Thao tác</th>
                             </tr>
                           </thead>
        
                           <tbody>                         
                             <tr>
-                              <td>HS0001</td>
-                              <td>Máy khoan bosch</td>
-                              <td></td>
-                              <td>Xe máy</td>
-                              <td>Sửa xe</td>
-                              <td>CÔng cụ, Dụng cụ</td>                              
-                              <td>30,000</td>
-                              <td>100,000</td>
-                              <td>23/02/2018</td>
-                              <td><a href="#" class="btn btn-primary btn-xs" onclick="Details($(this))">1</a>
-                                <span><a href="#" class="btn btn-primary btn-xs" onclick="Edit($(this))">2</a></span>
-                                <span><a href="#" class="btn btn-primary btn-xs" onclick="Disable($(this))">3</a></span></td>                         
-                              <td><a href="#" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbspDetails</a>
-                                <span><a href="#" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspEdit</a></span>
-                                <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbspDisable</a></span></td>
+                              <td>#2018001</td>
+                              <td>Le Quoc Tuan</td>
+                              <td>Máy khoan bosche</td>
+                              <td>23/02/2018 09:00</td>
+                              <td>25/02/2018 15:00</td>
+                              <td>1</td>                              
+                              <td><span class="btn btn-success btn-xs">Theo ngày</span></td>
+                              <td>20/02/2018 10:15 </td> 
+                              <td><span class="btn btn-primary btn-xs">Không</span></td>   
+                              <td><span class="btn btn-primary btn-xs">Chưa xử lý</span></td>                    
+                              <td><a href="/backend/order-detail.html" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbsp Xem chi tiết</a>
+                                <span><a href="/backend/order-process.html" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Xử lý đơn hàng</a></span>
+                                <span><a href="/backend/order-renew.html" class="btn btn-dark btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Gia hạn</a></span>
+                                <span><a href="/backend/order-trackchange.html" class="btn btn-warning btn-xs" onclick="Edit($(this))"><i class="fa fa-magic"></i>&nbsp Xem lịch sử Gia hạn</a></span>
+                                <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbsp Disable</a></span></td>
                             </tr>
                             <tr>
-                              <td>HS0013</td>
-                              <td>Máy khoan bosch</td>
-                              <td></td>
-                              <td>Xe máy</td>
-                              <td>Sửa xe</td>
-                              <td>CÔng cụ, Dụng cụ</td>                              
-                              <td>30,000</td>
-                              <td>100,000</td>
-                              <td>23/02/2018</td>
-                              <td><a href="#" class="btn btn-primary btn-xs" onclick="Details($(this))">2</a>
-                                <span><a href="#" class="btn btn-primary btn-xs" onclick="Edit($(this))">3</a></span>
-                                <span><a href="#" class="btn btn-primary btn-xs" onclick="Disable($(this))">5</a></span></td>                         
-                              <td><a href="#" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbspDetails</a>
-                                <span><a href="#" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspEdit</a></span>
-                                <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbspDisable</a></span></td>
+                                <td>#2018002</td>
+                                <td>Nguyen Van Cuong</td>
+                                <td>Bình xịch cao áp</td>
+                                <td>23/02/2018 09:00</td>
+                                <td>25/02/2018 15:00</td>
+                                <td>1</td>                              
+                                <td><span class="btn btn-primary btn-xs">Theo block</span></td>
+                                <td>20/02/2018 10:15 </td> 
+                                <td><span class="btn btn-info btn-xs">Lần 2</span></td> 
+                                <td><span class="btn btn-info btn-xs">Đã cho thuê</span></td>                        
+                                <td><a href="/backend/order-detail.html" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbsp Xem chi tiết</a>
+                                  <span><a href="/backend/order-process.html" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Xử lý đơn hàng</a></span>
+                                <span><a href="/backend/order-renew.html" class="btn btn-dark btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Gia hạn</a></span>
+                                <span><a href="/backend/order-trackchange.html" class="btn btn-warning btn-xs" onclick="Edit($(this))"><i class="fa fa-magic"></i>&nbsp Xem lịch sử Gia hạn</a></span>
+                                <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbsp Disable</a></span></td>
                             </tr>
                             <tr>
-                                <td>HS0002</td>
-                                <td>Máy khoan bosch</td>
-                                <td></td>
-                                <td>Xe máy</td>
-                                <td>Sửa xe</td>
-                                <td>CÔng cụ, Dụng cụ</td>                              
-                                <td>30,000</td>
-                                <td>100,000</td>
-                                <td>23/02/2018</td>
-                                <td><a href="#" class="btn btn-primary btn-xs" onclick="Details($(this))">1</a>
-                                  <span><a href="#" class="btn btn-primary btn-xs" onclick="Edit($(this))">3</a></span>
-                                  <span><a href="#" class="btn btn-primary btn-xs" onclick="Disable($(this))">4</a></span></td>                         
-                                <td><a href="#" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbspDetails</a>
-                                  <span><a href="#" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspEdit</a></span>
-                                  <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbspDisable</a></span></td>
+                                <td>#2018003</td>
+                              <td>Dang Le Nam</td>
+                              <td>Xe Starex 9 chỗ</td>
+                              <td>23/02/2018 09:00</td>
+                              <td>25/02/2018 15:00</td>
+                              <td>1</td>                              
+                              <td><span class="btn btn-success btn-xs">Theo ngày</span></td>
+                              <td>20/02/2018 10:15 </td> 
+                              <td><span class="btn btn-success btn-xs">lần 1</span></td>
+                              <td><span class="btn btn-success btn-xs">Hoàn thành</span></td>                       
+                              <td><a href="/backend/order-detail.html" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbsp Xem chi tiết</a>
+                                <span><a href="/backend/order-process.html" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Xử lý đơn hàng</a></span>
+                                <span><a href="/backend/order-renew.html" class="btn btn-dark btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Gia hạn</a></span>
+                                <span><a href="/backend/order-trackchange.html" class="btn btn-warning btn-xs" onclick="Edit($(this))"><i class="fa fa-magic"></i>&nbsp Xem lịch sử Gia hạn</a></span>
+                                <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbsp Disable</a></span></td>
                               </tr>
                                                       
                           </tbody>
@@ -290,8 +271,10 @@
                     </div>
                   </div>  <!-- /Table -->
               </div> 
+
+
             </div>
-         
+          </div>
         <!-- /page content -->
 
         <!-- footer content -->
