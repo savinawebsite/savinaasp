@@ -33,6 +33,7 @@
     <link href="../backend/build/css/custom.min.css" rel="stylesheet">
     <link href="../backend/css/bootstrap-datetimepicker.css" rel="stylesheet" />
      <link href="../backend/css/adTemplate.css" rel="stylesheet" />
+    <link  href="../backend/dist/css/bootstrap-select.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -206,6 +207,8 @@
     
     <!-- Custom Theme Scripts -->
     <script src="../backend/build/js/custom.min.js"></script>
+
+    <script src="../backend/js/bootstrap-select.js"></script>
 
     <!-- Datatables -->
     <script src="../backend/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
