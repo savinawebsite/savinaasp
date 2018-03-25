@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="veritass_savinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_About">
+          <Key>
+            <PropertyRef Name="ID_aboutarticle" />
+          </Key>
+          <Property Name="ID_aboutarticle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Contents" Type="ntext" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Kind" Type="varchar" MaxLength="50" />
+          <Property Name="Create_Date" Type="date" />
+          <Property Name="Update_By" Type="int" />
+          <Property Name="Update_Date" Type="date" />
+          <Property Name="UrlFriendLy" Type="nvarchar" MaxLength="150" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="MetaKeyWord" Type="nvarchar" MaxLength="500" />
+          <Property Name="MetaImage" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tb_Access">
+          <Key>
+            <PropertyRef Name="ID_localaccount" />
+          </Key>
+          <Property Name="ID_localaccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_Count" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'veritass_savina.dbo.tb_CategoryMain' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tb_CategoryMain">
+          <Key>
+            <PropertyRef Name="ID_MainCategory" />
+          </Key>
+          <Property Name="ID_MainCategory" Type="int" Nullable="false" />
+          <Property Name="Category_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'veritass_savina.dbo.tb_CategorySub1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tb_CategorySub1">
+          <Key>
+            <PropertyRef Name="ID_CategorySub1" />
+          </Key>
+          <Property Name="ID_CategorySub1" Type="int" Nullable="false" />
+          <Property Name="CategorySub1_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_MainCategory" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_CategorySub2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_CategorySub2">
+          <Property Name="ID_CategorySub2" Type="int" />
+          <Property Name="CategorySub2_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_CategorySub1" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_CategorySub3' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_CategorySub3">
+          <Property Name="ID_CategorySub3" Type="int" />
+          <Property Name="CategorySub3_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_CategorySub2" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>-->
+        <EntityType Name="tb_ContactUs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Cell_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Home_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Finished" Type="nvarchar" MaxLength="50" />
+          <Property Name="Read_New" Type="nvarchar" MaxLength="50" />
+          <Property Name="Message_content" Type="ntext" />
+          <Property Name="Create_Date" Type="datetime" />
+          <Property Name="Read_Date" Type="datetime" />
+          <Property Name="Finish_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_Counteronline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalUserOnline" Type="int" />
+          <Property Name="TotalOnline" Type="int" />
+          <Property Name="TotalClick" Type="int" />
+          <Property Name="Flag" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="tb_Customer">
+          <Key>
+            <PropertyRef Name="ID_Customer" />
+          </Key>
+          <Property Name="ID_Customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_code" Type="char" MaxLength="10" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="Create_Date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_DeliverySelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_DeliverySelection">
+          <Property Name="ID_DeliverySelection" Type="int" />
+          <Property Name="Delivery_name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Delivery_description" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_DocumentSelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_DocumentSelection">
+          <Property Name="ID_DocumentSelection" Type="int" />
+          <Property Name="Document_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Document_Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Home_Banner' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Home_Banner">
+          <Property Name="ID_Home_Banner" Type="int" />
+          <Property Name="Banner_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Banner_Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Banner_Link" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Home_MainBanner' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Home_MainBanner">
+          <Property Name="ID_Home_MainBanner" Type="int" />
+          <Property Name="Image_ALT" Type="varchar" MaxLength="50" />
+          <Property Name="Image_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Home_ProductGroup' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Home_ProductGroup">
+          <Property Name="ID_ProductGroup" Type="int" />
+          <Property Name="ProductGroup_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>-->
+        <EntityType Name="tb_LocalAccount">
+          <Key>
+            <PropertyRef Name="ID_localaccount" />
+          </Key>
+          <Property Name="ID_localaccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account_code" Type="char" MaxLength="10" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="ID_permission" Type="int" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="Create_date" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'veritass_savina.dbo.tb_Order' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tb_Order">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Customer" Type="int" />
+          <Property Name="Order_code" Type="char" MaxLength="10" />
+          <Property Name="Order_type" Type="varchar" MaxLength="50" />
+          <Property Name="Discount_amount" Type="float" />
+          <Property Name="Create_Date" Type="datetime" />
+          <Property Name="pickup_Time" Type="datetime" />
+          <Property Name="return_Time" Type="datetime" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="ID_ServiceSelection" Type="int" />
+          <Property Name="ID_DeliverySelection" Type="int" />
+          <Property Name="ID_DocumentSelection" Type="int" />
+          <Property Name="Total_deposit_amount" Type="float" />
+          <Property Name="Total_order_value" Type="float" />
+          <Property Name="order_status" Type="tinyint" />
+          <Property Name="updated_by" Type="int" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="updating_status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Order_AccessorySelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Order_AccessorySelection">
+          <Property Name="ID" Type="int" />
+          <Property Name="ID_Order" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_order_trackingUpdate' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_order_trackingUpdate">
+          <Property Name="ID_Order" Type="int" />
+          <Property Name="ID" Type="tinyint" />
+          <Property Name="ID_localaccount" Type="int" />
+          <Property Name="create_time" Type="datetime" />
+          <Property Name="return_time" Type="datetime" />
+        </EntityType>-->
+        <EntityType Name="tb_Permission">
+          <Key>
+            <PropertyRef Name="ID_permission" />
+          </Key>
+          <Property Name="ID_permission" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Permission_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Permission_description" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Product' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Product">
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="product_Code" Type="varchar" MaxLength="50" />
+          <Property Name="product_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_Avatar" Type="varchar" MaxLength="200" />
+          <Property Name="product_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_District" Type="nvarchar" MaxLength="50" />
+          <Property Name="product_Ward" Type="nvarchar" MaxLength="50" />
+          <Property Name="short_description" Type="ntext" />
+          <Property Name="full_description" Type="ntext" />
+          <Property Name="product_specification" Type="ntext" />
+          <Property Name="product_instruction" Type="ntext" />
+          <Property Name="status_percentage" Type="int" />
+          <Property Name="status_availability" Type="nvarchar" MaxLength="50" />
+          <Property Name="price_per_block" Type="float" />
+          <Property Name="price_per_day" Type="float" />
+          <Property Name="product_main_category" Type="int" />
+          <Property Name="product_sub1_category" Type="int" />
+          <Property Name="product_sub2_category" Type="int" />
+          <Property Name="product_sub3_category" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Product_AccessorySelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Product_AccessorySelection">
+          <Property Name="ID" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="product_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="product_Code" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Product_accompany' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Product_accompany">
+          <Property Name="ID" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="product_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="product_Code" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_Product_HomeProductGroup' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Product_HomeProductGroup">
+          <Property Name="ID" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="ID_ProductGroup" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_ProductGallery' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_ProductGallery">
+          <Property Name="ID_Image" Type="int" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="Image_name" Type="varchar" MaxLength="250" />
+        </EntityType>-->
+        <EntityType Name="tb_promotion">
+          <Key>
+            <PropertyRef Name="id_promotion" />
+          </Key>
+          <Property Name="id_promotion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Discount_by_percentage" Type="float" />
+          <Property Name="Discount_by_price" Type="float" />
+          <Property Name="Create_Date" Type="datetime" />
+          <Property Name="From_Date" Type="datetime" />
+          <Property Name="To_Date" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="15" />
+          <Property Name="Kind_promotion" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_ServiceSelection">
+          <Property Name="ID_ServiceSelection" Type="int" />
+          <Property Name="Service_name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Service_description" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
+        <EntityType Name="tb_SiteMap">
+          <Key>
+            <PropertyRef Name="ID_sitemap" />
+          </Key>
+          <Property Name="ID_sitemap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Contents" Type="ntext" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Kind" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="UrlFriendLy" Type="nvarchar" MaxLength="150" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="MetaKeyWord" Type="nvarchar" MaxLength="500" />
+          <Property Name="MetaImage" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tb_WishList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Product" Type="int" />
+          <Property Name="ID_Customer" Type="int" />
+          <Property Name="Create_Date" Type="date" />
+        </EntityType>
+        <EntityContainer Name="veritass_savinaModelStoreContainer">
+          <EntitySet Name="tb_About" EntityType="Self.tb_About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Access" EntityType="Self.tb_Access" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ContactUs" EntityType="Self.tb_ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Counteronline" EntityType="Self.tb_Counteronline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Customer" EntityType="Self.tb_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_LocalAccount" EntityType="Self.tb_LocalAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Permission" EntityType="Self.tb_Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_promotion" EntityType="Self.tb_promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_SiteMap" EntityType="Self.tb_SiteMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_WishList" EntityType="Self.tb_WishList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CategoryMain" EntityType="Self.tb_CategoryMain" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tb_CategoryMain].[ID_MainCategory] AS [ID_MainCategory], 
+    [tb_CategoryMain].[Category_Name] AS [Category_Name], 
+    [tb_CategoryMain].[Sort] AS [Sort]
+    FROM [dbo].[tb_CategoryMain] AS [tb_CategoryMain]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tb_CategorySub1" EntityType="Self.tb_CategorySub1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tb_CategorySub1].[ID_CategorySub1] AS [ID_CategorySub1], 
+    [tb_CategorySub1].[CategorySub1_Name] AS [CategorySub1_Name], 
+    [tb_CategorySub1].[ID_MainCategory] AS [ID_MainCategory], 
+    [tb_CategorySub1].[Status] AS [Status]
+    FROM [dbo].[tb_CategorySub1] AS [tb_CategorySub1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tb_Order" EntityType="Self.tb_Order" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tb_Order].[ID_Order] AS [ID_Order], 
+    [tb_Order].[ID_Customer] AS [ID_Customer], 
+    [tb_Order].[Order_code] AS [Order_code], 
+    [tb_Order].[Order_type] AS [Order_type], 
+    [tb_Order].[Discount_amount] AS [Discount_amount], 
+    [tb_Order].[Create_Date] AS [Create_Date], 
+    [tb_Order].[pickup_Time] AS [pickup_Time], 
+    [tb_Order].[return_Time] AS [return_Time], 
+    [tb_Order].[quantity] AS [quantity], 
+    [tb_Order].[ID_ServiceSelection] AS [ID_ServiceSelection], 
+    [tb_Order].[ID_DeliverySelection] AS [ID_DeliverySelection], 
+    [tb_Order].[ID_DocumentSelection] AS [ID_DocumentSelection], 
+    [tb_Order].[Total_deposit_amount] AS [Total_deposit_amount], 
+    [tb_Order].[Total_order_value] AS [Total_order_value], 
+    [tb_Order].[order_status] AS [order_status], 
+    [tb_Order].[updated_by] AS [updated_by], 
+    [tb_Order].[updated_date] AS [updated_date], 
+    [tb_Order].[updating_status] AS [updating_status]
+    FROM [dbo].[tb_Order] AS [tb_Order]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="veritass_savinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_About">
+          <Key>
+            <PropertyRef Name="ID_aboutarticle" />
+          </Key>
+          <Property Name="ID_aboutarticle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Kind" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Create_Date" Type="DateTime" Precision="0" />
+          <Property Name="Update_By" Type="Int32" />
+          <Property Name="Update_Date" Type="DateTime" Precision="0" />
+          <Property Name="UrlFriendLy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeyWord" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MetaImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Access">
+          <Key>
+            <PropertyRef Name="ID_localaccount" />
+          </Key>
+          <Property Name="ID_localaccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_Count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_ContactUs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Cell_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Home_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Finished" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Read_New" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Date" Type="DateTime" Precision="3" />
+          <Property Name="Read_Date" Type="DateTime" Precision="3" />
+          <Property Name="Finish_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_Counteronline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalUserOnline" Type="Int32" />
+          <Property Name="TotalOnline" Type="Int32" />
+          <Property Name="TotalClick" Type="Int32" />
+          <Property Name="Flag" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Customer">
+          <Key>
+            <PropertyRef Name="ID_Customer" />
+          </Key>
+          <Property Name="ID_Customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Create_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_LocalAccount">
+          <Key>
+            <PropertyRef Name="ID_localaccount" />
+          </Key>
+          <Property Name="ID_localaccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ID_permission" Type="Int32" />
+          <Property Name="Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Create_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Permission">
+          <Key>
+            <PropertyRef Name="ID_permission" />
+          </Key>
+          <Property Name="ID_permission" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Permission_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Permission_description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_promotion">
+          <Key>
+            <PropertyRef Name="id_promotion" />
+          </Key>
+          <Property Name="id_promotion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Discount_by_percentage" Type="Double" />
+          <Property Name="Discount_by_price" Type="Double" />
+          <Property Name="Create_Date" Type="DateTime" Precision="3" />
+          <Property Name="From_Date" Type="DateTime" Precision="3" />
+          <Property Name="To_Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Kind_promotion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_SiteMap">
+          <Key>
+            <PropertyRef Name="ID_sitemap" />
+          </Key>
+          <Property Name="ID_sitemap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Kind" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="UrlFriendLy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeyWord" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MetaImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_WishList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Product" Type="Int32" />
+          <Property Name="ID_Customer" Type="Int32" />
+          <Property Name="Create_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tb_CategoryMain">
+          <Key>
+            <PropertyRef Name="ID_MainCategory" />
+          </Key>
+          <Property Name="ID_MainCategory" Type="Int32" Nullable="false" />
+          <Property Name="Category_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_CategorySub1">
+          <Key>
+            <PropertyRef Name="ID_CategorySub1" />
+          </Key>
+          <Property Name="ID_CategorySub1" Type="Int32" Nullable="false" />
+          <Property Name="CategorySub1_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID_MainCategory" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tb_Order">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Customer" Type="Int32" />
+          <Property Name="Order_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Order_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discount_amount" Type="Double" />
+          <Property Name="Create_Date" Type="DateTime" Precision="3" />
+          <Property Name="pickup_Time" Type="DateTime" Precision="3" />
+          <Property Name="return_Time" Type="DateTime" Precision="3" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="ID_ServiceSelection" Type="Int32" />
+          <Property Name="ID_DeliverySelection" Type="Int32" />
+          <Property Name="ID_DocumentSelection" Type="Int32" />
+          <Property Name="Total_deposit_amount" Type="Double" />
+          <Property Name="Total_order_value" Type="Double" />
+          <Property Name="order_status" Type="Byte" />
+          <Property Name="updated_by" Type="Int32" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="updating_status" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="veritass_savinaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_About" EntityType="Self.tb_About" />
+          <EntitySet Name="tb_Access" EntityType="Self.tb_Access" />
+          <EntitySet Name="tb_ContactUs" EntityType="Self.tb_ContactUs" />
+          <EntitySet Name="tb_Counteronline" EntityType="Self.tb_Counteronline" />
+          <EntitySet Name="tb_Customer" EntityType="Self.tb_Customer" />
+          <EntitySet Name="tb_LocalAccount" EntityType="Self.tb_LocalAccount" />
+          <EntitySet Name="tb_Permission" EntityType="Self.tb_Permission" />
+          <EntitySet Name="tb_promotion" EntityType="Self.tb_promotion" />
+          <EntitySet Name="tb_SiteMap" EntityType="Self.tb_SiteMap" />
+          <EntitySet Name="tb_WishList" EntityType="Self.tb_WishList" />
+          <EntitySet Name="tb_CategoryMain" EntityType="Self.tb_CategoryMain" />
+          <EntitySet Name="tb_CategorySub1" EntityType="Self.tb_CategorySub1" />
+          <EntitySet Name="tb_Order" EntityType="Self.tb_Order" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="veritass_savinaModelStoreContainer" CdmEntityContainer="veritass_savinaEntities">
+          <EntitySetMapping Name="tb_About">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_About">
+              <MappingFragment StoreEntitySet="tb_About">
+                <ScalarProperty Name="ID_aboutarticle" ColumnName="ID_aboutarticle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Update_By" ColumnName="Update_By" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+                <ScalarProperty Name="UrlFriendLy" ColumnName="UrlFriendLy" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyWord" ColumnName="MetaKeyWord" />
+                <ScalarProperty Name="MetaImage" ColumnName="MetaImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Access">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Access">
+              <MappingFragment StoreEntitySet="tb_Access">
+                <ScalarProperty Name="ID_localaccount" ColumnName="ID_localaccount" />
+                <ScalarProperty Name="Access_Count" ColumnName="Access_Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ContactUs">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_ContactUs">
+              <MappingFragment StoreEntitySet="tb_ContactUs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell_phone" ColumnName="Cell_phone" />
+                <ScalarProperty Name="Home_phone" ColumnName="Home_phone" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Finished" ColumnName="Finished" />
+                <ScalarProperty Name="Read_New" ColumnName="Read_New" />
+                <ScalarProperty Name="Message_content" ColumnName="Message_content" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Read_Date" ColumnName="Read_Date" />
+                <ScalarProperty Name="Finish_Date" ColumnName="Finish_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Counteronline">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Counteronline">
+              <MappingFragment StoreEntitySet="tb_Counteronline">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TotalUserOnline" ColumnName="TotalUserOnline" />
+                <ScalarProperty Name="TotalOnline" ColumnName="TotalOnline" />
+                <ScalarProperty Name="TotalClick" ColumnName="TotalClick" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Customer">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Customer">
+              <MappingFragment StoreEntitySet="tb_Customer">
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="Customer_code" ColumnName="Customer_code" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_LocalAccount">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_LocalAccount">
+              <MappingFragment StoreEntitySet="tb_LocalAccount">
+                <ScalarProperty Name="ID_localaccount" ColumnName="ID_localaccount" />
+                <ScalarProperty Name="Account_code" ColumnName="Account_code" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_permission" ColumnName="ID_permission" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Permission">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Permission">
+              <MappingFragment StoreEntitySet="tb_Permission">
+                <ScalarProperty Name="ID_permission" ColumnName="ID_permission" />
+                <ScalarProperty Name="Permission_name" ColumnName="Permission_name" />
+                <ScalarProperty Name="Permission_description" ColumnName="Permission_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_promotion">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_promotion">
+              <MappingFragment StoreEntitySet="tb_promotion">
+                <ScalarProperty Name="id_promotion" ColumnName="id_promotion" />
+                <ScalarProperty Name="Discount_by_percentage" ColumnName="Discount_by_percentage" />
+                <ScalarProperty Name="Discount_by_price" ColumnName="Discount_by_price" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="From_Date" ColumnName="From_Date" />
+                <ScalarProperty Name="To_Date" ColumnName="To_Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Kind_promotion" ColumnName="Kind_promotion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_SiteMap">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_SiteMap">
+              <MappingFragment StoreEntitySet="tb_SiteMap">
+                <ScalarProperty Name="ID_sitemap" ColumnName="ID_sitemap" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UrlFriendLy" ColumnName="UrlFriendLy" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeyWord" ColumnName="MetaKeyWord" />
+                <ScalarProperty Name="MetaImage" ColumnName="MetaImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_WishList">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_WishList">
+              <MappingFragment StoreEntitySet="tb_WishList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ID_Product" ColumnName="ID_Product" />
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CategoryMain">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategoryMain">
+              <MappingFragment StoreEntitySet="tb_CategoryMain">
+                <ScalarProperty Name="ID_MainCategory" ColumnName="ID_MainCategory" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CategorySub1">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub1">
+              <MappingFragment StoreEntitySet="tb_CategorySub1">
+                <ScalarProperty Name="ID_CategorySub1" ColumnName="ID_CategorySub1" />
+                <ScalarProperty Name="CategorySub1_Name" ColumnName="CategorySub1_Name" />
+                <ScalarProperty Name="ID_MainCategory" ColumnName="ID_MainCategory" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Order">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Order">
+              <MappingFragment StoreEntitySet="tb_Order">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="Order_code" ColumnName="Order_code" />
+                <ScalarProperty Name="Order_type" ColumnName="Order_type" />
+                <ScalarProperty Name="Discount_amount" ColumnName="Discount_amount" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="pickup_Time" ColumnName="pickup_Time" />
+                <ScalarProperty Name="return_Time" ColumnName="return_Time" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="ID_ServiceSelection" ColumnName="ID_ServiceSelection" />
+                <ScalarProperty Name="ID_DeliverySelection" ColumnName="ID_DeliverySelection" />
+                <ScalarProperty Name="ID_DocumentSelection" ColumnName="ID_DocumentSelection" />
+                <ScalarProperty Name="Total_deposit_amount" ColumnName="Total_deposit_amount" />
+                <ScalarProperty Name="Total_order_value" ColumnName="Total_order_value" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updating_status" ColumnName="updating_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
