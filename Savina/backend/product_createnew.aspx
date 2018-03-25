@@ -973,7 +973,7 @@
                         $('.set-price-per-day .block-11').css('display', 'none')
                         $('.set-price-per-day .block-10').css('display', 'none')
                         $('.set-price-per-day .block-9').css('display', 'none')
-                        $('.set-price-per-day .block-8').css('display', 'none')
+                        $('.set-price-per-day .block-8').css('display', 'block')
                         $('.set-price-per-day .block-7').css('display', 'block')
                         $('.set-price-per-day .block-6').css('display', 'block')
                         $('.set-price-per-day .block-5').css('display', 'block')
