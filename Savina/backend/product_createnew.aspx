@@ -6,12 +6,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
-   
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
+
+
+
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <%--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--%>
+    <script src="../backend/js/jquery.selectlistactions.js"></script>
+     <%--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">--%>
+    <link href="../backend/css/selectlistactions.css" rel="stylesheet" type="text/css" />
+ 
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <!-- page content -->
@@ -90,7 +100,7 @@
                                   <textarea class="resizable_textarea form-control" id="productDescription" placeholder="độ dài trường nhập liệu tự động mở rộng..."></textarea>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <%--<div class="form-group">
                               <label class="control-label col-md-4 col-sm-4 col-xs-12">DS sản phẩm đi kèm</label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">                 
 					                <select name="from" id="lstview" class="form-control selectpicker" size="13" multiple="multiple" data-live-search="true" >
@@ -119,7 +129,7 @@
 						            <option value="PHP">PHP</option>
 					            </select>
                             </div>                         
-                             </div>
+                             </div>--%>
                             </div>
 
                           <div class="col-md-6 col-sm-6 col-xs-12">
@@ -132,19 +142,25 @@
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn thành phố</label>
                               <div class="col-md-8 col-sm-8 col-xs-12">
-                                <input type="text" id="productCity" required="required" class="form-control col-md-7 col-xs-12">
+                                <select class="form-control" id="productProvimce">
+                                  <option data-tokens="chọn thành phố">Chọn thành phố</option>
+                                </select>
                               </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn quận/huyện</label>
                               <div class="col-md-8 col-sm-8 col-xs-12">
-                                <input type="text" id="productDistrict" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <select class="form-control" id="productDistrict">
+                                  <option data-tokens="Chọn quận/huyện">Chọn quận/huyện</option>
+                                </select>
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="control-label col-md-4 col-sm-4 col-xs-12">Chọn phường/xã</label>
                               <div class="col-md-8 col-sm-8 col-xs-12">
-                                <input type="text" id="productWard" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                <select class="form-control" id="productWard">
+                                  <option data-tokens="Chọn phường/xã">Chọn phường/xã</option>
+                                </select>
                               </div>
                             </div>
                             <div class="form-group">
@@ -161,8 +177,83 @@
                             </div>
                           </div>
 
-                          <div class="col-md-12 col-sm-12 col-xs-12">                            
-                        </div>
+ 
+                          <div class="col-md-12 col-sm-12 col-xs-12">   <%--product accompany--%> 
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+				                    <label class="control-label">Chọn sản phẩm</label>
+				                    <%--<select multiple class="form-control" id="StaffList">--%>
+                                    <select id="StaffList" class="form-control selectpicker" size="13" multiple="multiple" data-live-search="true" >
+					                    <option value="123">Thước đo độ</option>
+					                    <option value="456">Tắc kê 10 size</option>
+					                    <option value="789">Hộp đựng khoan</option>
+				                    </select>
+			                    </div>   
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+				                    <div class="row">
+					                    <div class="col-md-3 col-sm-3 col-xs-3 add-btns">
+						                    <input type="button" id="btnAddProductAccompany" value="Thêm >" class="btn btn-default" />
+					                    </div>
+					                    <div class="col-md-9 col-sm-9 col-xs-9">
+						                    <label class="control-label">DS sản phẩm đính kèm đã chọn</label>
+						                    <div class="selected-left">
+							                    <select multiple class="form-control" id="PresenterList">
+								                    <option value="856">Iron Man</option>
+							                    </select>
+						                    </div>
+						                    <div class="selected-right">
+							                    <button type="button" class="btn btn-default btn-sm" id="btnAddProductAccompanyUp">
+								                    <span class="glyphicon glyphicon-chevron-up"></span>
+							                    </button>
+							                    <button type="button" class="btn btn-default btn-sm" id="btnAddProductAccompanyDown">
+								                    <span class="glyphicon glyphicon-chevron-down"></span>
+							                    </button>
+							                    <button type="button" class="btn btn-default btn-sm" id="btnAddProductAccompanyRemove">
+								                    <span class="glyphicon glyphicon-remove"></span>
+							                    </button>
+						                    </div>
+					                    </div>
+				                    </div>
+			                    </div>                                                                                                         
+                          </div>   <%--/product accompany--%>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">   <%--product accessory selection--%> 
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+				                    <label class="control-label">Chọn sản phẩm</label>
+				                    <select multiple class="form-control" id="AccessoryList">
+                                    <%--<select name="from" id="lstview" class="form-control selectpicker" size="13" multiple="multiple" data-live-search="true" >--%>
+					                    <option value="123">Bộ mũi khoan lớn</option>
+					                    <option value="456">Hộp kéo đa dụng đi kèm</option>
+					                    <option value="789">Búa đánh dấu tường</option>
+					                    <option value="654">Bộ thước đo nước</option>
+				                    </select>
+			                    </div>   
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+				                    <div class="row">
+					                    <div class="col-md-3 col-sm-3 col-xs-3 add-btns">
+						                    <input type="button" id="btnAddAccessory" value="Thêm >" class="btn btn-default" />
+					                    </div>
+					                    <div class="col-md-9 col-sm-9 col-xs-9">
+						                    <label class="control-label">DS linh kiện đựa chọn hiển thị</label>
+						                    <div class="selected-left">
+							                    <select multiple class="form-control" id="AccessoryListSelected">
+								                    <option value="856">Iron Man</option>
+							                    </select>
+						                    </div>
+						                    <div class="selected-right">
+							                    <button type="button" class="btn btn-default btn-sm" id="btnAddAccessoryUp">
+								                    <span class="glyphicon glyphicon-chevron-up"></span>
+							                    </button>
+							                    <button type="button" class="btn btn-default btn-sm" id="btnAddAccessoryDown">
+								                    <span class="glyphicon glyphicon-chevron-down"></span>
+							                    </button>
+							                    <button type="button" class="btn btn-default btn-sm" id="btnAddAccessoryRemove">
+								                    <span class="glyphicon glyphicon-remove"></span>
+							                    </button>
+						                    </div>
+					                    </div>
+				                    </div>
+			                    </div>                                                                                                         
+                          </div>   <%--/product accessory selection--%>
 
                 
                           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -984,6 +1075,52 @@
                     }
                 }
             </script>
+
+            <script>
+                    $('#btnAddProductAccompany').click(function (e) {
+                        $('select').moveToList('#StaffList', '#PresenterList');
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddProductAccompanyRemove').click(function (e) {
+                        $('select').removeSelected('#PresenterList');
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddProductAccompanyUp').click(function (e) {
+                        $('select').moveUpDown('#PresenterList', true, false);
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddProductAccompanyDown').click(function (e) {
+                        $('select').moveUpDown('#PresenterList', false, true);
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddAccessory').click(function (e) {
+                        $('select').moveToList('#AccessoryList', '#AccessoryListSelected');
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddAccessoryRemove').click(function (e) {
+                        $('select').removeSelected('#AccessoryListSelected');
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddAccessoryUp').click(function (e) {
+                        $('select').moveUpDown('#AccessoryListSelected', true, false);
+                        e.preventDefault();
+                    });
+
+                    $('#btnAddAccessoryDown').click(function (e) {
+                        $('select').moveUpDown('#AccessoryListSelected', false, true);
+                        e.preventDefault();
+                    });
+
+        </script>
+
+
+      
 
 
 </asp:Content>
