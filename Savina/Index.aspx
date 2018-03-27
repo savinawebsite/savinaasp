@@ -1,7 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+
+    <style>
+        .category-nav.show-on-click .category-list {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(0px, 0px);
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
 	<!-- HOME -->
 	<div id="home" style="background: #E9E9E9;">
@@ -1451,12 +1462,37 @@
 						<!-- /Product Single -->
 			</div>
 			<!-- /row -->
+            <button type="button" id="btnLoginForm" class="btSignIn"></button>	
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+    Open modal
+  </button>
 		</div>
 		<!-- /container -->
+       
 	</div>
 	<!-- /section -->
-
-
+    <script  type="text/javascript">
+ 
+        $('#btnLoginForm').click(function () {
+                     $('#login-modal').modal();
+                  $('.updateprofile').hide();
+                  $('.CustInfoUpdate').hide();
+                  $('.passconfirm').hide();
+                  $('.forgotPwd1').hide();
+                  $('.email').show();
+                  $('.email').val('');
+                  $('.pass').val('');
+                  $('.firstname').val('');
+                  $('.lastname').val('');
+                  $('.passconfirm').val('');
+                  $('.pass').attr("placeholder", "Password");
+                  $('.pass').show();
+                  $('.forgotPwd').show();
+                  $('#btnLogin').attr('value', 'Sign In');
+                
+                 
+              });
+    </script>
 
 </asp:Content>
 
