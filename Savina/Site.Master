@@ -115,7 +115,7 @@
 							</div>
 							<strong class="text-uppercase">Tài khoản <i class="fa fa-caret-down"></i></strong>
 						</div>
-						<a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Register</a>
+						<a href="#" onclick="openModalLoginForm()" class="text-uppercase">Login</a> / <a href="#" onclick="openModalRegister()" class="text-uppercase">Register</a>
 						<ul class="custom-menu">
 							<li><a href="#" onclick="openModalLoginForm()"><i class="fa fa-unlock-alt"></i> Đăng nhập</a></li>
 							<li><a href="#" onclick="openModalRegister()"><i class="fa fa-user-plus"></i> Tạo tài khoản mới</a></li>
@@ -128,14 +128,13 @@
 
 					<!-- Cart -->
 					<li class="header-cart dropdown default-dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+						<a class="dropdown-toggle" onclick="viewCart()">
 							<div class="header-btns-icon">
 								<i class="fa fa-shopping-cart"></i>
 								<span class="qty">3</span>
 							</div>
 							<strong class="text-uppercase">Giỏ hàng:</strong>
-							<br>
-							<span>35.20$</span>
+					
 						</a>
 						<div class="custom-menu">
 							<div id="shopping-cart">
@@ -759,6 +758,10 @@
             $('.content-tab-register-social').css('display', 'block')
             $('.content-tab-register').css('display', 'none')
             $('.content-tab-forgotten-password').css('display', 'none')
+        }
+
+        function viewCart() {
+            window.open('../checkout.aspx');
         }
     </script>
 
