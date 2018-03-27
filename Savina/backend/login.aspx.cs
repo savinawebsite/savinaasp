@@ -5,7 +5,7 @@ using System.Data;
 
 public partial class backend_login : System.Web.UI.Page
 {
-    private DataEntities Db = new DataEntities();
+    private veritass_savinaEntities Db = new veritass_savinaEntities();
 
     protected void Page_Load(object sender, EventArgs e)
     {
