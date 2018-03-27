@@ -13,9 +13,8 @@
                     var desc = $('#ipDesc').val();  
                     if (cateName != '' && desc != '') {
                         $.ajax  ({  
-  
                             type: 'POST',  
-                            url: '../backend/category_main.aspx/addCategory',
+                            url: 'http://localhost:62459/backend/category_main.aspx/addCategory',
                             dataType: "json",
                             data: JSON.stringify({ cateName: cateName, desc: desc }),
                             contentType: 'application/json; charset =utf-8',  
