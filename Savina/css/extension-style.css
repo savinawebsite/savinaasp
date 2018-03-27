@@ -1,0 +1,165 @@
+
+.modal-header {
+        min-height: 16px;
+}
+
+.modal .h4, .modal h4 {
+    margin: 0;
+    text-align: center;
+}
+
+.modal-header .close {
+    margin-top: -5px;
+    font-size: 30px;
+}
+
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+#login-modal .modal-dialog {
+    width: 400px;
+}
+#login-modal .content-top {
+    padding: 15px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.email_wrap, .fb_wrap, .g_wrap {
+    font-size: 16px;
+    text-align: center
+}
+
+a.signup-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+a.signup-button.facebook-signup {
+    border: 1px solid #294479;
+    background-color: #3b5998;
+    border-radius: 2px;
+}
+
+a.signup-button.google-signup {
+    border: 1px solid #c4c4c4;
+    background-color: #fff;
+    border-radius: 2px;
+    color: #565a5c;
+}
+
+a.signup-button.email-signup {
+    background-color: #f05a28;
+    border-bottom: 1px solid #e74c3c;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.g_wrap {
+    padding-top: 10px;
+}
+.fb_wrap a {
+    color: #fff!important;
+}
+.email_wrap a {
+    color: #fff;
+}
+
+.fb_wrap .icon{
+    float: left;
+    overflow: hidden;
+    padding-left: 15px;
+}
+
+.g_wrap .icon {
+    float: left;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.email_wrap .icon img, .fb_wrap .icon img, .g_wrap .icon img {
+        height: 20px;
+}
+
+.btn-white-orange {
+    background-color: #fff;
+    border: 1px solid #f05a28;
+    border-radius: 4px;
+}
+
+.txt-orange {
+    color: #f05a28!important;
+}
+
+.content-tab-forgotten-password .btn-primary, .content-tab-login .btn-primary, .content-tab-register .btn-primary, .content-tab-register-social .btn-primary {
+    width: 100%;
+    height: 44px;
+    background-color: #f05a28;
+    
+    text-transform: none;
+    font-size: 16px;
+}
+
+.btnLoginClick {
+    border-color:#e74c3 !important;
+}
+
+.btnLoginClick:hover {
+    background-color: #d6410f;
+}
+
+.content-tab-forgotten-password .right, .content-tab-login .right, .content-tab-register .right, .content-tab-register-social .right {
+        float: right;
+}
+
+.hr {
+    border-top: 1px solid #dedede;
+    margin-top: 30px;
+}
+
+#login-modal .modal-content .ors {
+    position: relative;
+    left: 0;
+    z-index: 42;
+    text-align: center;
+    font-size: 11px;
+    color: #000;
+    margin-bottom: 30px;
+    line-height: 28px;
+}
+.modal-content .ors .ellipse-or {
+    text-transform: uppercase;
+    border-radius: 50%;
+    background-color: #edefe8;
+    position: absolute;
+    left: 47%;
+    top: -16px;
+    width: 31px;
+    height: 31px;
+    z-index: 40;
+    border: 1px solid #d4d4d4;
+    padding-top: 1px;
+}
+
+.inputEmail, .inputPassword, .registeraccform {
+    max-width: 100% !important;
+    height: 40px;
+}
+
+.content-tab-forgotten-password .right a, .content-tab-login .right a, .content-tab-register .right a, .content-tab-register-social .right a {
+    color: #f05a28;
+}
+.content-footer {
+    padding-top: 20px;
+    text-align: right;
+}
+
+#callLoginBtn, #callRegisterBtn, .callBtn {
+    margin-top: -8px;
+    margin-left: 15px;
+}

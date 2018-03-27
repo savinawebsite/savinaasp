@@ -19,6 +19,8 @@
 	<title>SAVINA website - Tools Rental website</title>
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 	<!-- Slick -->
@@ -31,16 +33,18 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/responsive/style-responsive.css" />
+    <link type="text/css" rel="stylesheet" href="css/extension-style.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
+    
+    
+
 
 </head>
 
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 
 <body>
-
-
 	    <header>
-
             <div id="top-header">
 	            <div class="container">
 			            <div class="pull-left">
@@ -117,8 +121,8 @@
 						</div>
 						<a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Register</a>
 						<ul class="custom-menu">
-							<li><a href="#"><i class="fa fa-unlock-alt"></i> Đăng nhập</a></li>
-							<li><a href="#"><i class="fa fa-user-plus"></i> Tạo tài khoản mới</a></li>
+							<li><a href="#" onclick="openModalLoginForm()"><i class="fa fa-unlock-alt"></i> Đăng nhập</a></li>
+							<li><a href="#" onclick="openModalRegister()"><i class="fa fa-user-plus"></i> Tạo tài khoản mới</a></li>
 							<li><a href="#"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
 							<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
 							<li><a href="#"><i class="fa fa-check"></i> Hoàn thành đơn hàng</a></li>							
@@ -464,7 +468,6 @@
 
 
 
-
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
            
@@ -571,6 +574,199 @@
 	</footer>
 	<!-- /FOOTER -->
 
+    <!-- Login Modal -->
+    <div class="modal fade" id="login-modal">
+        <div class="modal-dialog modal-dialog-centered " style="left:0%">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">         
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">LOG IN TO SAVINA</h4>
+            </div>   
+                      
+                <div class="content-tab-login" style="display: block">  <!-- tab login -->
+                    <div class="content-top">
+                        <div class="fb_wrap">
+                            <a href="https://www.thailand-property.com/auth/facebook" class="signup-button facebook-signup" rel="nofollow">
+                                <span class="icon"><i class="fa fa-facebook"></i></span>
+                                <span class="text">Đăng nhập với Facebook</span>
+                            </a>
+                        </div>
+                        <div class="g_wrap">
+                            <a href="https://www.thailand-property.com/auth/google" class="signup-button google-signup" rel="nofollow">
+                                <span class="icon"><img src="https://www.thailand-property.com/img/g-logo.png" alt="Google+"></span>
+                                <span class="text">Đăng nhập với Google</span>
+                            </a>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="ors">
+                            <div class="ellipse-or">or</div>
+                        </div>
+                        <form method="POST" action="https://www.thailand-property.com/ajaxLogin" accept-charset="UTF-8" id="loginPopupForm"><input name="_token" type="hidden" value="3Yr1IHKFBhQb8RKC4w3zjfYj7eaSORG8OG04u6tr">
+                            <div class="form-errors"></div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Nhập Email" class="form-control inputEmail" name="email" required="" maxlength="100" value="" oninvalid="this.setCustomValidity('Please enter your email.')" oninput="setCustomValidity('')">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Nhập Password" class="form-control inputPassword" required="" maxlength="20" name="password" oninvalid="this.setCustomValidity('Please enter your password.')" oninput="setCustomValidity('')">
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox text-left">
+                                    <label>
+                                        <input type="checkbox" name="remember" checked=""> Ghi nhớ tôi
+                                    </label>
+                                    <span class="right"><a href="../login/forgotten" id="forgotpassBtn">Quên mật khẩu?</a></span>
+                                </div>
+                            </div>
+
+                            <input name="refer_type" type="hidden" value="login">
+                            <div class="form-group text-center">
+                                <button id="loginPopupBtn" type="submit" class="btn btn-primary btnLoginClick">
+                                    Đăng nhập ngay
+                                </button>
+                            </div>
+                        </form>    
+                        <div class="hr"></div>
+                        <div class="content-footer">
+                            Bạn chưa có tài khoản?  <a id="callRegisterBtn" class="btn btn-white-orange txt-orange right">Sign up</a>
+                            <div class="clearfix"></div>
+                        </div>                
+                    </div>
+                </div>      <!-- /tab login -->   
+              
+                <div class="content-tab-register-social" style="display: none;">  <!-- tab register with social -->  
+                    <div class="content-top">
+                        <div class="fb_wrap">
+                            <a href="https://www.thailand-property.com/auth/facebook" class="signup-button facebook-signup" rel="nofollow">
+                                <span class="icon"><i class="fa fa-facebook"></i></span>
+                                <span class="text">Tiếp tục với Facebook</span>
+                            </a>
+                        </div>
+                                        <div class="g_wrap">
+                            <a href="https://www.thailand-property.com/auth/google" class="signup-button google-signup" rel="nofollow">
+                                <span class="icon"><img src="https://www.thailand-property.com/img/g-logo.png" alt="Google+"></span>
+                                <span class="text">Tiếp tục với Google</span>
+                            </a>
+                        </div>
+                                        <div class="hr"></div>
+                                        <div class="ors">
+                            <div class="ellipse-or">or</div>
+                        </div>
+                        <div class="email_wrap">
+                            <a class="signup-button email-signup" onclick="registerwithemail()">
+                                <span class="icon"><i class="fa fa-envelope-o"></i></span>
+                                <span class="text">Tạo tài khoản với Email</span>
+                            </a>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="txt-left">
+                                <small>Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../privacy" class="txt-orange">Chính sách bảo mật</a> của Savina<br>
+                                    Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../terms" class="txt-orange">các điều khoản</a> của Savina</small>
+                            </label>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="content-footer">
+                            Bạn đã có tài khoản rồi?  <a id="callLoginBtn" class="btn btn-white-orange txt-orange right">Log in</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>    <!-- /tab register with social --> 
+
+                <div class="content-tab-register" style="display: none;">  <!--register with Email-->
+                    <div class="content-top">
+                        <form method="POST" action="https://www.thailand-property.com/ajaxRegister" accept-charset="UTF-8" id="registerPopupForm"><input name="_token" type="hidden" value="3Yr1IHKFBhQb8RKC4w3zjfYj7eaSORG8OG04u6tr">
+                            <div class="form-errors"></div>
+                            <div class="form-group center">
+                                <span>Sign up with Email</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control registeraccform" name="name" placeholder="Name *" required="" pattern="^[^!@#$%&amp;*+=]+$" maxlength="50" oninvalid="this.setCustomValidity('Please enter your name.')" oninput="setCustomValidity('')" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control registeraccform" name="email" placeholder="Email *" required="" maxlength="100" oninvalid="this.setCustomValidity('Please enter a valid email address.')" oninput="setCustomValidity('')" value="">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password *" required="" maxlength="20" oninvalid="this.setCustomValidity('Password must be 6 characters or more.')" oninput="setCustomValidity('')" class="form-control registeraccform" name="password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Confirm Password *" required="" maxlength="20" oninvalid="this.setCustomValidity('Password must be 6 characters or more.')" oninput="setCustomValidity('')" class="form-control registeraccform" name="passwordconfirm">
+                            </div>
+                             <!--  -->
+                            <div class="form-group">
+                                <label class="txt-left">
+                                    <small>Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../privacy" class="txt-orange">Chính sách bảo mật</a> của Savina<br>
+                                        Khi click Đăng ký, bạn đã đồng ý với <a target="_blank" href="../terms" class="txt-orange">các điều khoản</a> của Savina</small>
+                                </label>
+                            </div>
+
+                             <input name="refer_type" type="hidden" value="login">
+                             <div class="form-group text-center">
+                                <button id="registerPopupBtn" type="submit" class="btn btn-primary">
+                                    Đăng ký ngay
+                                </button>
+                            </div>
+                        </form>
+                        <div class="hr"></div>
+                        <div class="content-footer">
+                            Bạn đã có tài khoản rồi?  <a id="callLoginBtn" class="btn btn-white-orange txt-orange right">Log in</a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>  <!--/register with Email-->
+
+
+              </div>
+        </div>
+    </div>
+          <!--End Login Modal -->
+
+    <script type="text/javascript">
+        $('#callRegisterBtn').click(function () {
+            $('.content-tab-login').css('display', 'none')
+            $('.content-tab-register-social').css('display', 'block')
+            $('.content-tab-register').css('display', 'none')
+            $('.content-tab-forgotten-password').css('display', 'none')
+        });
+
+        $('#callLoginBtn').click(function () {
+            $('.content-tab-login').css('display', 'block')
+            $('.content-tab-register-social').css('display', 'none')
+            $('.content-tab-register').css('display', 'none')
+            $('.content-tab-forgotten-password').css('display', 'none')
+        });
+   
+    </script>
+
+    <script>
+        function registerwithemail() {
+            $('.content-tab-login').css('display', 'none')
+            $('.content-tab-register-social').css('display', 'none')
+            $('.content-tab-register').css('display', 'block')
+            $('.content-tab-forgotten-password').css('display', 'none')
+        }
+
+        function openModalLoginForm() {
+            $('#login-modal').modal();
+            $('.content-tab-login').css('display', 'block')
+            $('.content-tab-register-social').css('display', 'none')
+            $('.content-tab-register').css('display', 'none')
+            $('.content-tab-forgotten-password').css('display', 'none')
+        }
+
+        function openModalRegister() {
+            $('#login-modal').modal();
+            $('.content-tab-login').css('display', 'none')
+            $('.content-tab-register-social').css('display', 'block')
+            $('.content-tab-register').css('display', 'none')
+            $('.content-tab-forgotten-password').css('display', 'none')
+        }
+    </script>
+
+
 	<!-- jQuery Plugins -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -578,6 +774,7 @@
 	<script src="js/nouislider.min.js"></script>
 	<script src="js/jquery.zoom.min.js"></script>
 	<script src="js/main.js"></script>
+    <script src="js/bootstrap-datetimepicker.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
