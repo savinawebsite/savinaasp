@@ -58,10 +58,10 @@
                               <td>20/02/2018 10:15 </td> 
                               <td><span class="btn btn-primary btn-xs">Không</span></td>   
                               <td><span class="btn btn-primary btn-xs">Chưa xử lý</span></td>                    
-                              <td><a href="/backend/order-detail.html" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbsp Xem chi tiết</a>
-                                <span><a href="/backend/order-process.html" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Xử lý đơn hàng</a></span>
-                                <span><a href="/backend/order-renew.html" class="btn btn-dark btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Gia hạn</a></span>
-                                <span><a href="/backend/order-trackchange.html" class="btn btn-warning btn-xs" onclick="Edit($(this))"><i class="fa fa-magic"></i>&nbsp Xem lịch sử Gia hạn</a></span>
+                              <td><a href="/backend/order_detail" class="btn btn-success btn-xs" onclick="Details($(this))"><i class="fa fa-info-circle"></i>&nbsp Xem chi tiết</a>
+                                <span><a href="/backend/order_process" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Xử lý đơn hàng</a></span>
+                                <span><a href="/backend/order_renew" class="btn btn-dark btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Gia hạn</a></span>
+                                <span><a href="/backend/order_trackchange" class="btn btn-warning btn-xs" onclick="Edit($(this))"><i class="fa fa-magic"></i>&nbsp Xem lịch sử Gia hạn</a></span>
                                 <span><a href="#" class="btn btn-danger btn-xs" onclick="Disable($(this))"><i class="fa fa-remove"></i>&nbsp Disable</a></span></td>
                             </tr>
                             <tr>
