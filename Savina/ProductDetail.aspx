@@ -1,6 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="ProductDetail.aspx.cs" Inherits="ProductDetail" %>
 
 
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        .service_cost_1 { display: block; }
+        .service_cost_2 {
+            display: none;
+            margin-top:35px
+        }
+         .service_cost_3 {
+            display: none;
+            margin-top:70px
+        }
+         .delivery_cost_1 { display: block; }
+        .delivery_cost_2 {
+            display: none;
+            margin-top:35px
+        }
+         .delivery_cost_3 {
+            display: none;
+            margin-top:70px
+        }
+
+    </style>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     
     <!-- BREADCRUMB -->
@@ -127,18 +151,18 @@
 							</div>
 							<div style="float:lefts; padding:5px 0 5px;">
 								<div class="dvRadioPrice">
-									<input type="radio" id="GiaChoChueTheoBlock" name="GiaChoThue" value="1" checked>
+									<input type="radio" id="GiaChoChueTheoBlock" onchange="javascript:callMeOnChange1()" name="GiaChoThue" value="1">
 								</div>					
 								<h3 class="productDetail-lable" style="display:inline;">Giá cho thuê theo block:</h3>
-								<h3 class="productDetail-price" style="display:inline;">30.000 đ / 4h</h3>
+								<p class="productDetail-price" style="display:inline;" id="price_block_p">35000</p>
 								<i class="fa fa-exclamation-circle dvCommentShow" data-tooltip-opaque="false" data-visual-id="3" title="2 giờ đầu đầu 100.000 vnd, giờ tiếp theo 30.000 vnd"></i>				
 							</div>
 							<div style="float:lefts; padding:5px 0 5px;">
 								<div class="dvRadioPrice">
-									<input type="radio" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
+									<input type="radio" id="GiaChoChueTheoNgay" onchange="javascript:callMeOnChange1()" name="GiaChoThue" value="2">
 								</div>
 								<h3 class="productDetail-lable" style="display:inline;">Giá cho thuê theo ngày:</h3>
-								<h3 class="productDetail-price" style="display:inline;">100.000 đ</h3>			
+								<p class="productDetail-price" style="display:inline;" id="price_day_p">110000</p>			
 								<i class="fa fa-exclamation-circle dvCommentShow" data-tooltip-opaque="false" data-visual-id="3" title="Thuê càng lâu càng rẻ, ngày đầu 200.000 vnd ngày thứ 2 giảm 50%"></i>						
 							</div>
 							<div style="float:lefts; padding:5px 0 5px;">
@@ -165,13 +189,13 @@
 									<span style="padding-left:24px;">Giá thuê tạm tính:</span>
 									<span style="padding-left:31px;">Giá trị sản phẩm:</span>
 									<div class="qty-input">
-										<input class="input" type="number" placeholder="0" style="height: 32px; width: 55px;">
+										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="product_qty" value="1" style="height: 32px; width: 55px;">
 									</div>
 									<div class="dvPriceTamTinh dvPriceTamTinh-BookTime">
-										<p>230.000 đ</p>
+										<p style="display:inline" id="product_temp_p1">0</p><span>&nbsp đ</span>
 									</div>
 									<div class="dvProductValue dvProductValue-BookTime">
-										<p>1.900.000 đ</p>
+										<p style="display:inline" id="product_value_p1">0</p><span>&nbsp đ</span>
 									</div>
 								</div>
 							</div>
@@ -192,126 +216,57 @@
 
 								<div class="col-md-5 col-xs-12 BookAccessories-productName">
 									<div class="accessories-checkbox">
-										<input type="checkbox" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
+										<input type="checkbox" id="accessoriesCheckbox1" name="GiaChoThue" value="2">
 									</div>
 									<h3 class="productDetail-lable-accessories" style="display:inline;">Thước đo điện tử</h3>	
 								</div>
 								<div class="col-md-7 col-xs-12">
 									<div class="qty-input">
-										<input class="input" type="number" placeholder="1" style="height: 32px; width: 55px;">
+										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="access_qty_1" value="0" style="height: 32px; width: 55px;">
 									</div>
 									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p>15.000 đ</p>
+										<p id="access_temp_p1">0 đ</p>
 									</div>
 									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>190.000 đ</p>
+										<p id="access_value_p1">0 đ</p>
 									</div>
 								</div>
 
 								<div class="col-md-5 col-xs-12 BookAccessories-productName">
 									<div class="accessories-checkbox">
-										<input type="checkbox" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
+										<input type="checkbox" id="accessoriesCheckbox2" name="GiaChoThue" value="2">
 									</div>
 									<h3 class="productDetail-lable-accessories" style="display:inline;">Bộ mũi khoan cao cấp</h3>	
 								</div>
 								<div class="col-md-7 col-xs-12">
 									<div class="qty-input">
-										<input class="input" type="number" placeholder="1" style="height: 32px; width: 55px;">
+										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="access_qty_2" value="0" style="height: 32px; width: 55px;">
 									</div>
 									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p>60.000 đ</p>
+										<p id="access_temp_p2">0 đ</p>
 									</div>
 									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>370.000 đ</p>
+										<p id="access_value_p2">0 đ</p>
 									</div>
 								</div>
 
 								<div class="col-md-5 col-xs-12 BookAccessories-productName">
 									<div class="accessories-checkbox">
-										<input type="checkbox" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
+										<input type="checkbox" id="accessoriesCheckbox3" name="GiaChoThue" value="2">
 									</div>
 									<h3 class="productDetail-lable-accessories" style="display:inline;">Găng tay lao động</h3>	
 								</div>
 								<div class="col-md-7 col-xs-12">
 									<div class="qty-input">
-										<input class="input" type="number" placeholder="1" style="height: 32px; width: 55px;">
+										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="access_qty_3" value="0" style="height: 32px; width: 55px;">
 									</div>
 									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p>10.000 đ</p>
+										<p id="access_temp_p3">0 đ</p>
 									</div>
 									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>50.000 đ</p>
+										<p id="access_value_p3"> đ</p>
 									</div>
 								</div>
-
-
-
-
-								<!-- <div class="col-md-5">
-									<p class="accessories-title">Chọn thêm phụ kiện:</p>
-									<div style="float:lefts; padding:5px 0 5px;">
-										<div class="accessories-checkbox">
-											<input type="checkbox" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
-										</div>
-										<h3 class="productDetail-lable-accessories" style="display:inline;">Thước đo điện tử</h3>																	
-									</div>
-									<div style="float:lefts; padding:5px 0 5px;">
-										<div class="accessories-checkbox">
-											<input type="checkbox" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
-										</div>
-										<h3 class="productDetail-lable-accessories" style="display:inline;">Bộ mũi khoan cao cấp</h3>																	
-									</div>
-									<div style="float:lefts; padding:5px 0 5px;">
-										<div class="accessories-checkbox">
-											<input type="checkbox" id="GiaChoChueTheoNgay" name="GiaChoThue" value="2">
-										</div>
-										<h3 class="productDetail-lable-accessories" style="display:inline;">Găng tay lao động</h3>																	
-									</div>									
-
-								</div> -->
-								<!-- <div class="col-md-7">
-									<p class="accessories-title">Số lượng:</p>
-									<p class="accessories-title" style="padding-left:24px;">Giá thuê tạm tính:</p>
-									<p class="accessories-title" style=" padding-left:31px;">Giá trị sản phẩm:</p>
-									
-
-									<div class="qty-input">
-										<input class="input" type="number" placeholder="1" style="height: 32px; width: 55px;">
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p>15.000 đ</p>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>190.000 đ</p>
-									</div>
-									<div class="qty-input">
-										<input class="input" type="number" placeholder="1" style="height: 32px; width: 55px;">
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p>60.000 đ</p>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>370.000 đ</p>
-									</div>
-									<div class="qty-input">
-										<input class="input" type="number" placeholder="1" style="height: 32px; width: 55px;">
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p>10.000 đ</p>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>50.000 đ</p>
-									</div>
-									<div  class="accessories-sumtotal" style="margin-top: 29px;margin-left: -27px;">
-										<p>TỔNG CỘNG:</p>
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px;">
-										<p>85.000 đ</p>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p>610.000 đ</p>
-									</div>
-								</div> -->
 							</div>
 							<!-- /section Accessories selection -->
 
@@ -324,26 +279,26 @@
 										<p class="services-title">Chọn dịch vụ đi kèm:</p>
 										<div style="padding:5px 0 5px;">
 											<div class="accessories-checkbox" style="margin-top: 3px;">
-												<input type="radio" id="ServiceDelect" name="Service" value="1" checked>
+												<input type="radio" id="ServiceSelect-1" onchange="javascript:callMeOnChangeService()" name="Service" value="1" checked>
 											</div>
 											<h3 class="productDetail-lable-accessories" style="display:inline;">Thợ đến lắp</h3>																	
 										</div>
 										<div style="padding:5px 0 5px;">
 											<div class="accessories-checkbox">
-												<input type="radio" id="ServiceDelect" name="Service" value="2">
+												<input type="radio" id="ServiceSelect-2" onchange="javascript:callMeOnChangeService()" name="Service" value="2">
 											</div>
 											<h3 class="productDetail-lable-accessories" style="display:inline;">Hướng dẫn sử dụng</h3>																	
 										</div>
 										<div style="padding:5px 0 5px;">
 											<div class="accessories-checkbox">
-												<input type="radio" id="ServiceDelect" name="Service" value="3">
+												<input type="radio" id="ServiceSelect-3" onchange="javascript:callMeOnChangeService()" name="Service" value="3">
 											</div>
 											<h3 class="productDetail-lable-accessories" style="display:inline;">Tự lặp đặt</h3>																	
 										</div>	
 									</div>
 									<div class="col-md-6 col-xs-7">
 										<div class="dvServiceDescription" style="margin-left:-16px;margin-top: 28px;">
-											<P>Kỹ thuật viên của chúng tôi sẽ giao sản phẩm đến tận nơi đồng thời tiền hành lắp đặt và hướng dẫn sử dụng cho quý khách.</P>	
+											<P id="service_des_p">Kỹ thuật viên của chúng tôi sẽ giao sản phẩm đến tận nơi đồng thời tiền hành lắp đặt và hướng dẫn sử dụng cho quý khách.</P>	
 										</div>
 									</div>								
 
@@ -351,8 +306,14 @@
 								<div class="col-md-5">
 									<p class="services-title services-title-price">Giá thuê tạm tính:</p>		
 
-									<div class="dvPriceTamTinh dvPriceTamTinh-Services">
+									<div class="dvPriceTamTinh dvPriceTamTinh-Services service_cost_1">
 										<p>120.000 đ</p>
+									</div>
+                                    <div class="dvPriceTamTinh dvPriceTamTinh-Services service_cost_2">
+										<p>55.000 đ</p>
+									</div>
+                                    <div class="dvPriceTamTinh dvPriceTamTinh-Services service_cost_3">
+										<p>0 đ</p>
 									</div>
 								
 								</div>
@@ -368,26 +329,26 @@
 											<p class="delivery-title">Chọn vận chuyển:</p>
 											<div style="padding:5px 0 5px;">
 												<div class="accessories-checkbox" style="margin-top: 3px;">
-													<input type="radio" id="DeliverySelect" name="Deliveryy" value="1">
+													<input type="radio" id="DeliverySelect-1" onchange="javascript:callMeOnChangeDelivery()" name="Deliveryy" value="1" checked>
 												</div>
 												<h3 class="productDetail-lable-accessories" style="display:inline;">Giao/nhận tận nhà</h3>																	
 											</div>
 											<div style="padding:5px 0 5px;">
 												<div class="accessories-checkbox">
-													<input type="radio" id="DeliverySelect" name="Deliveryy" value="2"  checked>
+													<input type="radio" id="DeliverySelect-2" onchange="javascript:callMeOnChangeDelivery()" name="Deliveryy" value="2"  >
 												</div>
 												<h3 class="productDetail-lable-accessories" style="display:inline;">Giao tận nhà</h3>																	
 											</div>
 											<div style="padding:5px 0 5px;">
 												<div class="accessories-checkbox">
-													<input type="radio" id="DeliverySelect" name="Deliveryy" value="3">
+													<input type="radio" id="DeliverySelect-3" onchange="javascript:callMeOnChangeDelivery()" name="Deliveryy" value="3">
 												</div>
 												<h3 class="productDetail-lable-accessories" style="display:inline;">Tự đến lấy</h3>																	
 											</div>	
 										</div>
 										<div class="col-md-6 col-xs-7">
 											<div class="dvServiceDescription" style="margin-left:-16px;margin-top: 28px;">
-												<P>Vui lòng điền đầy đủ thông tin nơi nhận hàng ở Giỏ Hàng và Đặt Hàng, nhân viên chúng tôi sẽ liên hệ lại sớm nhất để xác nhận.</P>	
+												<P id="delivery_des_p">Vui lòng điền đầy đủ thông tin nơi nhận hàng ở Giỏ Hàng và Đặt Hàng, nhân viên chúng tôi sẽ liên hệ lại sớm nhất để xác nhận.</P>	
 											</div>
 										</div>								
 	
@@ -395,8 +356,14 @@
 									<div class="col-md-5">
 										<p class="delivery-title delivery-title-price" style="margin-left:-14px;">Giá thuê tạm tính:</p>		
 	
-										<div class="dvPriceTamTinh dvPriceTamTinh-Delivery">
+										<div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_1 ">
+											<p>100.000 đ</p>
+										</div>
+                                        <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_2">
 											<p>75.000 đ</p>
+										</div>
+                                        <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_3">
+											<p>0 đ</p>
 										</div>
 									
 									</div>
@@ -741,33 +708,140 @@
 	</div>
 	<!-- /section -->
      <script type="text/javascript">
-		$(function () {
-		    $("#orderTimePickup").datetimepicker({
-		        format: "dd MM yyyy - hh:ii P",
-		        showMeridian: true,
-		        autoclose: true,
-		        todayBtn: true,
-		        pickerPosition: "bottom-left",
-		        daysOfWeekDisabled: "0,6"
+         $(function () {
+             var dateToday = new Date();
+             dateToday.setDate(dateToday.getDate());
+             
+             $('#orderTimePickup').datetimepicker({
+                 format: "dd MM yyyy - hh:ii P",
+                 showMeridian: true,
+                 autoclose: true,
+                 startDate: dateToday,
+                 pickerPosition: "bottom-left",
+                 daysOfWeekDisabled: "0,6"
+             });
+
+             $('#orderTimeReturn').datetimepicker({
+                 useCurrent: false, //Important! See issue #1075
+                 format: "dd MM yyyy - hh:ii P",
+                 showMeridian: true,
+                 autoclose: true,
+                 startDate: dateToday,
+                 pickerPosition: "bottom-left",
+                 daysOfWeekDisabled: "0,6"
+             });
+
+             $("#orderTimePickup").on("#orderTimePickup.change", function (e) {
+		        $("#orderTimeReturn").data("DateTimePicker").minDate(e.date);
 		    });
-		    $("#orderTimeReturn").datetimepicker({
-		        format: "dd MM yyyy - hh:ii P",
-		        showMeridian: true,
-		        autoclose: true,
-		        todayBtn: true,
-		        pickerPosition: "bottom-left",
-		        daysOfWeekDisabled: "0,6"
-		    });
-			//$(".pickuptime-form").datetimepicker({
-			//	format: "dd MM yyyy - hh:ii P",
-			//	showMeridian: true,
-			//	autoclose: true,
-			//	todayBtn: true,
-			//	pickerPosition: "bottom-left",
-			//	daysOfWeekDisabled: "0,6"				
-			//});			
+             $("#orderTimeReturn").on("#orderTimePickup.change", function (e) {
+		        $("orderTimePickup").data("DateTimePicker").maxDate(e.date);
+		    });			
 		});
 	</script>
+
+    <script>
+
+        function callMeOnChange1() {
+            if (document.getElementById('GiaChoChueTheoBlock').checked)
+            {
+                var xxx = document.getElementById("price_block_p").innerHTML;
+                document.getElementById("product_temp_p1").innerHTML = xxx;
+                document.getElementById("product_value_p1").innerHTML = 1900000;
+            }
+            else if (document.getElementById('GiaChoChueTheoNgay').checked)
+            {
+                var xxx = document.getElementById("price_day_p").innerHTML;
+                document.getElementById("product_temp_p1").innerHTML = xxx;
+                document.getElementById("product_value_p1").innerHTML = 1900000;
+            }
+        }
+
+        function callMeOnChange() {                     
+            //auto update gia tam tinh va gia tri SP section MAIN PRODUCT
+            var x = document.getElementById("product_qty").value;
+            if (document.getElementById('GiaChoChueTheoBlock').checked) {
+                var temp = document.getElementById("price_block_p").innerHTML;
+            }
+            else if (document.getElementById('GiaChoChueTheoNgay').checked) {
+                 var temp = document.getElementById("price_day_p").innerHTML;
+            }              
+            var value = 1900000
+            var y = temp * x
+            var z = value * x
+            document.getElementById("product_temp_p1").innerHTML = y;
+            document.getElementById("product_value_p1").innerHTML = z;
+            //auto update gia tam tinh va gia tri SP section MAIN PRODUCT
+
+            //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
+            var x1 = document.getElementById("access_qty_1").value;
+            var temp1 = 15000
+            var value1 = 1900000
+            var y1 = temp1 * x1
+            var z1 = value1 * x1
+            document.getElementById("access_temp_p1").innerHTML = y1 + " đ";
+            document.getElementById("access_value_p1").innerHTML = z1 + " đ";
+
+            var x2 = document.getElementById("access_qty_2").value;
+            var temp2 = 60000
+            var value2 = 370000
+            var y2 = temp2 * x2
+            var z2 = value2 * x2
+            document.getElementById("access_temp_p2").innerHTML = y2 + " đ";
+            document.getElementById("access_value_p2").innerHTML = z2 + " đ";
+
+            var x3 = document.getElementById("access_qty_3").value;
+            var temp3 = 10000
+            var value3 = 50000
+            var y3 = temp3 * x3
+            var z3 = value3 * x3
+            document.getElementById("access_temp_p3").innerHTML = y3 + " đ";
+            document.getElementById("access_value_p3").innerHTML = z3 + " đ";
+            //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
+        }
+
+        function callMeOnChangeService() {
+            if (document.getElementById('ServiceSelect-1').checked) {
+                document.getElementById("service_des_p").innerHTML = "Kỹ thuật viên của chúng tôi sẽ giao sản phẩm đến tận nơi đồng thời tiền hành lắp đặt và hướng dẫn sử dụng cho quý khách.";
+                $('.dvBookServices .service_cost_1').css('display', 'block')
+                $('.dvBookServices .service_cost_2').css('display', 'none')
+                $('.dvBookServices .service_cost_3').css('display', 'none')
+            }
+            else if (document.getElementById('ServiceSelect-2').checked) {
+                document.getElementById("service_des_p").innerHTML = "Kỹ thuật viên của chúng tôi sẽ hướng dẫn sử dụng cho quý khách khi đến nhận hàng.";
+                $('.dvBookServices .service_cost_1').css('display', 'none')
+                $('.dvBookServices .service_cost_2').css('display', 'block')
+                $('.dvBookServices .service_cost_3').css('display', 'none')
+            }
+            else if (document.getElementById('ServiceSelect-3').checked) {
+                document.getElementById("service_des_p").innerHTML = "Quý khách hàng tự lắp đặt và sử dụng sản phẩm, chúng tôi có thể tư vấn qua điện thoại.";
+                $('.dvBookServices .service_cost_1').css('display', 'none')
+                $('.dvBookServices .service_cost_2').css('display', 'none')
+                $('.dvBookServices .service_cost_3').css('display', 'block')
+            }
+        }
+
+        function callMeOnChangeDelivery() {
+            if (document.getElementById('DeliverySelect-1').checked) {
+                document.getElementById("delivery_des_p").innerHTML = "Vui lòng điền đầy đủ thông tin nơi nhận hàng ở Giỏ Hàng và Đặt Hàng, nhân viên chúng tôi sẽ liên hệ lại sớm nhất để xác nhận.";
+                $('.dvBookDelivery .delivery_cost_1').css('display', 'block')
+                $('.dvBookDelivery .delivery_cost_2').css('display', 'none')
+                $('.dvBookDelivery .delivery_cost_3').css('display', 'none')
+            }
+            else if (document.getElementById('DeliverySelect-2').checked) {
+                document.getElementById("delivery_des_p").innerHTML = "Vui lòng điền đầy đủ thông tin nơi giao hàng, và nơi nhận lại hàng, nhân viên chúng tôi sẽ liên hệ lại sớm nhất để xác nhận.";
+                $('.dvBookDelivery .delivery_cost_1').css('display', 'none')
+                $('.dvBookDelivery .delivery_cost_2').css('display', 'block')
+                $('.dvBookDelivery .delivery_cost_3').css('display', 'none')
+            }
+            else if (document.getElementById('DeliverySelect-3').checked) {
+                document.getElementById("delivery_des_p").innerHTML = "Quý khách hàng tự đến văn phòng savina và lấy sản phẩm, chúng tôi có thể tư vấn qua điện thoại.";
+                $('.dvBookDelivery .delivery_cost_1').css('display', 'none')
+                $('.dvBookDelivery .delivery_cost_2').css('display', 'none')
+                $('.dvBookDelivery .delivery_cost_3').css('display', 'block')
+            }
+        }
+    </script>
    
 </asp:Content>
 

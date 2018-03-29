@@ -1700,7 +1700,7 @@ textarea.input {
 .dvPriceTamTinh-BookTime { display: inline-block;margin-left: 20px; margin-top: 6px;}
 .dvProductValue-BookTime { display: inline-block;margin-left: 16px;}
 .dvProductValue-OtoDes {display:inline-block;height: 35px;width: 130px !important;margin-left: 23px;}
-.dvPriceTamTinh-Delivery { margin-left: -23px; margin-top: 38px;}
+.dvPriceTamTinh-Delivery { margin-left: -23px; margin-top: 8px;}
 .dvPriceTamTinh-Services { margin-left: -23px; margin-top: 8px;;}
 .dvProductValue-Total {display:inline-block;height: 35px;width: 130px !important;margin-left: 47%;}
 .dvPriceTamTinh-Total {display:inline-block;height: 35px;width: 130px;margin-left: -14%;}
