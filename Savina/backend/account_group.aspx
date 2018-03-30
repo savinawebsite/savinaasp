@@ -69,14 +69,9 @@
                         </div>  <!--/part on left-->
                         <div class="col-md-7 col-sm-7 col-xs-12">   <!--part on right-->                        
                             <div class="portlet">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-user"></i> Chọn phân quyền truy cập cho các mục
-                                    </div>
-                                </div>
                                 <div class="portlet-body">
                                     <div id="sample_2_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                                        <div class="table-scrollable scrollerUser" style="overflow: scroll;">
+                                        <div class="table-scrollable scrollerUser" style="overflow: scroll; max-height: 350px;">
                                             <table class="table table-striped table-bordered table-hover dataTable" id="sample_2" aria-describedby="sample_2_info">
                                                 <thead>
                                                     <tr role="row">
@@ -208,19 +203,6 @@
                           
                         </div> <!--/part on right-->
 
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Chọn trạng thái</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <div id="gender" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                      <input type="radio" name="gender" value="male"> &nbsp; Enable &nbsp;
-                                    </label>
-                                    <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                      <input type="radio" name="gender" value="female"> Disable
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
