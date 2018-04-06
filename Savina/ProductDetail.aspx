@@ -2,6 +2,9 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+
+    <script src="../js/accounting.js"></script>
+
     <style>
         .service_cost_1 { display: block; }
         .service_cost_2 {
@@ -181,8 +184,8 @@
 								<div class="col-md-5 col-xs-12">
 									<span class="pickuptime-title">Ngày giờ lấy:</span>
 									<span class="returntime-title">Ngày giờ trả:</span>
-										<input type="text" class="form-control ProcessOn pickuptime-form" id="orderTimePickup" placeholder="thời gian lấy" name="ProcessOn" style="">                                         
-										<input type="text" class="form-control ProcessOn pickuptime-form" id="orderTimeReturn" placeholder="thời gian trả" name="ProcessOn">
+										<input type="text" class="form-control ProcessOn pickuptime-form" id="orderTimePickup" placeholder="thời gian lấy" name="ProcessOn" style="font-size: 11px;">                                         
+										<input type="text" class="form-control ProcessOn pickuptime-form" id="orderTimeReturn" placeholder="thời gian trả" name="ProcessOn" style="font-size: 11px;">
 								</div>
 								<div class="col-md-7 col-xs-12">
 									<span>Số lượng:</span>
@@ -226,6 +229,7 @@
 									</div>
 									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
 										<p id="access_temp_p1">0 đ</p>
+                                       <%-- accounting.formatNumber(<p id="access_temp_p1">0 đ</p>);--%>
 									</div>
 									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
 										<p id="access_value_p1">0 đ</p>
@@ -307,13 +311,13 @@
 									<p class="services-title services-title-price">Giá thuê tạm tính:</p>		
 
 									<div class="dvPriceTamTinh dvPriceTamTinh-Services service_cost_1">
-										<p>120.000 đ</p>
+										<p id="service_cost_1_p"> </p>
 									</div>
                                     <div class="dvPriceTamTinh dvPriceTamTinh-Services service_cost_2">
-										<p>55.000 đ</p>
+										<p id="service_cost_2_p"></p>
 									</div>
                                     <div class="dvPriceTamTinh dvPriceTamTinh-Services service_cost_3">
-										<p>0 đ</p>
+										<p id="service_cost_3_p"> </p>
 									</div>
 								
 								</div>
@@ -357,13 +361,13 @@
 										<p class="delivery-title delivery-title-price" style="margin-left:-14px;">Giá thuê tạm tính:</p>		
 	
 										<div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_1 ">
-											<p>100.000 đ</p>
+											<p id="delivery_cost_1_p"> </p>
 										</div>
                                         <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_2">
-											<p>75.000 đ</p>
+											<p id="delivery_cost_2_p"> </p>
 										</div>
                                         <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_3">
-											<p>0 đ</p>
+											<p id="delivery_cost_3_p"> </p>
 										</div>
 									
 									</div>
@@ -390,9 +394,9 @@
 									</div>
 								</div>
 
-								<hr style="color:#DADADA">	
+								<%--<hr style="color:#DADADA">	--%>
 
-								<div class="dvBookOtodes">	
+								<%--<div class="dvBookOtodes">	
 									<div class="col-sm-9 col-xs-7 dvOtoDescription">	
 										<p>- Tiền cọc bắt buộc đối với KH thuê xe Oto tự lái, chi tiết hiển thị ở đây:</p>
 									</div>
@@ -401,7 +405,8 @@
 											<p>15.000.000 đ</p>
 										</div>	
 									</div>								
-								</div>
+								</div>--%>
+
 							<!-- //session Book dat thue -->
 							<hr style="color:#DADADA">
 
@@ -412,7 +417,7 @@
 									</div>
 									<div class="col-sm-6 col-xs-5">	
 										<div class="dvProductValue dvProductValue-Total">
-											<p style="font-size:18px;">2.510.000 đ</p>
+											<p id="total_product_value_p" style="font-size:18px;"> </p>
 										</div>	
 									</div>								
 								</div>
@@ -422,7 +427,7 @@
 									</div>
 									<div class="col-sm-6 col-xs-5">	
 										<div class="dvPriceTamTinh dvPriceTamTinh-Total">
-											<p style="font-size:18px;">510.000 đ</p>
+											<p id="total_product_deposit_p" style="font-size:18px;"> </p>
 										</div>	
 									</div>								
 								</div>
@@ -708,12 +713,27 @@
 	</div>
 	<!-- /section -->
      <script type="text/javascript">
+
+
          $(function () {
+             document.getElementById("service_cost_1_p").innerHTML = accounting.formatNumber(120000) + " đ";
+             document.getElementById("service_cost_2_p").innerHTML = accounting.formatNumber(55000) + " đ";
+             document.getElementById("service_cost_3_p").innerHTML = accounting.formatNumber(0) + " đ";
+
+             document.getElementById("delivery_cost_1_p").innerHTML = accounting.formatNumber(100000) + " đ";
+             document.getElementById("delivery_cost_2_p").innerHTML = accounting.formatNumber(75000) + " đ";
+             document.getElementById("delivery_cost_3_p").innerHTML = accounting.formatNumber(0) + " đ";
+
+             document.getElementById("total_product_value_p").innerHTML = accounting.formatNumber(2510000) + " đ";
+             document.getElementById("total_product_deposit_p").innerHTML = accounting.formatNumber(510000) + " đ";
+             
+
              var dateToday = new Date();
              dateToday.setDate(dateToday.getDate());
              
              $('#orderTimePickup').datetimepicker({
-                 format: "dd MM yyyy - hh:ii P",
+                 //format: "dd MM yyyy - hh:ii P",
+                 format: "d/m/yy - hh:ii p",
                  showMeridian: true,
                  autoclose: true,
                  startDate: dateToday,
@@ -723,7 +743,7 @@
 
              $('#orderTimeReturn').datetimepicker({
                  useCurrent: false, //Important! See issue #1075
-                 format: "dd MM yyyy - hh:ii P",
+                 format: "d/m/yy - hh:ii p",
                  showMeridian: true,
                  autoclose: true,
                  startDate: dateToday,
@@ -746,14 +766,14 @@
             if (document.getElementById('GiaChoChueTheoBlock').checked)
             {
                 var xxx = document.getElementById("price_block_p").innerHTML;
-                document.getElementById("product_temp_p1").innerHTML = xxx;
-                document.getElementById("product_value_p1").innerHTML = 1900000;
+                document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(xxx);
+                document.getElementById("product_value_p1").innerHTML = accounting.formatNumber(1900000);
             }
             else if (document.getElementById('GiaChoChueTheoNgay').checked)
             {
                 var xxx = document.getElementById("price_day_p").innerHTML;
-                document.getElementById("product_temp_p1").innerHTML = xxx;
-                document.getElementById("product_value_p1").innerHTML = 1900000;
+                document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(xxx);
+                document.getElementById("product_value_p1").innerHTML = accounting.formatNumber(1900000);
             }
         }
 
@@ -769,8 +789,8 @@
             var value = 1900000
             var y = temp * x
             var z = value * x
-            document.getElementById("product_temp_p1").innerHTML = y;
-            document.getElementById("product_value_p1").innerHTML = z;
+            document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(y);
+            document.getElementById("product_value_p1").innerHTML = accounting.formatNumber(z);
             //auto update gia tam tinh va gia tri SP section MAIN PRODUCT
 
             //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
@@ -779,24 +799,24 @@
             var value1 = 1900000
             var y1 = temp1 * x1
             var z1 = value1 * x1
-            document.getElementById("access_temp_p1").innerHTML = y1 + " đ";
-            document.getElementById("access_value_p1").innerHTML = z1 + " đ";
+            document.getElementById("access_temp_p1").innerHTML = accounting.formatNumber(y1) + " đ";
+            document.getElementById("access_value_p1").innerHTML = accounting.formatNumber(z1) + " đ";
 
             var x2 = document.getElementById("access_qty_2").value;
             var temp2 = 60000
             var value2 = 370000
             var y2 = temp2 * x2
             var z2 = value2 * x2
-            document.getElementById("access_temp_p2").innerHTML = y2 + " đ";
-            document.getElementById("access_value_p2").innerHTML = z2 + " đ";
+            document.getElementById("access_temp_p2").innerHTML = accounting.formatNumber(y2) + " đ";
+            document.getElementById("access_value_p2").innerHTML = accounting.formatNumber(z2) + " đ";
 
             var x3 = document.getElementById("access_qty_3").value;
             var temp3 = 10000
             var value3 = 50000
             var y3 = temp3 * x3
             var z3 = value3 * x3
-            document.getElementById("access_temp_p3").innerHTML = y3 + " đ";
-            document.getElementById("access_value_p3").innerHTML = z3 + " đ";
+            document.getElementById("access_temp_p3").innerHTML = accounting.formatNumber(y3) + " đ";
+            document.getElementById("access_value_p3").innerHTML = accounting.formatNumber(z3) + " đ";
             //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
         }
 
@@ -841,6 +861,10 @@
                 $('.dvBookDelivery .delivery_cost_3').css('display', 'block')
             }
         }
+    </script>
+
+    <script type="text/javascript">
+	    accounting.formatMoney(5318008);
     </script>
    
 </asp:Content>
