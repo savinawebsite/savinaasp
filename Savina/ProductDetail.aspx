@@ -81,7 +81,7 @@
 							</div>
 						</div>
 					<!-- THÔNG TIN SẢN PHẨM ĐI KÈM NẾU CÓ -->	
-					<hr>										
+					<hr class="hrProductPackage"/>										
 							<h3 style="font-size:18px; margin-top:20px;">DANH SÁCH SẢN PHẨM ĐI KÈM</h3>
 							<div class="col-md-12 col-xs-12 ">
 								<div id="product-slick-7" class="product-slick"> <!--Start slide product San Pham moi-->
@@ -117,7 +117,7 @@
 									<!-- /Product Single -->								
 								</div>	<!-- end slide product San pham moi -->
 							</div>
-							<hr class="hrProductPackage">
+							<hr class="hrProductPackage"/>
 						
 					
 					</div>
@@ -157,7 +157,7 @@
 									<input type="radio" id="GiaChoChueTheoBlock" onchange="javascript:callMeOnChange1()" name="GiaChoThue" value="1">
 								</div>					
 								<h3 class="productDetail-lable" style="display:inline;">Giá cho thuê theo block:</h3>
-								<p class="productDetail-price" style="display:inline;" id="price_block_p">35000</p>
+								<p class="productDetail-price" style="display:inline;" id="price_block_p"> </p>
 								<i class="fa fa-exclamation-circle dvCommentShow" data-tooltip-opaque="false" data-visual-id="3" title="2 giờ đầu đầu 100.000 vnd, giờ tiếp theo 30.000 vnd"></i>				
 							</div>
 							<div style="float:lefts; padding:5px 0 5px;">
@@ -165,7 +165,7 @@
 									<input type="radio" id="GiaChoChueTheoNgay" onchange="javascript:callMeOnChange1()" name="GiaChoThue" value="2">
 								</div>
 								<h3 class="productDetail-lable" style="display:inline;">Giá cho thuê theo ngày:</h3>
-								<p class="productDetail-price" style="display:inline;" id="price_day_p">110000</p>			
+								<p class="productDetail-price" style="display:inline;" id="price_day_p"> </p>			
 								<i class="fa fa-exclamation-circle dvCommentShow" data-tooltip-opaque="false" data-visual-id="3" title="Thuê càng lâu càng rẻ, ngày đầu 200.000 vnd ngày thứ 2 giảm 50%"></i>						
 							</div>
 							<div style="float:lefts; padding:5px 0 5px;">
@@ -204,7 +204,7 @@
 							</div>
 							<!-- /section Date time pickup -->
 
-							<hr style="color:#DADADA">
+							<hr class="hrProductPackage"/>
 
 							<!-- section Accessories selection -->
 							<div class="dvBookAccessory">
@@ -274,7 +274,7 @@
 							</div>
 							<!-- /section Accessories selection -->
 
-							<hr style="color:#DADADA">
+							<hr class="hrProductPackage"/>
 
 							<!-- section Services selection -->
 							<div class="dvBookServices">
@@ -324,7 +324,7 @@
 							</div>
 							<!-- /section Services selection -->
 
-							<hr style="color:#DADADA">
+							<hr class="hrProductPackage"/>
 
 							<!-- section Delivery selection -->
 							<div class="dvBookDelivery">
@@ -374,7 +374,7 @@
 								</div>
 								<!-- /section Delivery selection -->
 
-								<hr style="color:#DADADA">	
+								<hr class="hrProductPackage"/>	
 																									
 								<div class="dvBookDeposit">	
 									<div class="col-sm-5 col-xs-12">
@@ -408,7 +408,7 @@
 								</div>--%>
 
 							<!-- //session Book dat thue -->
-							<hr style="color:#DADADA">
+							<hr class="hrProductPackage"/>
 
 							<div class="dvBookSTotalpayment">	
 								<div class="productdetail-totalvalue">
@@ -440,8 +440,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12">
-						<div class="product-tab">
+
+					<div class="col-md-12">  <!-- /Product full description tab -->
+						<%--<div class="product-tab">
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
 								<li><a data-toggle="tab" href="#tab2">Thông số kỹ thuật</a></li>
@@ -570,8 +571,47 @@
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
+						</div>--%>
+                        <div class="fullDescription-tab-dynamic" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                  <li role="presentation" class="active"><a href="#tab_content_fullDescription" role="tab" id="fullDescription-tab"  data-toggle="tab" aria-expanded="true">MÔ TẢ SẢN PHẨM</a>
+                                  </li>
+                                  <li role="presentation" class=""><a href="#tab_content_specification" role="tab" id="specification-tab" data-toggle="tab" aria-expanded="false">THÔNG SỐ KỸ THUẬT</a>
+                                  </li>
+                                  <li role="presentation" class=""><a href="#tab_content_userguide" role="tab" id="userGuide-tab" data-toggle="tab" aria-expanded="false">HƯỚNG DẪN SỬ DỤNG</a>
+                                  </li>
+                                </ul>
+                                 <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content_fullDescription" aria-labelledby="home-tab" style="margin-top:20px"> <!-- Tab Mo Ta San Pham --> 
+                                           <p>Kính nghe nhạc Bluetooth mp3 NBC BT-2 vừa bảo vệ đôi mắt vừa tích hợp tính năng nghe nhạc, kết nối điện thoại giúp bạn giải trí không giới hạn đồng thời không bỏ lỡ bất kỳ cuộc gọi quan trọng nào.</br>
+										    Bluetooth: V4.1 + EDR Khoảng cách: 10m Thời gian làm việc liên tục: 4 tiếng</br>
+										    Chế độ chờ: tương đương 100 giờ Sạc lại: khoảng 2 tiếng Công suất Pin: 130mA</br>
+									</p>
+                                    </div>  <!-- /Tab Mo Ta San Pham -->
+                          
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content_specification" aria-labelledby="profile-tab" style="margin-top:20px">  <!-- Tab Thong So Ky Thuat -->                           
+                                        <p>Màu sắc: Đen</br>
+										    Loại kính: Kính bluetooth</br>
+										    Phương thức bảo hành: Bằng tem bảo hành</br>
+										    Bảo hành: 6 tháng</br>
+									    </p>
+									     <img src="/img/kinhbluetooth.jpg" alt="Mắt Kính Nghe Nhạc Bluetooth 15">                               
+                                    </div>    <!-- /Tab Thong So Ky Thuat -->             
+                          
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content_userguide" aria-labelledby="profile-tab" style="margin-top:20px"> <!-- Tab Huong Dan Su Dung -->
+                                        <h3 style="margin-bottom: 40px;font-size: 18px;">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM GỒM VIDEO VÀ MÔ TẢ</h3>
+									    <div class="col-md-7 col-sm-8 col-xs-12">
+										    <p>Hướng dẫn dùng sản phẩm dòng 1</p>
+										    <p>Welcome to Sense Property, the leading Bangkok property agent dedicated to helping expats and international clients find the best properties for rent, for sale and to renovate in Bangkok. With the support of our highly experienced team, you'll enjoy access to the highest quality condos, apartments, houses, land and commercial properties throughout Bangkok and greater Thailand.</p>
+									    </div>
+									    <div class="col-md-4 col-sm-6 col-xs-12">
+										     <iframe width="380" height="300" src="https://www.youtube.com/embed/tV1A51hLGZk" style="height:255px; width: 365px; margin-left:26px;"></iframe> 
+									    </div>
+                                    </div>     <!-- /Tab Huong Dan Su Dung -->
+                                </div>
+                           </div>
+
+					</div> <!-- /Product full description tab -->
 
 				</div>
 				<!-- /Product Details -->
@@ -716,6 +756,9 @@
 
 
          $(function () {
+             document.getElementById("price_day_p").innerHTML = accounting.formatNumber(110000) + " đ";
+             document.getElementById("price_block_p").innerHTML = accounting.formatNumber(35000) + " đ";
+
              document.getElementById("service_cost_1_p").innerHTML = accounting.formatNumber(120000) + " đ";
              document.getElementById("service_cost_2_p").innerHTML = accounting.formatNumber(55000) + " đ";
              document.getElementById("service_cost_3_p").innerHTML = accounting.formatNumber(0) + " đ";

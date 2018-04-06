@@ -162,7 +162,7 @@ hr {
 .icon-btn.main-btn, .icon-btn.primary-btn {
   width: 40px;
   height: 40px;
-  line-height: 30px;
+  line-height: 40px;
   text-align: center;
   padding: 0px;
   border: none;
@@ -1129,16 +1129,18 @@ textarea.input {
   -webkit-transition: 0.3s max-height;
   transition: 0.3s max-height;
   width: 84%;
-  background: #F6F7F8;
-  border: solid 1px #DADADA;
+  background: #eee4b3;
+  color: #5f5f5f;
+  border: solid 1px #eee4b3;
+  border-radius:10px;
   padding: 5px 0px 0px 8px;
   font-size: 12px;
-  font-family: roboto-medium;
+  font-family: roboto-regular;
 }
 
 .returntime-title {padding-left:40px}
-.pickuptime-form { display: inline-block;padding-left: 3px;padding-right: 3px;margin-top: 10px;height: 32px; width: 110px;}
-.returntime-form { display: inline-block;padding-left: 3px;padding-right: 3px;height: 32px; width: 110px;}
+.pickuptime-form { display: inline-block;padding-left: 3px;padding-right: 3px;margin-top: 10px;height: 32px; width: 110px;text-align:center;}
+.returntime-form { display: inline-block;padding-left: 3px;padding-right: 3px;height: 32px; width: 110px;text-align:center;}
 
 .product .product-old-price {
   color: #F8694A;
@@ -1207,6 +1209,10 @@ textarea.input {
 	Single product
 \*----------------------------*/
 
+.product-ext1 {
+    width: 95%;
+    margin-left: 10px;
+}
 .product.product-inpackage {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -1448,6 +1454,10 @@ textarea.input {
   margin-bottom: 30px;
 }
 
+#price-slider {
+    width: 85%;
+}
+
 #aside .aside:last-child {
   margin-bottom: 0px;
 }
@@ -1461,6 +1471,7 @@ textarea.input {
   margin-top: 15px;
   line-height: 24px;
   font-size: 15px;
+  width: 85%;
 }
 
 .aside .aside-title:after {
@@ -1640,6 +1651,15 @@ textarea.input {
 	Product view
 \*----------------------------*/
 
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#product-main-view {
+    height: 415px;
+    width: 97%;
+}
 #product-main-view .slick-arrow {
   opacity: 0;
 }
@@ -1651,6 +1671,7 @@ textarea.input {
 #product-view {
   margin-top: 10px;
   margin-bottom: 15px;
+  width:97%;
 }
 
 #product-view .product-view.slick-slide {
@@ -1674,8 +1695,13 @@ textarea.input {
 /*----------------------------*\
 	Product details
 \*----------------------------*/
+
+.fullDescription-tab-dynamic {
+    margin-top:20px;
+}
 .hrProductPackage {
-  border: 1px solid #DADADA;
+  border: 0.6px solid #DADADA;
+  width: 96%;
 }
 .dvDelivery {
   background: #f4f7f8;

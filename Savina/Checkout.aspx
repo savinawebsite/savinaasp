@@ -1,9 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Checkout.aspx.cs" Inherits="Checkout" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+    <script src="../js/accounting.js"></script>
 <style>
     .collapse.in {
         margin-top: 17px;
+    }
+
+    table th {
+        text-align:center;
+    }
+
+    table td {
+        text-align:center;
+    }
+
+    .cost-alignright {
+        text-align:right !important;
     }
 
 </style>
@@ -121,7 +134,7 @@
 										<td class="qty text-center"><input class="input" type="number" value="1"></td>
                                         <td class="price text-center"><strong>Có</strong></td>
                                         <td class="price text-center"><strong>Có</strong></td>
-										<td class="total text-center"><strong class="primary-color">150.000 đ</strong></td>
+										<td class="total text-center" id="checkout-total-cost"><strong class="primary-color"> </strong></td>
 										<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
 									</tr>
 								</tbody>
@@ -227,48 +240,41 @@
                                                     <td class=" ">1</td>
                                                     <td class=" ">Thời gian thuê sản phẩm</td>
                                                     <td class=" ">1</td>
-                                                    <td class=" ">230.000</td>
-                                                    <td class=" ">1.900.000</td>
+                                                    <td id="tblCost-temp-time" class="cost-alignright "> </td>
+                                                    <td id="tblCost-value-time" class="cost-alignright "> </td>
                                                   </tr>
                                                   <tr role="row">
                                                       <td class=" ">2</td>
                                                       <td class=" ">Phụ kiện đi kèm: Thước đo điện tử</td>
                                                       <td class=" ">1</td>
-                                                      <td class=" ">15.000</td>
-                                                      <td class=" ">190.000</td>
+                                                      <td id="tblCost-temp-accessory" class="cost-alignright "> </td>
+                                                      <td id="tblCost-value-accessory" class="cost-alignright "> </td>
                                                     </tr>
                                                   <tr role="row">
-                                                    <td class=" ">3</td>
-                                                    <td class=" ">Phụ kiện đi kèm: Găng tay lao động</td>
-                                                    <td class=" ">2</td>
-                                                    <td class=" ">20.000</td>
-                                                    <td class=" ">100.000</td>
+                                                      <td class=" ">3</td>
+                                                      <td class=" ">Dịch vụ đi kèm: Hướng dẫn sử dụng</td>
+                                                      <td class=" ">1</td>
+                                                      <td id="tblCost-temp-service" class="cost-alignright "> </td>
+                                                      <td id="tblCost-value-service" class="cost-alignright "> </td>
                                                   </tr>
                                                   <tr role="row">
                                                       <td class=" ">4</td>
-                                                      <td class=" ">Dịch vụ đi kèm: Tự lắp đặt</td>
+                                                      <td class=" ">Vận chuyển: Giao tận nhà </td>
                                                       <td class=" ">1</td>
-                                                    <td class=" ">0.0</td>
-                                                    <td class=" ">0.0</td>
+                                                    <td id="tblCost-temp-delivery" class="cost-alignright "> </td>
+                                                    <td id="tblCost-value-delivery" class="cost-alignright "> </td>
                                                   </tr>
                                                   <tr role="row">
                                                       <td class=" ">5</td>
-                                                      <td class=" ">Vận chuyển: Giao tận nhà </td>
-                                                      <td class=" ">1</td>
-                                                    <td class=" ">75.000</td>
-                                                    <td class=" ">0.0</td>
-                                                  </tr>
-                                                  <tr role="row">
-                                                      <td class=" ">6</td>
                                                       <td class=" ">Khách gửi lại: CMND, bằng lái </td>
                                                       <td class=" ">1</td>
-                                                    <td class=" ">0.0</td>
-                                                    <td class=" ">0.0</td>
+                                                    <td id="tblCost-temp-document" class="cost-alignright "> </td>
+                                                    <td id="tblCost-value-document" class="cost-alignright "> </td>
                                                   </tr>
                                                   <tr>
                                                     <td colspan="3" style="text-align:right;"><strong>TỔNG CỘNG</strong></td>
-                                                    <td><strong>510.000</strong></td>
-                                                    <td><strong>2.510.000</strong></td>
+                                                    <td id="tblCost-temp-total" class="cost-alignright"><strong> </strong></td>
+                                                    <td id="tblCost-value-total" class="cost-alignright"><strong> </strong></td>
                                                   </tr>
                                                 </tbody>
                                               </table>              
@@ -308,6 +314,28 @@
             $('.content-tab-forgotten-password').css('display', 'none')
         });
    
+        $(function () {
+            document.getElementById("checkout-total-cost").innerHTML = accounting.formatNumber(510000) + " đ";
+            //Hien thi gia bang chi tiet Checkout
+            document.getElementById("tblCost-temp-time").innerHTML = accounting.formatNumber(230000) + " đ";
+            document.getElementById("tblCost-value-time").innerHTML = accounting.formatNumber(1900000) + " đ";
+            document.getElementById("tblCost-temp-accessory").innerHTML = accounting.formatNumber(15000) + " đ";
+            document.getElementById("tblCost-value-accessory").innerHTML = accounting.formatNumber(190000) + " đ";
+            document.getElementById("tblCost-temp-service").innerHTML = accounting.formatNumber(55000) + " đ";
+            document.getElementById("tblCost-value-service").innerHTML = accounting.formatNumber(0) + " đ";
+            document.getElementById("tblCost-temp-delivery").innerHTML = accounting.formatNumber(75000) + " đ";
+            document.getElementById("tblCost-value-delivery").innerHTML = accounting.formatNumber(0) + " đ";
+            document.getElementById("tblCost-temp-document").innerHTML = accounting.formatNumber(0) + " đ";
+            document.getElementById("tblCost-value-document").innerHTML = accounting.formatNumber(0 + " đ");
+            document.getElementById("tblCost-temp-total").innerHTML = accounting.formatNumber(510000) + " đ";
+            document.getElementById("tblCost-value-total").innerHTML = accounting.formatNumber(2510000) + " đ";
+
+        });
+        
+    </script>
+
+    <script type="text/javascript">
+	    accounting.formatMoney(5318008);
     </script>
 </asp:Content>
 
