@@ -12,6 +12,7 @@ namespace Savina
         {
             var settings = new FriendlyUrlSettings();
             //settings.AutoRedirectMode = RedirectMode.Off;
+            settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
         }
     }

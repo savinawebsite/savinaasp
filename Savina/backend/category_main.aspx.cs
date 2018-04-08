@@ -10,11 +10,11 @@ using System.Web.Services;
 
 public partial class backend_category_main : System.Web.UI.Page
 {
+    veritass_savinaEntities db = new veritass_savinaEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+       
     }
-
     [WebMethod]
     public static string addCategory(string cateName, string desc)
     {

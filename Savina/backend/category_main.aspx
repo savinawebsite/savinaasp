@@ -12,13 +12,15 @@
                     var cateName = $('#ipCateName').val();
                     var desc = $('#ipDesc').val();  
                     if (cateName != '' && desc != '') {
+                    /*
+                        
                         $.ajax  ({  
                             type: 'POST',  
-                            url: 'http://localhost:62459/backend/category_main.aspx/addCategory',
+                            url: '../backend/category_main.aspx/addCategory',
                             dataType: "json",
                             data: JSON.stringify({ cateName: cateName, desc: desc }),
-                            contentType: 'application/json; charset =utf-8',  
-                            success: function(data)  
+                            contentType: 'application/json; charset =utf-8',
+                            success: function (data)
                             {  
                                 var obj = data.d;  
                                 if (obj == 'true')   
@@ -36,6 +38,29 @@
                                 alert("Error Occured, Try Again");  
                             }  
                         });  
+                        */
+
+                        var xmlhttp;
+                        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                            xmlhttp = new XMLHttpRequest();
+                        }
+                        else {// code for IE6, IE5
+                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xmlhttp.onreadystatechange = function () {
+                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                if (xmlhttp.responseText != "") {
+                                    //logout success
+                                    loginStatus = '0';
+                                    $('#btnLoginForm').html('Sign In');
+                                    location.reload();
+
+                                }
+                            }
+                        }
+                        xmlhttp.open("GET", "../backend/adAjax.aspx?action=createMainCate&cateName=" + cateName + "&desc=" + desc + "", true);
+                        xmlhttp.send();
+                       
                     } else   
                     {  
                         alert("Pleae Fill all the Fields");  
