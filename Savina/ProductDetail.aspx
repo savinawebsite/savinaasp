@@ -25,6 +25,13 @@
             margin-top:70px
         }
 
+         .documentDeposit_1, .documentDeposit_2 {
+             display: none;
+         }
+
+         .documentDeposit_3 {display: block;}
+
+
     </style>
 </asp:Content>
 
@@ -380,16 +387,18 @@
 									<div class="col-sm-5 col-xs-12">
 										<p style="display:inline;">- Khách gửi lại:</p>																		
 										<div class="qty-input" style="padding-left: 14px;">
-											<select class="form-control" style="width: 118px;">
-													<option value="2">Giấy tờ</option>
-													<option value="3">Tài sản </option>
-													<option value="3">Tiền cọc </option>
+											<select class="form-control" id="DepositSelectDropdown" onchange="callMeOnChangeDeposit()" style="width: 118px;">
+													<option value="documentDeposit" selected="selected">Giấy tờ</option>
+													<option value="propertyDeposit">Tài sản </option>
+													<option value="cashDeposit">Tiền cọc </option>
 												</select>
 										</div>
 									</div>
 									<div class="col-sm-7 col-xs-12">
 										<!-- <div style="display:inline-block;" > -->
-											<input class="dvGhiChuDeposit" type="text" placeholder="ID, bằng lái, giấy tờ nhà, hộ khẩu, KT3,. ..." id="GhiChuDeposit" name="GhiChuDeposit">
+											<input class="dvGhiChuDeposit documentDeposit_1" type="text" placeholder="Vui lòng nhập số tiền bạn sẽ đặt cọc vào đây.." id="documentDeposit1"/>
+                                            <input class="dvGhiChuDeposit documentDeposit_2" type="text" placeholder="Điện thoại, máy tính, xe máy, vật dụng.." id="documentDeposit2"/>
+                                            <input class="dvGhiChuDeposit documentDeposit_3" type="text" placeholder="ID, bằng lái, giấy tờ nhà, hộ khẩu, KT3.." id="documentDeposit3"/>
 										<!-- </div> -->
 									</div>
 								</div>
@@ -902,6 +911,25 @@
                 $('.dvBookDelivery .delivery_cost_1').css('display', 'none')
                 $('.dvBookDelivery .delivery_cost_2').css('display', 'none')
                 $('.dvBookDelivery .delivery_cost_3').css('display', 'block')
+            }
+        }
+
+        function callMeOnChangeDeposit() {
+            var x = document.getElementById("DepositSelectDropdown").value;
+            if (x == "cashDeposit") {
+                $('.dvBookDeposit .documentDeposit_1').css('display', 'block');
+                $('.dvBookDeposit .documentDeposit_2').css('display', 'none');
+                $('.dvBookDeposit .documentDeposit_3').css('display', 'none');
+            }
+            if (x == "propertyDeposit") {
+                $('.dvBookDeposit .documentDeposit_2').css('display', 'block');
+                $('.dvBookDeposit .documentDeposit_1').css('display', 'none');
+                $('.dvBookDeposit .documentDeposit_3').css('display', 'none');
+            }
+            if (x == "documentDeposit") {
+                $('.dvBookDeposit .documentDeposit_3').css('display', 'block');
+                $('.dvBookDeposit .documentDeposit_2').css('display', 'none');
+                $('.dvBookDeposit .documentDeposit_1').css('display', 'none');
             }
         }
     </script>

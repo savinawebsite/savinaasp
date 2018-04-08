@@ -32,73 +32,34 @@
           <div class="login_wrapper">
             <div class="animate form login_form">
               <section class="login_content">
-                <form>
-                  <h1>ĐĂNG NHẬP</h1>
+                
+                  <h1>LOGIN</h1>
                   <div>
                     <input type="text" id="txtUsername" name="txtUsername" runat="server" class="form-control" placeholder="Username"/>
                   </div>
-                  <div>
+                  <div style="margin-top:5px;">
                     <input type="password" id="txtPassword" name="txtPassword" runat="server" class="form-control" placeholder="Password"/>
                   </div>
                   <div>
-                    <asp:Button ID="btnLogin" runat="server" Text="Đăng nhập" class="btn btn-info" OnClick="btnLogin_Click" />
-                    <a class="reset_pass" href="#">Lost your password?</a>
+                    <asp:Button ID="btnLogin" runat="server" Text="Đăng nhập" class="btn btn-info" style="margin-top:10px;" OnClick="btnLogin_Click" />
+                      <div id="Div1" class="bodymodal" style="display: block; color: red; font-size:12px; margin-top:5px;" runat="server"></div>
                   </div>
 
                   <div class="clearfix"></div>
 
                   <div class="separator">
-                    <p class="change_link">Chưa có tài khoản?
-                      <a href="#signup" class="to_register"> Tạo tài khoản </a>
-                    </p>
-
                     <div class="clearfix"></div>
                     <br />
 
                     <div>
-                      <h1><i class="fa fa-paw"></i> SAVINA!</h1>
+                      <h1><i class="fa fa-paw"></i> SAVINA</h1>
                       <p>©2018 All Rights Reserved.</p>
                     </div>
                   </div>
-                </form>
+                
               </section>
             </div>
 
-            <div id="register" class="animate form registration_form">
-              <section class="login_content">
-                <form>
-                  <h1>Tạo tài khoản</h1>
-                  <div>
-                    <input type="text" class="form-control" placeholder="Username" required="" />
-                  </div>
-                  <div>
-                    <input type="email" class="form-control" placeholder="Email" required="" />
-                  </div>
-                  <div>
-                    <input type="password" class="form-control" placeholder="Password" required="" />
-                  </div>
-                  <div>
-                    <a class="btn btn-default submit" href="index.html">Gửi yêu cầu</a>
-                  </div>
-
-                  <div class="clearfix"></div>
-
-                  <div class="separator">
-                    <p class="change_link">Đã có tài khoản ?
-                      <a href="#signin" class="to_register"> Đăng nhập </a>
-                    </p>
-
-                    <div class="clearfix"></div>
-                    <br />
-
-                    <div>
-                      <h1><i class="fa fa-paw"></i> Savina</h1>
-                      <p>©2018 All Rights Reserved. </p>
-                    </div>
-                  </div>
-                </form>
-              </section>
-            </div>
           </div>
         </div>
     </form>
