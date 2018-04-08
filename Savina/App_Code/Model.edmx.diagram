@@ -15,9 +15,19 @@
         <EntityTypeShape EntityType="veritass_savinaModel.tb_promotion" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_SiteMap" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_WishList" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="veritass_savinaModel.tb_CategoryMain" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritass_savinaModel.tb_CategoryMain" Width="2.125" PointX="8.375" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_CategorySub1" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_Order" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="veritass_savinaModel.Country" Width="1.5" PointX="9.375" PointY="10" />
+        <EntityTypeShape EntityType="veritass_savinaModel.District" Width="1.5" PointX="13.875" PointY="10.875" />
+        <EntityTypeShape EntityType="veritass_savinaModel.Province" Width="1.5" PointX="11.625" PointY="10.75" />
+        <EntityTypeShape EntityType="veritass_savinaModel.tb_CategorySub2" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="veritass_savinaModel.tb_CategorySub3" Width="1.5" PointX="11.375" PointY="3.75" />
+        <EntityTypeShape EntityType="veritass_savinaModel.Ward" Width="1.5" PointX="16.125" PointY="11" />
+        <EntityTypeShape EntityType="veritass_savinaModel.tb_Product" Width="1.5" PointX="3.375" PointY="12.75" />
+        <AssociationConnector Association="veritass_savinaModel.FK_Province_Country" />
+        <AssociationConnector Association="veritass_savinaModel.FK_District_Province" />
+        <AssociationConnector Association="veritass_savinaModel.FK_Ward_District" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,58 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="veritass_savinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="veritass_savinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CommonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FormalName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryType" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountrySubType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sovereignty" Type="nvarchar" MaxLength="100" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TelephoneCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryCode3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountryNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="InternetCountryCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="Flags" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="20" />
+          <Property Name="TelephoneCode" Type="int" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="SortOrder" Type="int" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
         <EntityType Name="tb_About">
           <Key>
             <PropertyRef Name="ID_aboutarticle" />
@@ -32,43 +83,50 @@
           <Property Name="ID_localaccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Access_Count" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'veritass_savina.dbo.tb_CategoryMain' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tb_CategoryMain">
           <Key>
-            <PropertyRef Name="ID_MainCategory" />
+            <PropertyRef Name="MainCateID" />
           </Key>
-          <Property Name="ID_MainCategory" Type="int" Nullable="false" />
-          <Property Name="Category_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="MainCateID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainCateName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Sort" Type="int" />
+          <Property Name="MainCateDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="MainCateStatus" Type="tinyint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'veritass_savina.dbo.tb_CategorySub1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tb_CategorySub1">
           <Key>
-            <PropertyRef Name="ID_CategorySub1" />
+            <PropertyRef Name="SubCate1ID" />
           </Key>
-          <Property Name="ID_CategorySub1" Type="int" Nullable="false" />
-          <Property Name="CategorySub1_Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="ID_MainCategory" Type="int" />
-          <Property Name="Status" Type="bit" />
+          <Property Name="SubCate1ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCate1Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="MainCateID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SubCate1Status" Type="tinyint" Nullable="false" />
+          <Property Name="SubCate1Desc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_CategorySub2' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="tb_CategorySub2">
-          <Property Name="ID_CategorySub2" Type="int" />
-          <Property Name="CategorySub2_Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="ID_CategorySub1" Type="int" />
-          <Property Name="Status" Type="bit" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_CategorySub3' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+          <Key>
+            <PropertyRef Name="SubCate2ID" />
+          </Key>
+          <Property Name="SubCate2ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCate2Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="SubCate1ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SubCate2Status" Type="tinyint" Nullable="false" />
+          <Property Name="SubCate2Desc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="tb_CategorySub3">
-          <Property Name="ID_CategorySub3" Type="int" />
-          <Property Name="CategorySub3_Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="ID_CategorySub2" Type="int" />
-          <Property Name="Status" Type="bit" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="SubCate3ID" />
+          </Key>
+          <Property Name="SubCate3ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCate3Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="SubCate2ID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SubCate2Status" Type="tinyint" Nullable="false" />
+          <Property Name="SubCate2Desc" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="tb_ContactUs">
           <Key>
             <PropertyRef Name="id" />
@@ -116,44 +174,6 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_CategorySub3' does not have
           <Property Name="Avatar" Type="nvarchar" MaxLength="200" />
           <Property Name="Create_Date" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_DeliverySelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_DeliverySelection">
-          <Property Name="ID_DeliverySelection" Type="int" />
-          <Property Name="Delivery_name" Type="nvarchar" MaxLength="200" />
-          <Property Name="Delivery_description" Type="nvarchar" MaxLength="500" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_DocumentSelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_DocumentSelection">
-          <Property Name="ID_DocumentSelection" Type="int" />
-          <Property Name="Document_Name" Type="varchar" MaxLength="50" />
-          <Property Name="Document_Description" Type="nvarchar" MaxLength="200" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Home_Banner' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Home_Banner">
-          <Property Name="ID_Home_Banner" Type="int" />
-          <Property Name="Banner_Name" Type="varchar" MaxLength="50" />
-          <Property Name="Banner_Description" Type="nvarchar" MaxLength="100" />
-          <Property Name="Banner_Link" Type="varchar" MaxLength="100" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Home_MainBanner' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Home_MainBanner">
-          <Property Name="ID_Home_MainBanner" Type="int" />
-          <Property Name="Image_ALT" Type="varchar" MaxLength="50" />
-          <Property Name="Image_Name" Type="varchar" MaxLength="250" />
-          <Property Name="Sort" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Home_ProductGroup' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Home_ProductGroup">
-          <Property Name="ID_ProductGroup" Type="int" />
-          <Property Name="ProductGroup_Name" Type="varchar" MaxLength="50" />
-          <Property Name="Sort" Type="int" />
-          <Property Name="Status" Type="bit" />
-        </EntityType>-->
         <EntityType Name="tb_LocalAccount">
           <Key>
             <PropertyRef Name="ID_localaccount" />
@@ -199,23 +219,6 @@ warning 6002: The table/view 'veritass_savina.dbo.tb_Order' does not have a prim
           <Property Name="updated_date" Type="datetime" />
           <Property Name="updating_status" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Order_AccessorySelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Order_AccessorySelection">
-          <Property Name="ID" Type="int" />
-          <Property Name="ID_Order" Type="int" />
-          <Property Name="ID_Product" Type="int" />
-          <Property Name="quantity" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_order_trackingUpdate' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_order_trackingUpdate">
-          <Property Name="ID_Order" Type="int" />
-          <Property Name="ID" Type="tinyint" />
-          <Property Name="ID_localaccount" Type="int" />
-          <Property Name="create_time" Type="datetime" />
-          <Property Name="return_time" Type="datetime" />
-        </EntityType>-->
         <EntityType Name="tb_Permission">
           <Key>
             <PropertyRef Name="ID_permission" />
@@ -225,58 +228,33 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_order_trackingUpdate' does 
           <Property Name="Permission_description" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Product' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6002: The table/view 'veritass_savina.dbo.tb_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tb_Product">
-          <Property Name="ID_Product" Type="int" />
-          <Property Name="product_Code" Type="varchar" MaxLength="50" />
-          <Property Name="product_Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="product_Avatar" Type="varchar" MaxLength="200" />
-          <Property Name="product_City" Type="nvarchar" MaxLength="50" />
-          <Property Name="product_District" Type="nvarchar" MaxLength="50" />
-          <Property Name="product_Ward" Type="nvarchar" MaxLength="50" />
-          <Property Name="short_description" Type="ntext" />
-          <Property Name="full_description" Type="ntext" />
-          <Property Name="product_specification" Type="ntext" />
-          <Property Name="product_instruction" Type="ntext" />
-          <Property Name="status_percentage" Type="int" />
-          <Property Name="status_availability" Type="nvarchar" MaxLength="50" />
-          <Property Name="price_per_block" Type="float" />
-          <Property Name="price_per_day" Type="float" />
-          <Property Name="product_main_category" Type="int" />
-          <Property Name="product_sub1_category" Type="int" />
-          <Property Name="product_sub2_category" Type="int" />
-          <Property Name="product_sub3_category" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Product_AccessorySelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Product_AccessorySelection">
-          <Property Name="ID" Type="int" />
-          <Property Name="ID_Product" Type="int" />
-          <Property Name="product_Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="product_Code" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Product_accompany' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Product_accompany">
-          <Property Name="ID" Type="int" />
-          <Property Name="ID_Product" Type="int" />
-          <Property Name="product_Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="product_Code" Type="varchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_Product_HomeProductGroup' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Product_HomeProductGroup">
-          <Property Name="ID" Type="int" />
-          <Property Name="ID_Product" Type="int" />
-          <Property Name="ID_ProductGroup" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_ProductGallery' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_ProductGallery">
-          <Property Name="ID_Image" Type="int" />
-          <Property Name="ID_Product" Type="int" />
-          <Property Name="Image_name" Type="varchar" MaxLength="250" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="ProductID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductAvatar" Type="ntext" />
+          <Property Name="ProductCity" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductDistrict" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductWard" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShortDescription" Type="ntext" />
+          <Property Name="FullDescription" Type="ntext" />
+          <Property Name="ProductSpecification" Type="ntext" />
+          <Property Name="ProductInstruction" Type="ntext" />
+          <Property Name="StatusPercentage" Type="int" />
+          <Property Name="StatusAvailability" Type="tinyint" />
+          <Property Name="PricePerBlock" Type="float" />
+          <Property Name="PricePerDay" Type="float" />
+          <Property Name="ProductMainCate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate1" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate2" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate3" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tb_promotion">
           <Key>
             <PropertyRef Name="id_promotion" />
@@ -290,13 +268,6 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ProductGallery' does not ha
           <Property Name="Status" Type="nvarchar" MaxLength="15" />
           <Property Name="Kind_promotion" Type="nvarchar" MaxLength="15" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_ServiceSelection">
-          <Property Name="ID_ServiceSelection" Type="int" />
-          <Property Name="Service_name" Type="nvarchar" MaxLength="200" />
-          <Property Name="Service_description" Type="nvarchar" MaxLength="500" />
-        </EntityType>-->
         <EntityType Name="tb_SiteMap">
           <Key>
             <PropertyRef Name="ID_sitemap" />
@@ -326,9 +297,67 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <Property Name="ID_Customer" Type="int" />
           <Property Name="Create_Date" Type="date" />
         </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictID" Type="int" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_District_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Province_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Province" Type="Self.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ward_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Ward" Type="Self.Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ward">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="veritass_savinaModelStoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_About" EntityType="Self.tb_About" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Access" EntityType="Self.tb_Access" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CategoryMain" EntityType="Self.tb_CategoryMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CategorySub1" EntityType="Self.tb_CategorySub1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CategorySub2" EntityType="Self.tb_CategorySub2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_CategorySub3" EntityType="Self.tb_CategorySub3" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_ContactUs" EntityType="Self.tb_ContactUs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Counteronline" EntityType="Self.tb_Counteronline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Customer" EntityType="Self.tb_Customer" Schema="dbo" store:Type="Tables" />
@@ -337,21 +366,7 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySet Name="tb_promotion" EntityType="Self.tb_promotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SiteMap" EntityType="Self.tb_SiteMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_WishList" EntityType="Self.tb_WishList" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tb_CategoryMain" EntityType="Self.tb_CategoryMain" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tb_CategoryMain].[ID_MainCategory] AS [ID_MainCategory], 
-    [tb_CategoryMain].[Category_Name] AS [Category_Name], 
-    [tb_CategoryMain].[Sort] AS [Sort]
-    FROM [dbo].[tb_CategoryMain] AS [tb_CategoryMain]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tb_CategorySub1" EntityType="Self.tb_CategorySub1" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tb_CategorySub1].[ID_CategorySub1] AS [ID_CategorySub1], 
-    [tb_CategorySub1].[CategorySub1_Name] AS [CategorySub1_Name], 
-    [tb_CategorySub1].[ID_MainCategory] AS [ID_MainCategory], 
-    [tb_CategorySub1].[Status] AS [Status]
-    FROM [dbo].[tb_CategorySub1] AS [tb_CategorySub1]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Ward" EntityType="Self.Ward" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Order" EntityType="Self.tb_Order" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tb_Order].[ID_Order] AS [ID_Order], 
@@ -374,9 +389,44 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
     [tb_Order].[updating_status] AS [updating_status]
     FROM [dbo].[tb_Order] AS [tb_Order]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="tb_Product" EntityType="Self.tb_Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tb_Product].[ProductID] AS [ProductID], 
+    [tb_Product].[ProductCode] AS [ProductCode], 
+    [tb_Product].[ProductName] AS [ProductName], 
+    [tb_Product].[ProductAvatar] AS [ProductAvatar], 
+    [tb_Product].[ProductCity] AS [ProductCity], 
+    [tb_Product].[ProductDistrict] AS [ProductDistrict], 
+    [tb_Product].[ProductWard] AS [ProductWard], 
+    [tb_Product].[ShortDescription] AS [ShortDescription], 
+    [tb_Product].[FullDescription] AS [FullDescription], 
+    [tb_Product].[ProductSpecification] AS [ProductSpecification], 
+    [tb_Product].[ProductInstruction] AS [ProductInstruction], 
+    [tb_Product].[StatusPercentage] AS [StatusPercentage], 
+    [tb_Product].[StatusAvailability] AS [StatusAvailability], 
+    [tb_Product].[PricePerBlock] AS [PricePerBlock], 
+    [tb_Product].[PricePerDay] AS [PricePerDay], 
+    [tb_Product].[ProductMainCate] AS [ProductMainCate], 
+    [tb_Product].[ProductSubCate1] AS [ProductSubCate1], 
+    [tb_Product].[ProductSubCate2] AS [ProductSubCate2], 
+    [tb_Product].[ProductSubCate3] AS [ProductSubCate3], 
+    [tb_Product].[CreateDate] AS [CreateDate]
+    FROM [dbo].[tb_Product] AS [tb_Product]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_District_Province" Association="Self.FK_District_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="District" EntitySet="District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Province_Country" Association="Self.FK_Province_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Province" EntitySet="Province" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="Self.FK_Ward_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Ward" EntitySet="Ward" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="veritass_savinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -526,20 +576,30 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
         </EntityType>
         <EntityType Name="tb_CategoryMain">
           <Key>
-            <PropertyRef Name="ID_MainCategory" />
+            <PropertyRef Name="MainCateID" />
           </Key>
-          <Property Name="ID_MainCategory" Type="Int32" Nullable="false" />
-          <Property Name="Category_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Sort" Type="Int32" />
+          <Property Name="MainCateID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainCateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainCateDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MainCateStatus" Type="Byte" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_CategorySub1">
           <Key>
             <PropertyRef Name="ID_CategorySub1" />
+            <PropertyRef Name="SubCate1ID" />
           </Key>
           <Property Name="ID_CategorySub1" Type="Int32" Nullable="false" />
           <Property Name="CategorySub1_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID_MainCategory" Type="Int32" />
           <Property Name="Status" Type="Boolean" />
+          <Property Name="SubCate1ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCate1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainCateID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SubCate1Status" Type="Byte" Nullable="false" />
+          <Property Name="SubCate1Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="tb_Order">
           <Key>
@@ -578,7 +638,182 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySet Name="tb_CategoryMain" EntityType="Self.tb_CategoryMain" />
           <EntitySet Name="tb_CategorySub1" EntityType="Self.tb_CategorySub1" />
           <EntitySet Name="tb_Order" EntityType="Self.tb_Order" />
+          <EntitySet Name="Countries" EntityType="veritass_savinaModel.Country" />
+          <EntitySet Name="Districts" EntityType="veritass_savinaModel.District" />
+          <EntitySet Name="Provinces" EntityType="veritass_savinaModel.Province" />
+          <EntitySet Name="tb_CategorySub2" EntityType="veritass_savinaModel.tb_CategorySub2" />
+          <EntitySet Name="tb_CategorySub3" EntityType="veritass_savinaModel.tb_CategorySub3" />
+          <EntitySet Name="Wards" EntityType="veritass_savinaModel.Ward" />
+          <EntitySet Name="tb_Product" EntityType="veritass_savinaModel.tb_Product" />
+          <AssociationSet Name="FK_Province_Country" Association="veritass_savinaModel.FK_Province_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Province" Association="veritass_savinaModel.FK_District_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="veritass_savinaModel.FK_Ward_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Ward" EntitySet="Wards" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FormalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySubType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sovereignty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InternetCountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Provinces" Relationship="veritass_savinaModel.FK_Province_Country" FromRole="Country" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Province" Relationship="veritass_savinaModel.FK_District_Province" FromRole="District" ToRole="Province" />
+          <NavigationProperty Name="Wards" Relationship="veritass_savinaModel.FK_Ward_District" FromRole="District" ToRole="Ward" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Country" Relationship="veritass_savinaModel.FK_Province_Country" FromRole="Province" ToRole="Country" />
+          <NavigationProperty Name="Districts" Relationship="veritass_savinaModel.FK_District_Province" FromRole="Province" ToRole="District" />
+        </EntityType>
+        <EntityType Name="tb_CategorySub2">
+          <Key>
+            <PropertyRef Name="SubCate2ID" />
+          </Key>
+          <Property Name="SubCate2ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCate2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubCate1ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SubCate2Status" Type="Byte" Nullable="false" />
+          <Property Name="SubCate2Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_CategorySub3">
+          <Key>
+            <PropertyRef Name="SubCate3ID" />
+          </Key>
+          <Property Name="SubCate3ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCate3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubCate2ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SubCate2Status" Type="Byte" Nullable="false" />
+          <Property Name="SubCate2Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictID" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="District" Relationship="veritass_savinaModel.FK_Ward_District" FromRole="Ward" ToRole="District" />
+        </EntityType>
+        <EntityType Name="tb_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="ProductID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDistrict" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductWard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSpecification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductInstruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusPercentage" Type="Int32" />
+          <Property Name="StatusAvailability" Type="Byte" />
+          <Property Name="PricePerBlock" Type="Double" />
+          <Property Name="PricePerDay" Type="Double" />
+          <Property Name="ProductMainCate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Province_Country">
+          <End Type="veritass_savinaModel.Country" Role="Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="veritass_savinaModel.Province" Role="Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Province">
+          <End Type="veritass_savinaModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="veritass_savinaModel.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ward_District">
+          <End Type="veritass_savinaModel.District" Role="District" Multiplicity="1" />
+          <End Type="veritass_savinaModel.Ward" Role="Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ward">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -742,8 +977,11 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySetMapping Name="tb_CategoryMain">
             <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategoryMain">
               <MappingFragment StoreEntitySet="tb_CategoryMain">
-                <ScalarProperty Name="ID_MainCategory" ColumnName="ID_MainCategory" />
-                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+                <ScalarProperty Name="MainCateStatus" ColumnName="MainCateStatus" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="MainCateDesc" ColumnName="MainCateDesc" />
+                <ScalarProperty Name="MainCateName" ColumnName="MainCateName" />
+                <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
                 <ScalarProperty Name="Sort" ColumnName="Sort" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -751,10 +989,12 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySetMapping Name="tb_CategorySub1">
             <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub1">
               <MappingFragment StoreEntitySet="tb_CategorySub1">
-                <ScalarProperty Name="ID_CategorySub1" ColumnName="ID_CategorySub1" />
-                <ScalarProperty Name="CategorySub1_Name" ColumnName="CategorySub1_Name" />
-                <ScalarProperty Name="ID_MainCategory" ColumnName="ID_MainCategory" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SubCate1Desc" ColumnName="SubCate1Desc" />
+                <ScalarProperty Name="SubCate1Status" ColumnName="SubCate1Status" />
+                <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
+                <ScalarProperty Name="SubCate1Name" ColumnName="SubCate1Name" />
+                <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -779,6 +1019,124 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
                 <ScalarProperty Name="updated_by" ColumnName="updated_by" />
                 <ScalarProperty Name="updated_date" ColumnName="updated_date" />
                 <ScalarProperty Name="updating_status" ColumnName="updating_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="veritass_savinaModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
+                <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
+                <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
+                <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
+                <ScalarProperty Name="CountryType" ColumnName="CountryType" />
+                <ScalarProperty Name="FormalName" ColumnName="FormalName" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="veritass_savinaModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="veritass_savinaModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CategorySub2">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub2">
+              <MappingFragment StoreEntitySet="tb_CategorySub2">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SubCate2Desc" ColumnName="SubCate2Desc" />
+                <ScalarProperty Name="SubCate2Status" ColumnName="SubCate2Status" />
+                <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
+                <ScalarProperty Name="SubCate2Name" ColumnName="SubCate2Name" />
+                <ScalarProperty Name="SubCate2ID" ColumnName="SubCate2ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CategorySub3">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub3">
+              <MappingFragment StoreEntitySet="tb_CategorySub3">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SubCate2Desc" ColumnName="SubCate2Desc" />
+                <ScalarProperty Name="SubCate2Status" ColumnName="SubCate2Status" />
+                <ScalarProperty Name="SubCate2ID" ColumnName="SubCate2ID" />
+                <ScalarProperty Name="SubCate3Name" ColumnName="SubCate3Name" />
+                <ScalarProperty Name="SubCate3ID" ColumnName="SubCate3ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="veritass_savinaModel.Ward">
+              <MappingFragment StoreEntitySet="Ward">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Product">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Product">
+              <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ProductSubCate3" ColumnName="ProductSubCate3" />
+                <ScalarProperty Name="ProductSubCate2" ColumnName="ProductSubCate2" />
+                <ScalarProperty Name="ProductSubCate1" ColumnName="ProductSubCate1" />
+                <ScalarProperty Name="ProductMainCate" ColumnName="ProductMainCate" />
+                <ScalarProperty Name="PricePerDay" ColumnName="PricePerDay" />
+                <ScalarProperty Name="PricePerBlock" ColumnName="PricePerBlock" />
+                <ScalarProperty Name="StatusAvailability" ColumnName="StatusAvailability" />
+                <ScalarProperty Name="StatusPercentage" ColumnName="StatusPercentage" />
+                <ScalarProperty Name="ProductInstruction" ColumnName="ProductInstruction" />
+                <ScalarProperty Name="ProductSpecification" ColumnName="ProductSpecification" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="ProductWard" ColumnName="ProductWard" />
+                <ScalarProperty Name="ProductDistrict" ColumnName="ProductDistrict" />
+                <ScalarProperty Name="ProductCity" ColumnName="ProductCity" />
+                <ScalarProperty Name="ProductAvatar" ColumnName="ProductAvatar" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
