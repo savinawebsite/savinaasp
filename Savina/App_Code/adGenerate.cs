@@ -15,7 +15,7 @@ public class adGenerate
         //
     }
 
-    public static String generateMainCate(List<tb_CategoryMain> tbMainCate)
+    public static String generateMainCate(IQueryable tbMainCate)
     {
 
         return "aaaa";

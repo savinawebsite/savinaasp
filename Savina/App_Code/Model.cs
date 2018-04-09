@@ -10,6 +10,83 @@
 using System;
 using System.Collections.Generic;
 
+public partial class Country
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Country()
+    {
+        this.Provinces = new HashSet<Province>();
+    }
+
+    public int Id { get; set; }
+    public string CountryCode { get; set; }
+    public string CommonName { get; set; }
+    public string FormalName { get; set; }
+    public string CountryType { get; set; }
+    public string CountrySubType { get; set; }
+    public string Sovereignty { get; set; }
+    public string Capital { get; set; }
+    public string CurrencyCode { get; set; }
+    public string CurrencyName { get; set; }
+    public string TelephoneCode { get; set; }
+    public string CountryCode3 { get; set; }
+    public string CountryNumber { get; set; }
+    public string InternetCountryCode { get; set; }
+    public Nullable<int> SortOrder { get; set; }
+    public Nullable<bool> IsPublished { get; set; }
+    public string Flags { get; set; }
+    public Nullable<bool> IsDeleted { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Province> Provinces { get; set; }
+}
+
+public partial class District
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public District()
+    {
+        this.Wards = new HashSet<Ward>();
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public string LatiLongTude { get; set; }
+    public int ProvinceId { get; set; }
+    public Nullable<int> SortOrder { get; set; }
+    public Nullable<bool> IsPublished { get; set; }
+    public Nullable<bool> IsDeleted { get; set; }
+
+    public virtual Province Province { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Ward> Wards { get; set; }
+}
+
+public partial class Province
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Province()
+    {
+        this.Districts = new HashSet<District>();
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public Nullable<int> TelephoneCode { get; set; }
+    public string ZipCode { get; set; }
+    public int CountryId { get; set; }
+    public string CountryCode { get; set; }
+    public Nullable<int> SortOrder { get; set; }
+    public Nullable<bool> IsPublished { get; set; }
+    public Nullable<bool> IsDeleted { get; set; }
+
+    public virtual Country Country { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<District> Districts { get; set; }
+}
+
 public partial class tb_About
 {
     public int ID_aboutarticle { get; set; }
@@ -37,9 +114,12 @@ public partial class tb_Access
 
 public partial class tb_CategoryMain
 {
-    public int ID_MainCategory { get; set; }
-    public string Category_Name { get; set; }
     public Nullable<int> Sort { get; set; }
+    public decimal MainCateID { get; set; }
+    public string MainCateName { get; set; }
+    public string MainCateDesc { get; set; }
+    public System.DateTime CreateDate { get; set; }
+    public byte MainCateStatus { get; set; }
 }
 
 public partial class tb_CategorySub1
@@ -48,6 +128,32 @@ public partial class tb_CategorySub1
     public string CategorySub1_Name { get; set; }
     public Nullable<int> ID_MainCategory { get; set; }
     public Nullable<bool> Status { get; set; }
+    public decimal SubCate1ID { get; set; }
+    public string SubCate1Name { get; set; }
+    public decimal MainCateID { get; set; }
+    public byte SubCate1Status { get; set; }
+    public string SubCate1Desc { get; set; }
+    public System.DateTime CreateDate { get; set; }
+}
+
+public partial class tb_CategorySub2
+{
+    public decimal SubCate2ID { get; set; }
+    public string SubCate2Name { get; set; }
+    public decimal SubCate1ID { get; set; }
+    public byte SubCate2Status { get; set; }
+    public string SubCate2Desc { get; set; }
+    public System.DateTime CreateDate { get; set; }
+}
+
+public partial class tb_CategorySub3
+{
+    public decimal SubCate3ID { get; set; }
+    public string SubCate3Name { get; set; }
+    public decimal SubCate2ID { get; set; }
+    public byte SubCate2Status { get; set; }
+    public string SubCate2Desc { get; set; }
+    public System.DateTime CreateDate { get; set; }
 }
 
 public partial class tb_ContactUs
@@ -142,6 +248,30 @@ public partial class tb_Permission
     public string Permission_description { get; set; }
 }
 
+public partial class tb_Product
+{
+    public decimal ProductID { get; set; }
+    public string ProductCode { get; set; }
+    public string ProductName { get; set; }
+    public string ProductAvatar { get; set; }
+    public string ProductCity { get; set; }
+    public string ProductDistrict { get; set; }
+    public string ProductWard { get; set; }
+    public string ShortDescription { get; set; }
+    public string FullDescription { get; set; }
+    public string ProductSpecification { get; set; }
+    public string ProductInstruction { get; set; }
+    public Nullable<int> StatusPercentage { get; set; }
+    public Nullable<byte> StatusAvailability { get; set; }
+    public Nullable<double> PricePerBlock { get; set; }
+    public Nullable<double> PricePerDay { get; set; }
+    public Nullable<decimal> ProductMainCate { get; set; }
+    public Nullable<decimal> ProductSubCate1 { get; set; }
+    public Nullable<decimal> ProductSubCate2 { get; set; }
+    public Nullable<decimal> ProductSubCate3 { get; set; }
+    public Nullable<System.DateTime> CreateDate { get; set; }
+}
+
 public partial class tb_promotion
 {
     public int id_promotion { get; set; }
@@ -179,4 +309,18 @@ public partial class tb_WishList
     public Nullable<int> ID_Product { get; set; }
     public Nullable<int> ID_Customer { get; set; }
     public Nullable<System.DateTime> Create_Date { get; set; }
+}
+
+public partial class Ward
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public string LatiLongTude { get; set; }
+    public int DistrictID { get; set; }
+    public int SortOrder { get; set; }
+    public Nullable<bool> IsPublished { get; set; }
+    public Nullable<bool> IsDeleted { get; set; }
+
+    public virtual District District { get; set; }
 }

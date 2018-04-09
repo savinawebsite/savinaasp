@@ -36,4 +36,11 @@ public partial class veritass_savinaEntities : DbContext
     public virtual DbSet<tb_CategoryMain> tb_CategoryMain { get; set; }
     public virtual DbSet<tb_CategorySub1> tb_CategorySub1 { get; set; }
     public virtual DbSet<tb_Order> tb_Order { get; set; }
+    public virtual DbSet<Country> Countries { get; set; }
+    public virtual DbSet<District> Districts { get; set; }
+    public virtual DbSet<Province> Provinces { get; set; }
+    public virtual DbSet<tb_CategorySub2> tb_CategorySub2 { get; set; }
+    public virtual DbSet<tb_CategorySub3> tb_CategorySub3 { get; set; }
+    public virtual DbSet<Ward> Wards { get; set; }
+    public virtual DbSet<tb_Product> tb_Product { get; set; }
 }

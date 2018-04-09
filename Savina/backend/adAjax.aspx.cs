@@ -10,6 +10,7 @@ using System.Web.Services;
 
 public partial class backend_adAjax : System.Web.UI.Page
 {
+    veritass_savinaEntities db = new veritass_savinaEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -18,30 +19,37 @@ public partial class backend_adAjax : System.Web.UI.Page
             switch (action)
             {
                 case "createMainCate":
-                    {
+                    { 
                         string cateName = Request.QueryString["cateName"].ToString();
                         string desc = Request.QueryString["desc"].ToString();
 
-                        //Insert to Database
-                        tb_CategoryMain tbMainCate = new tb_CategoryMain();
-                        tbMainCate. = customerId;
-                        tTracking.LessionId = lessionId;
-                        tTracking.InsertDate = DateTime.Now;
-                        tTracking.LessionStatus = lessionStatus;
-                        if (lessionStatus == 3 && lessionId == 1)
-                        {
-                            tTracking.ActiveDate = DateTime.Now;
-                        }
-                        db.tTrackings.Add(tTracking);
-                        db.SaveChanges();
+                            //Insert to Database
+                            tb_CategoryMain tbMainCate = new tb_CategoryMain();
+                            tbMainCate.MainCateName = cateName;
+                            tbMainCate.MainCateDesc = desc;
+                            tbMainCate.CreateDate = DateTime.Now;
+                            tbMainCate.MainCateStatus = 1;
+                            tbMainCate.Sort = 1;
+                            db.tb_CategoryMain.Add(tbMainCate);
+                            db.SaveChanges();
 
+                            //Get main category list
+                            var mainCateList = (from mc in db.tb_CategoryMain
+                                             select new
+                                             {
+                                                 mc.MainCateID,
+                                                 mc.MainCateName,
+                                                 mc.MainCateDesc,
+                                                 mc.MainCateStatus,
+                                                 mc.CreateDate,
+                                                 mc.Sort
+                                             });
 
-                        //int lessionId = Convert.ToInt32(Request.QueryString["lessionId"].ToString());
-                        //var updateTrackRecord = db.tTrackings.Where(t => t.CustomerId == customerId && t.LessionId == lessionId).FirstOrDefault();
-                        //updateTrackRecord.LessionStatus = 3;
-                        //updateTrackRecord.ActiveDate = DateTime.Now;
-                        // db.SaveChanges();
-                        //Response.Write("success");
+                            if (mainCateList.Count() != 0)
+                            {
+                                String mainCateListHTML = adGenerate.generateMainCate(mainCateList);
+                            }
+                      
                     }
                     break;
             }
