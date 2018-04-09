@@ -5,7 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <!-- Begin - Javascript insert category to database -->
         <script type="text/javascript">  
-            // $('form').submit(false);
+
+            function Delete() {
+                $(".modal-body").html("Bạn chắc chắn muốn xóa category này ?");
+                $("#alertDialog").modal();
+            }
+
             $(function()   
               {  
                 $('#btnCreate').click(function () {
