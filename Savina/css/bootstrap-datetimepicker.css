@@ -142,7 +142,7 @@
     cursor: pointer;
 }
 .datetimepicker table tr td.day:hover {
-    background: #eeeeee;
+    background: aquamarine;
     cursor: pointer;
 }
 .datetimepicker table tr td.old,
@@ -152,8 +152,9 @@
 .datetimepicker table tr td.disabled,
 .datetimepicker table tr td.disabled:hover {
   background: none;
-  color: #999999;
-  cursor: default;
+  color: indianred;
+  cursor: no-drop;
+  font-size:12px;
 }
 .datetimepicker table tr td.today,
 .datetimepicker table tr td.today:hover,

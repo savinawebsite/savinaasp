@@ -9,9 +9,9 @@
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>SAVINA website - Tools Rental website</title>
 	<!-- Google font -->
@@ -26,7 +26,7 @@
 	<!-- nouislider -->
 	<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/responsive/style-responsive.css" />
@@ -119,9 +119,9 @@
 						<ul class="custom-menu">
 							<li><a href="#" onclick="openModalLoginForm()"><i class="fa fa-unlock-alt"></i> Đăng nhập</a></li>
 							<li><a href="#" onclick="openModalRegister()"><i class="fa fa-user-plus"></i> Tạo tài khoản mới</a></li>
-							<li><a href="#"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
-							<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-							<li><a href="#"><i class="fa fa-check"></i> Hoàn thành đơn hàng</a></li>							
+							<li><a href="/user_profile"><i class="fa fa-user-o"></i> Tài khoản của tôi</a></li>
+							<li><a href="#" onclick="openModalLoginForm()"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+												
 						</ul>
 					</li>
 					<!-- /Account -->
@@ -791,5 +791,6 @@
 	<script>
 			w3.includeHTML();
 	</script>
+    <script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'f5fedb81-3341-4ccb-b7cd-5e7eecdc4db7', f: true }); done = true; } }; })();</script>
 </body>
 </html>

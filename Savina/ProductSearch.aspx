@@ -186,7 +186,7 @@
 						<div class="row">
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1 ">
 										<div class="product-thumb">
 												<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
 											<img src="./img/product01.jpg" alt="">
@@ -206,7 +206,7 @@
 
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span>New</span>
@@ -232,7 +232,7 @@
 
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span class="rent">Đã cho thuê</span>
@@ -258,7 +258,7 @@
 							<hr>
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span class="available">Đang có sẵn</span>
@@ -283,7 +283,7 @@
 
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
 											<img src="./img/product01.jpg" alt="">
@@ -303,7 +303,7 @@
 
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span>New</span>
@@ -330,7 +330,7 @@
 							<hr>
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span class="rent">Đã cho thuê</span>
@@ -353,7 +353,7 @@
 
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span class="available">Đang có sẵn</span>
@@ -378,7 +378,7 @@
 
 							<!-- Product Single -->
 							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single">
+									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
 												<span class="available">Đang có sẵn</span>

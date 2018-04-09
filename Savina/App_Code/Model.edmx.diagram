@@ -15,6 +15,7 @@
         <EntityTypeShape EntityType="veritass_savinaModel.tb_promotion" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_SiteMap" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_WishList" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+
         <EntityTypeShape EntityType="veritass_savinaModel.tb_CategoryMain" Width="1.5" PointX="8.875" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_CategorySub1" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="veritass_savinaModel.tb_Order" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
@@ -27,6 +28,7 @@
         <EntityTypeShape EntityType="veritass_savinaModel.tb_Product" Width="1.5" PointX="3.375" PointY="12.75" />
         <AssociationConnector Association="veritass_savinaModel.FK_Province_Country" />
         <AssociationConnector Association="veritass_savinaModel.FK_District_Province" />
+
         <AssociationConnector Association="veritass_savinaModel.FK_Ward_District" />
       </Diagram>
     </edmx:Diagrams>

@@ -4,6 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
+
     <Schema Namespace="veritass_savinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Country">
           <Key>
@@ -495,6 +496,7 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
             <End Role="Ward" EntitySet="Ward" />
           </AssociationSet>
         </EntityContainer>
+
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -644,6 +646,7 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <Property Name="Create_Date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="tb_CategoryMain">
+<<<<<<< HEAD
           <Key>
             <PropertyRef Name="MainCateID" />
           </Key>
@@ -652,22 +655,45 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <Property Name="MainCateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MainCateDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+=======
+          <Key>
+            <PropertyRef Name="MainCateID" />
+          </Key>
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="MainCateID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainCateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainCateDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+>>>>>>> 4e96a42bae8202f68a508188992a41eca5e0dd52
           <Property Name="MainCateStatus" Type="Byte" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_CategorySub1">
           <Key>
+<<<<<<< HEAD
             <PropertyRef Name="ID_CategorySub1" />
+=======
+            <PropertyRef Name="ID_CategorySub1" />
+>>>>>>> 4e96a42bae8202f68a508188992a41eca5e0dd52
             <PropertyRef Name="SubCate1ID" />
           </Key>
           <Property Name="ID_CategorySub1" Type="Int32" Nullable="false" />
           <Property Name="CategorySub1_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID_MainCategory" Type="Int32" />
+<<<<<<< HEAD
           <Property Name="Status" Type="Boolean" />
           <Property Name="SubCate1ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubCate1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MainCateID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="SubCate1Status" Type="Byte" Nullable="false" />
           <Property Name="SubCate1Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+=======
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="SubCate1ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCate1Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainCateID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SubCate1Status" Type="Byte" Nullable="false" />
+          <Property Name="SubCate1Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+>>>>>>> 4e96a42bae8202f68a508188992a41eca5e0dd52
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="tb_Order">
@@ -706,6 +732,7 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySet Name="tb_WishList" EntityType="Self.tb_WishList" />
           <EntitySet Name="tb_CategoryMain" EntityType="Self.tb_CategoryMain" />
           <EntitySet Name="tb_CategorySub1" EntityType="Self.tb_CategorySub1" />
+<<<<<<< HEAD
           <EntitySet Name="tb_Order" EntityType="Self.tb_Order" />
           <EntitySet Name="Countries" EntityType="veritass_savinaModel.Country" />
           <EntitySet Name="Districts" EntityType="veritass_savinaModel.District" />
@@ -882,6 +909,184 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
               <PropertyRef Name="DistrictID" />
             </Dependent>
           </ReferentialConstraint>
+=======
+          <EntitySet Name="tb_Order" EntityType="Self.tb_Order" />
+          <EntitySet Name="Countries" EntityType="veritass_savinaModel.Country" />
+          <EntitySet Name="Districts" EntityType="veritass_savinaModel.District" />
+          <EntitySet Name="Provinces" EntityType="veritass_savinaModel.Province" />
+          <EntitySet Name="tb_CategorySub2" EntityType="veritass_savinaModel.tb_CategorySub2" />
+          <EntitySet Name="tb_CategorySub3" EntityType="veritass_savinaModel.tb_CategorySub3" />
+          <EntitySet Name="Wards" EntityType="veritass_savinaModel.Ward" />
+          <EntitySet Name="tb_Product" EntityType="veritass_savinaModel.tb_Product" />
+          <AssociationSet Name="FK_Province_Country" Association="veritass_savinaModel.FK_Province_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Province" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Province" Association="veritass_savinaModel.FK_District_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ward_District" Association="veritass_savinaModel.FK_Ward_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Ward" EntitySet="Wards" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FormalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountrySubType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sovereignty" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InternetCountryCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="Flags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Provinces" Relationship="veritass_savinaModel.FK_Province_Country" FromRole="Country" ToRole="Province" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Province" Relationship="veritass_savinaModel.FK_District_Province" FromRole="District" ToRole="Province" />
+          <NavigationProperty Name="Wards" Relationship="veritass_savinaModel.FK_Ward_District" FromRole="District" ToRole="Ward" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneCode" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Country" Relationship="veritass_savinaModel.FK_Province_Country" FromRole="Province" ToRole="Country" />
+          <NavigationProperty Name="Districts" Relationship="veritass_savinaModel.FK_District_Province" FromRole="Province" ToRole="District" />
+        </EntityType>
+        <EntityType Name="tb_CategorySub2">
+          <Key>
+            <PropertyRef Name="SubCate2ID" />
+          </Key>
+          <Property Name="SubCate2ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCate2Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubCate1ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SubCate2Status" Type="Byte" Nullable="false" />
+          <Property Name="SubCate2Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_CategorySub3">
+          <Key>
+            <PropertyRef Name="SubCate3ID" />
+          </Key>
+          <Property Name="SubCate3ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCate3Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubCate2ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SubCate2Status" Type="Byte" Nullable="false" />
+          <Property Name="SubCate2Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatiLongTude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictID" Type="Int32" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="District" Relationship="veritass_savinaModel.FK_Ward_District" FromRole="Ward" ToRole="District" />
+        </EntityType>
+        <EntityType Name="tb_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+          </Key>
+          <Property Name="ProductID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDistrict" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductWard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSpecification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductInstruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusPercentage" Type="Int32" />
+          <Property Name="StatusAvailability" Type="Byte" />
+          <Property Name="PricePerBlock" Type="Double" />
+          <Property Name="PricePerDay" Type="Double" />
+          <Property Name="ProductMainCate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductSubCate3" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Province_Country">
+          <End Type="veritass_savinaModel.Country" Role="Country" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="veritass_savinaModel.Province" Role="Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Province">
+          <End Type="veritass_savinaModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="veritass_savinaModel.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ward_District">
+          <End Type="veritass_savinaModel.District" Role="District" Multiplicity="1" />
+          <End Type="veritass_savinaModel.Ward" Role="Ward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ward">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+>>>>>>> 4e96a42bae8202f68a508188992a41eca5e0dd52
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1046,11 +1251,19 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySetMapping Name="tb_CategoryMain">
             <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategoryMain">
               <MappingFragment StoreEntitySet="tb_CategoryMain">
+<<<<<<< HEAD
                 <ScalarProperty Name="MainCateStatus" ColumnName="MainCateStatus" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="MainCateDesc" ColumnName="MainCateDesc" />
                 <ScalarProperty Name="MainCateName" ColumnName="MainCateName" />
                 <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
+=======
+                <ScalarProperty Name="MainCateStatus" ColumnName="MainCateStatus" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="MainCateDesc" ColumnName="MainCateDesc" />
+                <ScalarProperty Name="MainCateName" ColumnName="MainCateName" />
+                <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
+>>>>>>> 4e96a42bae8202f68a508188992a41eca5e0dd52
                 <ScalarProperty Name="Sort" ColumnName="Sort" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1058,12 +1271,21 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
           <EntitySetMapping Name="tb_CategorySub1">
             <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub1">
               <MappingFragment StoreEntitySet="tb_CategorySub1">
+<<<<<<< HEAD
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="SubCate1Desc" ColumnName="SubCate1Desc" />
                 <ScalarProperty Name="SubCate1Status" ColumnName="SubCate1Status" />
                 <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
                 <ScalarProperty Name="SubCate1Name" ColumnName="SubCate1Name" />
                 <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
+=======
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SubCate1Desc" ColumnName="SubCate1Desc" />
+                <ScalarProperty Name="SubCate1Status" ColumnName="SubCate1Status" />
+                <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
+                <ScalarProperty Name="SubCate1Name" ColumnName="SubCate1Name" />
+                <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
+>>>>>>> 4e96a42bae8202f68a508188992a41eca5e0dd52
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1088,6 +1310,124 @@ warning 6013: The table/view 'veritass_savina.dbo.tb_ServiceSelection' does not 
                 <ScalarProperty Name="updated_by" ColumnName="updated_by" />
                 <ScalarProperty Name="updated_date" ColumnName="updated_date" />
                 <ScalarProperty Name="updating_status" ColumnName="updating_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="veritass_savinaModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="InternetCountryCode" ColumnName="InternetCountryCode" />
+                <ScalarProperty Name="CountryNumber" ColumnName="CountryNumber" />
+                <ScalarProperty Name="CountryCode3" ColumnName="CountryCode3" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Sovereignty" ColumnName="Sovereignty" />
+                <ScalarProperty Name="CountrySubType" ColumnName="CountrySubType" />
+                <ScalarProperty Name="CountryType" ColumnName="CountryType" />
+                <ScalarProperty Name="FormalName" ColumnName="FormalName" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="veritass_savinaModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="veritass_savinaModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="TelephoneCode" ColumnName="TelephoneCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CategorySub2">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub2">
+              <MappingFragment StoreEntitySet="tb_CategorySub2">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SubCate2Desc" ColumnName="SubCate2Desc" />
+                <ScalarProperty Name="SubCate2Status" ColumnName="SubCate2Status" />
+                <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
+                <ScalarProperty Name="SubCate2Name" ColumnName="SubCate2Name" />
+                <ScalarProperty Name="SubCate2ID" ColumnName="SubCate2ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_CategorySub3">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_CategorySub3">
+              <MappingFragment StoreEntitySet="tb_CategorySub3">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="SubCate2Desc" ColumnName="SubCate2Desc" />
+                <ScalarProperty Name="SubCate2Status" ColumnName="SubCate2Status" />
+                <ScalarProperty Name="SubCate2ID" ColumnName="SubCate2ID" />
+                <ScalarProperty Name="SubCate3Name" ColumnName="SubCate3Name" />
+                <ScalarProperty Name="SubCate3ID" ColumnName="SubCate3ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="veritass_savinaModel.Ward">
+              <MappingFragment StoreEntitySet="Ward">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="LatiLongTude" ColumnName="LatiLongTude" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Product">
+            <EntityTypeMapping TypeName="veritass_savinaModel.tb_Product">
+              <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ProductSubCate3" ColumnName="ProductSubCate3" />
+                <ScalarProperty Name="ProductSubCate2" ColumnName="ProductSubCate2" />
+                <ScalarProperty Name="ProductSubCate1" ColumnName="ProductSubCate1" />
+                <ScalarProperty Name="ProductMainCate" ColumnName="ProductMainCate" />
+                <ScalarProperty Name="PricePerDay" ColumnName="PricePerDay" />
+                <ScalarProperty Name="PricePerBlock" ColumnName="PricePerBlock" />
+                <ScalarProperty Name="StatusAvailability" ColumnName="StatusAvailability" />
+                <ScalarProperty Name="StatusPercentage" ColumnName="StatusPercentage" />
+                <ScalarProperty Name="ProductInstruction" ColumnName="ProductInstruction" />
+                <ScalarProperty Name="ProductSpecification" ColumnName="ProductSpecification" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="ProductWard" ColumnName="ProductWard" />
+                <ScalarProperty Name="ProductDistrict" ColumnName="ProductDistrict" />
+                <ScalarProperty Name="ProductCity" ColumnName="ProductCity" />
+                <ScalarProperty Name="ProductAvatar" ColumnName="ProductAvatar" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
