@@ -61,6 +61,7 @@ public class adGenerate
         html += "<th class=\"column-title\">ID</th>";
         html += "<th class=\"column-title\">Tên Main Category</th>";
         html += "<th class=\"column-title\">Mô Tả nhanh</th>";
+        html += "<th class=\"column-title\">Sort hiển thị</th>";
         html += "<th class=\"column-title\">Tình trạng</th>";
         html += "<th class=\"column-title\">Ngày tạo</th>";
         html += "<th class=\"column-title no-link last\"><span class=\"nobr\">Edit</span></th>";
@@ -81,7 +82,8 @@ public class adGenerate
             html += "<td class=\" \">"+item.MainCateID.ToString()+"</td>";
             html += "<td class=\" \">"+item.MainCateName.ToString()+"</td>";
             html += "<td class=\" \">"+item.MainCateDesc.ToString()+"</td>";
-            if(item.IsDisplay != null)
+            html += "<td class=\" \">"+item.Sort.ToString()+"</td>";
+            if (item.IsDisplay != null)
             {
                 if(item.IsDisplay == true)
                 {
@@ -94,8 +96,8 @@ public class adGenerate
             }
  
             html += "<td class=\" \">"+item.CreateDate.ToString()+"</td>";
-            html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-info btn-xs purple\" onclick=\"Edit($(this))\"><i class=\"fa fa-edit\"></i> Edit</a></td>";
-            html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-danger btn-xs black\" onclick=\"Delete()\"><i class=\"fa fa-trash-o\"></i> Delete</a>";
+            html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-info btn-xs\" onclick=\"Edit($(this))\"><i class=\"fa fa-edit\"></i> Edit</a></td>";
+            html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-danger btn-xs\" onclick=\"Delete($(this))\"><i class=\"fa fa-trash-o\"></i> Delete</a>";
             html += "</td>";
             html += "</tr>";
         }
