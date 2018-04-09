@@ -57,37 +57,78 @@
                 $('#cateID').val(cateID);
             }
 
+            function Edit(elmnt, cateID, cateName, cateDesc, cateSort) {
+                $('#ipCateName').val(cateName);
+                $('#ipDesc').val(cateDesc);
+                $('#ipSort').val(cateSort);
+                $('#cateID').val(cateID);
+                $('#btnCreate').html('Sửa');
+            }
+
             $(function()   
               {  
                 $('#btnCreate').click(function () {
-                    var cateName = $('#ipCateName').val();
-                    var desc = $('#ipDesc').val();
-                    var cateSort = $('#ipSort').val();
-                    if (cateName != '' && desc != '' && cateSort != 0) {
-                         var xmlhttp;
-                        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-                            xmlhttp = new XMLHttpRequest();
-                        }
-                        else {// code for IE6, IE5
-                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                        }
-                        xmlhttp.onreadystatechange = function () {
-                            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                if (xmlhttp.responseText != "error") {
-                                    //create success
-                                    $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                    var action = $('#btnCreate').text();
+                    if (action == "Tạo") {
+                        var cateName = $('#ipCateName').val();
+                        var desc = $('#ipDesc').val();
+                        var cateSort = $('#ipSort').val();
+                        if (cateName != '' && desc != '' && cateSort != 0) {
+                            var xmlhttp;
+                            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                                xmlhttp = new XMLHttpRequest();
+                            }
+                            else {// code for IE6, IE5
+                                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                            }
+                            xmlhttp.onreadystatechange = function () {
+                                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                    if (xmlhttp.responseText != "error") {
+                                        //create success
+                                        $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                                    }
                                 }
                             }
+                            xmlhttp.open("GET", "../backend/adAjax.aspx?action=createMainCate&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
+                            xmlhttp.send();
+
+                        } else {
+                            $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                            $("#alertDialog").modal();
+                            return false;
                         }
-                        xmlhttp.open("GET", "../backend/adAjax.aspx?action=createMainCate&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
-                        xmlhttp.send();
-                       
-                    } else   
-                    {  
-                        $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
-                        $("#alertDialog").modal();
-                        return false;  
-                    }  
+                    }
+                    if (action == "Sửa") {
+                        var cateID = $('#cateID').val();
+                        var cateName = $('#ipCateName').val();
+                        var desc = $('#ipDesc').val();
+                        var cateSort = $('#ipSort').val();
+                        if (cateID != '' && cateName != '' && desc != '' && cateSort != 0) {
+                            var xmlhttp;
+                            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                                xmlhttp = new XMLHttpRequest();
+                            }
+                            else {// code for IE6, IE5
+                                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                            }
+                            xmlhttp.onreadystatechange = function () {
+                                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                    if (xmlhttp.responseText != "error") {
+                                        //edit success
+                                        $('#btnCreate').html('Tạo');
+                                        $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                                    }
+                                }
+                            }
+                            xmlhttp.open("GET", "../backend/adAjax.aspx?action=editMainCate&cateID="+cateID+"&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
+                            xmlhttp.send();
+
+                        } else {
+                            $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                            $("#alertDialog").modal();
+                            return false;
+                        }
+                    }
                 })  
             });  
         </script>  

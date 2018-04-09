@@ -45,6 +45,47 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(mainCateListHTML);
                     }
                     break;
+
+                case "editMainCate":
+                    {
+                        String mainCateListHTML = "";
+                        try
+                        {
+                            string cateName = Request.QueryString["cateName"].ToString();
+                            string desc = Request.QueryString["desc"].ToString();
+                            int cateSort = 0;
+                            if (Request.QueryString["cateSort"].ToString() != null)
+                            {
+                                cateSort = int.Parse(Request.QueryString["cateSort"].ToString());
+                            }
+                            int cateID = 0;
+                            if (Request.QueryString["cateID"].ToString() != null)
+                            {
+                                cateID = int.Parse(Request.QueryString["cateID"].ToString());
+                            }
+
+                            //update to Database
+                            var update = db.tb_CategoryMain.Where(t => t.MainCateID == cateID).FirstOrDefault();
+                            update.MainCateName = cateName;
+                            update.MainCateDesc = desc;
+                            update.Sort = cateSort;
+                            db.SaveChanges();
+
+                            //Reload list maincate
+                            List<tb_CategoryMain> mainCateList = adGenerate.getMainCateList();
+                            if (mainCateList.Count() != 0)
+                            {
+                                mainCateListHTML = adGenerate.generateHTMLMainCate(mainCateList);
+                            }
+                        }
+                        catch (Exception exp)
+                        {
+                            mainCateListHTML = "error";
+                        }
+                        Response.Write(mainCateListHTML);
+                    }
+                    break;
+
                 case "createMainCate":
                     {
                         String mainCateListHTML = "";
