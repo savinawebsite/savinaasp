@@ -5,7 +5,7 @@ using System.Web.UI;
 
 public partial class backend_login : System.Web.UI.Page
 {
-    private veritass_savinaEntities Db = new veritass_savinaEntities();
+    private savinaEntities Db = new savinaEntities();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,15 +21,15 @@ public partial class backend_login : System.Web.UI.Page
         {
             string username = txtUsername.Value;
             string password = txtPassword.Value;
-            var checklogin = Db.tb_LocalAccount.Where(p => p.User_Name == username && p.Password == password).FirstOrDefault();
+            var checklogin = Db.tb_LocalAccount.Where(p => p.UserName == username && p.Password == password).FirstOrDefault();
             if (checklogin != null)
             {
                 Session["user"] = username;
-                Session["idadmin"] = checklogin.Account_code;
+                Session["idadmin"] = checklogin.AccountCode;
 
                 HttpCookie aCookie = new HttpCookie("adAccountInfo");
                 aCookie.Values["user"] = username;
-                aCookie.Values["idadmin"] = checklogin.Account_code.ToString();
+                aCookie.Values["idadmin"] = checklogin.AccountCode.ToString();
                 Response.Cookies.Add(aCookie);
                 Response.Redirect("../backend/index.aspx");
             }

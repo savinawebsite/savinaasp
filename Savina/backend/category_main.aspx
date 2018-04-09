@@ -49,12 +49,9 @@
                         }
                         xmlhttp.onreadystatechange = function () {
                             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                if (xmlhttp.responseText != "") {
+                                if (xmlhttp.responseText != "error") {
                                     //logout success
-                                    loginStatus = '0';
-                                    $('#btnLoginForm').html('Sign In');
-                                    location.reload();
-
+                                    $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
                                 }
                             }
                         }
@@ -156,7 +153,8 @@
                   </div>
                 </div> <!-- /Create new category -->
 
-                <div class="col-md-12 col-sm-12 col-xs-12"> <!-- Table  -->
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                     <!-- Table  -->
                   <div class="x_panel">
                       <div class="x_title">
                         <h2>Danh sách Category đang có</h2>
@@ -180,85 +178,14 @@
     
                       <div class="x_content">
     
-                        <div class="table-responsive">
-                          <table class="table table-striped jambo_table bulk_action">
-                            <thead>
-                              <tr class="headings">
-                                <th>
-                                  <input type="checkbox" id="check-all" class="flat">
-                                </th>
-                                <th class="column-title">ID </th>
-                                <th class="column-title">Tên Main Category </th>
-                                <th class="column-title">Mô Tả nhanh </th>
-                                <th class="column-title">Tình trạng </th>
-                                <th class="column-title">Ngày tạo </th>
-                                <th class="column-title no-link last"><span class="nobr">Edit</span></th>
-                                <th class="column-title no-link last"><span class="nobr">Delete</span></th>
-                                <th class="bulk-actions" colspan="7">
-                                  <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                </th>
-                              </tr>
-                            </thead>
-    
-                            <tbody>
-                              <tr class="even pointer">
-                                <td class="a-center ">
-                                  <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">1</td>
-                                <td class=" ">CÔNG CỤ, DỤNG CỤ </td>
-                                <td class=" ">Mô tả</td>
-                                <td class=" ">Enable</td>
-                                <td class=" ">23/02/2018 15:25:50</td>
-                                <td class=" last"><a href="#" class="btn btn-info btn-xs purple" onclick="Edit($(this))"><i class="fa fa-edit"></i> Edit</a></td>
-                                <td class=" last"><a href="#" class="btn btn-danger btn-xs black" onclick="Delete($(this))"><i class="fa fa-trash-o"></i> Delete</a>
-                                </td>
-                              </tr>
-                              <tr class="event pointer">
-                                  <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                  </td>
-                                  <td class=" ">2</td>
-                                  <td class=" ">XE CỘ</td>
-                                  <td class=" ">Mô tả</td>
-                                  <td class=" ">Enable</td>
-                                  <td class=" ">23/02/2018 15:25:50</td>
-                                  <td class=" last"><a href="#" class="btn btn-info btn-xs purple" onclick="Edit($(this))"><i class="fa fa-edit"></i> Edit</a></td>
-                                  <td class=" last"><a href="#" class="btn btn-danger btn-xs black" onclick="Delete($(this))"><i class="fa fa-trash-o"></i> Delete</a>
-                                  </td>
-                                </tr>
-                              <tr class="odd pointer">
-                                <td class="a-center ">
-                                  <input type="checkbox" class="flat" name="table_records">
-                                </td>
-                                <td class=" ">3</td>
-                                <td class=" ">MÁY ẢNH, MÁY QUAY</td>
-                                <td class=" ">Mô tả</td>
-                                <td class=" ">Enable</td>
-                                <td class=" ">23/02/2018 15:25:50</td>
-                                <td class=" last"><a href="#" class="btn btn-info btn-xs purple" onclick="Edit($(this))"><i class="fa fa-edit"></i> Edit</a></td>
-                                <td class=" last"><a href="#" class="btn btn-danger btn-xs black" onclick="Delete($(this))"><i class="fa fa-trash-o"></i> Delete</a>
-                                </td>
-                              </tr>
-                              <tr class="odd pointer">
-                                  <td class="a-center ">
-                                    <input type="checkbox" class="flat" name="table_records">
-                                  </td>
-                                  <td class=" ">4</td>
-                                  <td class=" ">CÔNG NGHIỆP, XÂY DỰNG</td>
-                                  <td class=" ">Mô tả</td>
-                                <td class=" ">Enable</td>
-                                <td class=" ">23/02/2018 15:25:50</td>
-                                <td class=" last"><a href="#" class="btn btn-info btn-xs purple" onclick="Edit($(this))"><i class="fa fa-edit"></i> Edit</a></td>
-                                <td class=" last"><a href="#" class="btn btn-danger btn-xs black" onclick="Delete($(this))"><i class="fa fa-trash-o"></i> Delete</a>
-                                </td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        </div>                                  
+                        <div class="table-responsive" id="divMainCateList" runat="server">
+                             <!-- inner html from code behind -->
+                        </div>     
+                                                     
                       </div>
                     </div>
-                </div>  <!-- /Table -->
+                    <!-- /Table -->
+                </div>           
               </div> 
             </div>
           </div>     

@@ -10,7 +10,7 @@ using System.Web.Services;
 
 public partial class backend_adAjax : System.Web.UI.Page
 {
-    veritass_savinaEntities db = new veritass_savinaEntities();
+    savinaEntities db = new savinaEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -19,37 +19,34 @@ public partial class backend_adAjax : System.Web.UI.Page
             switch (action)
             {
                 case "createMainCate":
-                    { 
-                        string cateName = Request.QueryString["cateName"].ToString();
-                        string desc = Request.QueryString["desc"].ToString();
+                    {
+                        String mainCateListHTML = "";
+                        try
+                        {
+                            string cateName = Request.QueryString["cateName"].ToString();
+                            string desc = Request.QueryString["desc"].ToString();
 
                             //Insert to Database
                             tb_CategoryMain tbMainCate = new tb_CategoryMain();
                             tbMainCate.MainCateName = cateName;
                             tbMainCate.MainCateDesc = desc;
                             tbMainCate.CreateDate = DateTime.Now;
-                            tbMainCate.MainCateStatus = 1;
+                            tbMainCate.IsDisplay = true;
+                            tbMainCate.IsDeleted = false;
                             tbMainCate.Sort = 1;
                             db.tb_CategoryMain.Add(tbMainCate);
                             db.SaveChanges();
 
-                            //Get main category list
-                            var mainCateList = (from mc in db.tb_CategoryMain
-                                             select new
-                                             {
-                                                 mc.MainCateID,
-                                                 mc.MainCateName,
-                                                 mc.MainCateDesc,
-                                                 mc.MainCateStatus,
-                                                 mc.CreateDate,
-                                                 mc.Sort
-                                             });
-
+                            List<tb_CategoryMain> mainCateList = adGenerate.getMainCateList();
                             if (mainCateList.Count() != 0)
                             {
-                                String mainCateListHTML = adGenerate.generateMainCate(mainCateList);
+                                mainCateListHTML = adGenerate.generateHTMLMainCate(mainCateList);
                             }
-                      
+                        }catch(Exception exp)
+                        {
+                            mainCateListHTML = "error";
+                        }
+                        Response.Write(mainCateListHTML);
                     }
                     break;
             }

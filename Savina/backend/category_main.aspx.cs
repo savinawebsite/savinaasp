@@ -13,6 +13,17 @@ public partial class backend_category_main : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        loadMainCate();
+    }
+
+    private void loadMainCate()
+    {
+        String mainCateListHTML = "";
+        List<tb_CategoryMain> mainCateList = adGenerate.getMainCateList();
+        if (mainCateList.Count() != 0)
+        {
+            mainCateListHTML = adGenerate.generateHTMLMainCate(mainCateList);
+        }
+        this.divMainCateList.InnerHtml = mainCateListHTML;
     }
 }
