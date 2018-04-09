@@ -25,15 +25,22 @@ public partial class backend_adAjax : System.Web.UI.Page
                         {
                             string cateName = Request.QueryString["cateName"].ToString();
                             string desc = Request.QueryString["desc"].ToString();
+                            //int cateSort = Request.QueryString["cateSort"];
+                            int cateSort = 0;
+                                if (Request.QueryString["cateSort"].ToString() != null)
+                                {
+                                    cateSort = int.Parse(Request.QueryString["cateSort"].ToString());
+                                }
 
                             //Insert to Database
                             tb_CategoryMain tbMainCate = new tb_CategoryMain();
                             tbMainCate.MainCateName = cateName;
                             tbMainCate.MainCateDesc = desc;
+                            tbMainCate.Sort = cateSort;
                             tbMainCate.CreateDate = DateTime.Now;
                             tbMainCate.IsDisplay = true;
                             tbMainCate.IsDeleted = false;
-                            tbMainCate.Sort = 1;
+                            tbMainCate.Sort = cateSort;
                             db.tb_CategoryMain.Add(tbMainCate);
                             db.SaveChanges();
 

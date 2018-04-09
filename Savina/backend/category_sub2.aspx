@@ -43,20 +43,20 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <form id="demo-form2" data-parsley-validate ="1" class="form-horizontal form-label-left">
     
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên Category Sub-2 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mô tả nhanh <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
@@ -82,18 +82,12 @@
                                 </div>
                               </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Chọn trạng thái</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                  <div id="gender" class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                      <input type="radio" name="gender" value="male"> &nbsp; Enable &nbsp;
-                                    </label>
-                                    <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                      <input type="radio" name="gender" value="female"> Disable
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort-arrange">Sort thứ tự <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="number" id="ipSort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
+                            </div>
+                          </div>
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

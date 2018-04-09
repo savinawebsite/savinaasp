@@ -15,37 +15,10 @@
               {  
                 $('#btnCreate').click(function () {
                     var cateName = $('#ipCateName').val();
-                    var desc = $('#ipDesc').val();  
-                    if (cateName != '' && desc != '') {
-                    /*
-                        
-                        $.ajax  ({  
-                            type: 'POST',  
-                            url: '../backend/category_main.aspx/addCategory',
-                            dataType: "json",
-                            data: JSON.stringify({ cateName: cateName, desc: desc }),
-                            contentType: 'application/json; charset =utf-8',
-                            success: function (data)
-                            {  
-                                var obj = data.d;  
-                                if (obj == 'true')   
-                                {  
-                                    $('#TextBox1').val('');  
-                                    $('#TextBox2').val('');  
-                                    $('#TextBox3').val('');  
-                                    $('#TextBox4').val('');  
-                                    alert("Data Saved Successfully");  
-  
-                                }  
-                            },  
-                            error: function(result)   
-                            {  
-                                alert("Error Occured, Try Again");  
-                            }  
-                        });  
-                        */
-
-                        var xmlhttp;
+                    var desc = $('#ipDesc').val();
+                    var cateSort = $('#ipSort').val();
+                    if (cateName != '' && desc != '' && cateSort != 0) {
+                         var xmlhttp;
                         if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
                             xmlhttp = new XMLHttpRequest();
                         }
@@ -60,7 +33,7 @@
                                 }
                             }
                         }
-                        xmlhttp.open("GET", "../backend/adAjax.aspx?action=createMainCate&cateName=" + cateName + "&desc=" + desc + "", true);
+                        xmlhttp.open("GET", "../backend/adAjax.aspx?action=createMainCate&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
                         xmlhttp.send();
                        
                     } else   
@@ -86,7 +59,7 @@
                 <div class="title_right">
                   <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
+                      <input type="text" class="form-control" placeholder="Search for..."/>
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Search!</button>
                       </span>
@@ -115,35 +88,30 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <!-- <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">-->
+                         <form id="demo-form2" class="form-horizontal form-label-left">
     
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên Main-Category <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="ipCateName" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="ipCateName" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mô tả nhanh <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="ipDesc" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="ipDesc" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Chọn trạng thái</label>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort-arrange">Sort thứ tự <span class="required">*</span>
+                            </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <div id="gender" class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="male"> &nbsp; Enable &nbsp;
-                                </label>
-                                <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="female"> Disable
-                                </label>
-                              </div>
+                              <input type="number" id="ipSort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
+                          
                           <div class="ln_solid"></div>
                           <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -153,7 +121,7 @@
                             </div>
                           </div>
     
-                       <!-- </form> -->
+                        </form> 
                       </div>
                   </div>
                 </div> <!-- /Create new category -->
