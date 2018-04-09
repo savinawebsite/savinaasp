@@ -3,12 +3,58 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <!-- Begin - Javascript insert category to database -->
-        <script type="text/javascript">  
 
-            function Delete() {
-                $(".modal-body").html("Bạn chắc chắn muốn xóa category này ?");
-                $("#alertDialog").modal();
+         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center;">SAVINA</h4>
+                </div>
+            
+                <div class="modal-body">
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok" id="btnDelete">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="cateID" />
+    <!-- Begin - Javascript insert category to database -->
+        <script type="text/javascript"> 
+            
+       
+            $('#btnDelete').click(function () {
+                    var cateID = $('#cateID').val();
+                    var xmlhttp;
+                    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    }
+                    else {// code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            if (xmlhttp.responseText != "error") {
+                                //delete success
+                                $('#confirm-delete').modal('hide');
+                                $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                            }
+                        }
+                    }
+                    xmlhttp.open("GET", "../backend/adAjax.aspx?action=deleteMainCate&cateID=" + cateID + "", true);
+                    xmlhttp.send();
+                });
+      
+            function Delete(elmnt, cateID, cateName) {
+                $(".modal-body").html("Bạn chắc chắn muốn xóa mục \""+cateName+"\"?");
+                $("#confirm-delete").modal();
+                $('#cateID').val(cateID);
             }
 
             $(function()   
@@ -28,7 +74,7 @@
                         xmlhttp.onreadystatechange = function () {
                             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                                 if (xmlhttp.responseText != "error") {
-                                    //logout success
+                                    //create success
                                     $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
                                 }
                             }
@@ -38,7 +84,8 @@
                        
                     } else   
                     {  
-                        alert("Pleae Fill all the Fields");  
+                        $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                        $("#alertDialog").modal();
                         return false;  
                     }  
                 })  

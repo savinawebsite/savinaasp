@@ -97,7 +97,7 @@ public class adGenerate
  
             html += "<td class=\" \">"+item.CreateDate.ToString()+"</td>";
             html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-info btn-xs\" onclick=\"Edit($(this))\"><i class=\"fa fa-edit\"></i> Edit</a></td>";
-            html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-danger btn-xs\" onclick=\"Delete($(this))\"><i class=\"fa fa-trash-o\"></i> Delete</a>";
+            html += "<td class=\" last\"><a href = \"#\" class=\"btn btn-danger btn-xs\" onclick=\"Delete(this,'"+item.MainCateID.ToString()+"','"+item.MainCateName.ToString()+"')\"><i class=\"fa fa-trash-o\"></i> Delete</a>";
             html += "</td>";
             html += "</tr>";
         }

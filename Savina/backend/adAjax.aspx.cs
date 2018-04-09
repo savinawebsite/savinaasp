@@ -18,6 +18,33 @@ public partial class backend_adAjax : System.Web.UI.Page
             string action = Request.QueryString["action"].ToString();
             switch (action)
             {
+                case "deleteMainCate":
+                    {
+                        String mainCateListHTML = "";
+                        try
+                        {
+                            int cateID = 0;
+                            if(Request.QueryString["cateID"].ToString() != null)
+                            {
+                                cateID = int.Parse(Request.QueryString["cateID"].ToString());
+                                tb_CategoryMain t = (tb_CategoryMain)db.tb_CategoryMain.Where(b => b.MainCateID == cateID).First();
+                                db.tb_CategoryMain.Remove(t);
+                                db.SaveChanges();
+                            }
+                      
+                            List<tb_CategoryMain> mainCateList = adGenerate.getMainCateList();
+                            if (mainCateList.Count() != 0)
+                            {
+                                mainCateListHTML = adGenerate.generateHTMLMainCate(mainCateList);
+                            }
+                        }
+                        catch (Exception exp)
+                        {
+                            mainCateListHTML = "error";
+                        }
+                        Response.Write(mainCateListHTML);
+                    }
+                    break;
                 case "createMainCate":
                     {
                         String mainCateListHTML = "";
@@ -25,7 +52,6 @@ public partial class backend_adAjax : System.Web.UI.Page
                         {
                             string cateName = Request.QueryString["cateName"].ToString();
                             string desc = Request.QueryString["desc"].ToString();
-                            //int cateSort = Request.QueryString["cateSort"];
                             int cateSort = 0;
                                 if (Request.QueryString["cateSort"].ToString() != null)
                                 {
@@ -44,6 +70,7 @@ public partial class backend_adAjax : System.Web.UI.Page
                             db.tb_CategoryMain.Add(tbMainCate);
                             db.SaveChanges();
 
+                            //Reload list maincate
                             List<tb_CategoryMain> mainCateList = adGenerate.getMainCateList();
                             if (mainCateList.Count() != 0)
                             {
@@ -57,8 +84,6 @@ public partial class backend_adAjax : System.Web.UI.Page
                     }
                     break;
             }
-
-
         }
     }
 
