@@ -18,6 +18,24 @@ public partial class backend_adAjax : System.Web.UI.Page
             string action = Request.QueryString["action"].ToString();
             switch (action)
             {
+                case "fetchMainCate":
+                    {
+                        String mainCateListHTML = "";
+                        try
+                        {
+                            //Reload list maincate
+                            List<tb_CategoryMain> mainCateList = adGenerate.getMainCateList();
+                            if (mainCateList.Count() != 0)
+                            {
+                                mainCateListHTML = adGenerate.generateHTMLMainCateSelect(mainCateList);
+                            }
+                        }catch(Exception exp)
+                        {
+                            mainCateListHTML = "error";
+                        }
+                        Response.Write(mainCateListHTML);
+                    }
+                    break;
                 case "deleteMainCate":
                     {
                         String mainCateListHTML = "";

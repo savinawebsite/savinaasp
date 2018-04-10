@@ -3,6 +3,32 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+  
+         <script type="text/javascript"> 
+              $( document ).ready(function() {
+                  fetchMainCate();
+              });
+
+              function fetchMainCate(){
+                  var xmlhttp;
+                  if (window.XMLHttpRequest) {
+                      xmlhttp = new XMLHttpRequest();
+                  }
+                  else {
+                      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+                  xmlhttp.onreadystatechange = function () {
+                      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                          if (xmlhttp.responseText != "error") {
+                              $('#sltMainCate').html(xmlhttp.responseText);
+                          }
+                      }
+                  }
+                  xmlhttp.open("GET", "../backend/adAjax.aspx?action=fetchMainCate", true);
+                  xmlhttp.send();
+              }
+        </script>
+
     <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
@@ -61,14 +87,18 @@
                           </div>
                           <div class="form-group">
                               <label class="control-label col-md-3 col-sm-3 col-xs-12">Thuộc Main Category</label>
-                              <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control">
+                              <div class="col-md-6 col-sm-6 col-xs-12" id="sltMainCate">
+                                  <!--
+                                <select class="form-control" id="sltMainCate">
+                                    
                                   <option>Lựa chọn Main Category</option>
                                   <option>XE CỘ</option>
                                   <option>CÔNG CỤ, DỤNG CỤ</option>
                                   <option>MẸ VÀ BÉ</option>
                                   <option>CÔNG NGHIỆP XÂY DỰNG</option>
+                                   
                                 </select>
+                                      -->
                               </div>
                             </div>
                             <div class="form-group">

@@ -48,6 +48,19 @@ public class adGenerate
         return mainCateList;
     }
 
+    public static String generateHTMLMainCateSelect(List<tb_CategoryMain> tbMainCate)
+    {
+        string html = "";
+        html += "<select class=\"form-control\">";
+        html += "<option value=\"-1\">Lựa chọn Main Category</ option >";
+        foreach (var item in tbMainCate)
+        {
+            html += "<option value=\""+ item.MainCateID +"\">"+ item.MainCateName +"</ option >";                         
+        }
+        html += "</select>";
+        return html;
+    }
+
     public static String generateHTMLMainCate(List<tb_CategoryMain> tbMainCate)
     {
         string html = "";
