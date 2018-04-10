@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             
@@ -17,19 +17,24 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger btn-ok" id="btnDelete">Delete</a>
+                    <button type="button" class="btn btn-default" id="btnCancel" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-danger btn-ok" id="btnConfirm">Đồng ý</a>
                 </div>
             </div>
         </div>
     </div>
 
     <input type="hidden" id="cateID" />
+    <input type="hidden" id="actionType" />
     <!-- Begin - Javascript insert category to database -->
         <script type="text/javascript"> 
-            
+            $('#btnCancel').click(function () {
+                ResetView();
+            });
        
-            $('#btnDelete').click(function () {
+            $('#btnConfirm').click(function () {
+                var actionType = $('#actionType').val();
+                if (actionType == 'delete') {
                     var cateID = $('#cateID').val();
                     var xmlhttp;
                     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -42,19 +47,52 @@
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             if (xmlhttp.responseText != "error") {
                                 //delete success
-                                $('#confirm-delete').modal('hide');
                                 $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
                             }
                         }
                     }
                     xmlhttp.open("GET", "../backend/adAjax.aspx?action=deleteMainCate&cateID=" + cateID + "", true);
                     xmlhttp.send();
+                }
+                if (actionType == 'edit') {
+                    var cateName = $('#ipCateName').val();
+                    var desc = $('#ipDesc').val();
+                    var cateSort = $('#ipSort').val();
+                    var cateID = $('#cateID').val();
+                    var xmlhttp;
+                    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    }
+                    else {// code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            if (xmlhttp.responseText != "error") {
+                                //edit success
+                                ResetView()
+                                $('#btnCreate').html('Tạo');
+                                $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                            }
+                        }
+                    }
+                    xmlhttp.open("GET", "../backend/adAjax.aspx?action=editMainCate&cateID=" + cateID + "&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
+                    xmlhttp.send();
+                }
+                $('#confirm-dialog').modal('hide');
                 });
+            
       
             function Delete(elmnt, cateID, cateName) {
                 $(".modal-body").html("Bạn chắc chắn muốn xóa mục \""+cateName+"\"?");
-                $("#confirm-delete").modal();
+                $("#confirm-dialog").modal();
                 $('#cateID').val(cateID);
+                $('#actionType').val('delete');
+            }
+
+            function EditConfirm(cateName) {
+                $(".modal-body").html("Bạn chắc chắn muốn sửa mục \"" + cateName + "\"?");
+                $("#confirm-dialog").modal();
             }
 
             function Edit(elmnt, cateID, cateName, cateDesc, cateSort) {
@@ -62,18 +100,26 @@
                 $('#ipDesc').val(cateDesc);
                 $('#ipSort').val(cateSort);
                 $('#cateID').val(cateID);
+                $('#actionType').val('edit');
                 $('#btnCreate').html('Sửa');
             }
 
-            $(function()   
-              {  
+            function ResetView() {
+                $('#ipCateName').val('');
+                $('#ipDesc').val('');
+                $('#ipSort').val('');
+                $('#cateID').val('');
+                $('#actionType').val('');
+            }
+
+            $(function()   {  
                 $('#btnCreate').click(function () {
-                    var action = $('#btnCreate').text();
-                    if (action == "Tạo") {
-                        var cateName = $('#ipCateName').val();
-                        var desc = $('#ipDesc').val();
-                        var cateSort = $('#ipSort').val();
-                        if (cateName != '' && desc != '' && cateSort != 0) {
+                    var cateName = $('#ipCateName').val();
+                    var desc = $('#ipDesc').val();
+                    var cateSort = $('#ipSort').val();
+                    if (cateName != '' && desc != '' && cateSort != 0) {
+                        var action = $('#btnCreate').text();
+                        if (action == "Tạo") {
                             var xmlhttp;
                             if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
                                 xmlhttp = new XMLHttpRequest();
@@ -85,49 +131,22 @@
                                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                                     if (xmlhttp.responseText != "error") {
                                         //create success
+                                        ResetView()
                                         $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
                                     }
                                 }
                             }
                             xmlhttp.open("GET", "../backend/adAjax.aspx?action=createMainCate&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
                             xmlhttp.send();
-
-                        } else {
-                            $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
-                            $("#alertDialog").modal();
-                            return false;
                         }
-                    }
-                    if (action == "Sửa") {
-                        var cateID = $('#cateID').val();
-                        var cateName = $('#ipCateName').val();
-                        var desc = $('#ipDesc').val();
-                        var cateSort = $('#ipSort').val();
-                        if (cateID != '' && cateName != '' && desc != '' && cateSort != 0) {
-                            var xmlhttp;
-                            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-                                xmlhttp = new XMLHttpRequest();
-                            }
-                            else {// code for IE6, IE5
-                                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                            }
-                            xmlhttp.onreadystatechange = function () {
-                                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                    if (xmlhttp.responseText != "error") {
-                                        //edit success
-                                        $('#btnCreate').html('Tạo');
-                                        $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
-                                    }
-                                }
-                            }
-                            xmlhttp.open("GET", "../backend/adAjax.aspx?action=editMainCate&cateID="+cateID+"&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
-                            xmlhttp.send();
-
-                        } else {
-                            $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
-                            $("#alertDialog").modal();
-                            return false;
+                        if (action == "Sửa") {
+                            EditConfirm(cateName)
                         }
+
+                    } else {
+                        $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                        $("#alertDialog").modal();
+                        return false;
                     }
                 })  
             });  
