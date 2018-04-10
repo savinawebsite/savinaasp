@@ -51,7 +51,7 @@ public class adGenerate
     public static String generateHTMLMainCateSelect(List<tb_CategoryMain> tbMainCate)
     {
         string html = "";
-        html += "<select class=\"form-control\">";
+        html += "<select id=\"sltMainCate\" class=\"form-control\">";
         html += "<option value=\"-1\">Lựa chọn Main Category</ option >";
         foreach (var item in tbMainCate)
         {

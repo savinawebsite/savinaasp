@@ -20,7 +20,7 @@
                   xmlhttp.onreadystatechange = function () {
                       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                           if (xmlhttp.responseText != "error") {
-                              $('#sltMainCate').html(xmlhttp.responseText);
+                              $('#dvMainCate').html(xmlhttp.responseText);
                           }
                       }
                   }
@@ -75,19 +75,19 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên Category Sub-1 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="text" id="ipCateName" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mô tả nhanh <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="text" id="ipDesc" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
                               <label class="control-label col-md-3 col-sm-3 col-xs-12">Thuộc Main Category</label>
-                              <div class="col-md-6 col-sm-6 col-xs-12" id="sltMainCate">
+                              <div class="col-md-6 col-sm-6 col-xs-12" id="dvMainCate">
                                   <!--
                                 <select class="form-control" id="sltMainCate">
                                     
@@ -113,7 +113,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                               <button class="btn btn-primary" type="button">Hủy</button>
                               <button class="btn btn-primary" type="reset">Reset</button>
-                              <button type="submit" class="btn btn-success">Tạo</button>
+                              <button id="btnCreate" type="button" class="btn btn-success">Tạo</button>
                             </div>
                           </div>
     
