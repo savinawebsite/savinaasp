@@ -55,6 +55,7 @@ public partial class tb_CategorySub1
     public string SubCate1Desc { get; set; }
     public Nullable<System.DateTime> CreateDate { get; set; }
     public Nullable<bool> IsDeleted { get; set; }
+    public Nullable<byte> Sort { get; set; }
 }
 
 public partial class tb_CategorySub2
@@ -66,6 +67,7 @@ public partial class tb_CategorySub2
     public string SubCate2Desc { get; set; }
     public Nullable<System.DateTime> CreateDate { get; set; }
     public Nullable<bool> IsDeleted { get; set; }
+    public Nullable<byte> Sort { get; set; }
 }
 
 public partial class tb_CategorySub3
@@ -77,6 +79,7 @@ public partial class tb_CategorySub3
     public string SubCate2Desc { get; set; }
     public Nullable<System.DateTime> CreateDate { get; set; }
     public Nullable<bool> IsDeleted { get; set; }
+    public Nullable<byte> Sort { get; set; }
 }
 
 public partial class tb_ContactUs

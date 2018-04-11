@@ -9,6 +9,13 @@ public partial class backend_category_sub1 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        loadSubCat1();
+    }
 
+    private void loadSubCat1()
+    {
+        String html = "";
+        html = adGenerate.getSubCat1List();
+        this.dvSubCate1List.InnerHtml = html;
     }
 }

@@ -24,6 +24,6 @@ public partial class backend_category_main : System.Web.UI.Page
         {
             mainCateListHTML = adGenerate.generateHTMLMainCate(mainCateList);
         }
-        this.divMainCateList.InnerHtml = mainCateListHTML;
+        this.dvMainCateList.InnerHtml = mainCateListHTML;
     }
 }

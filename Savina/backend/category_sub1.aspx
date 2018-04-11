@@ -3,12 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-  
+    
+      <input type="hidden" id="subCatID" />
+    <input type="hidden" id="actionType" />    
+
          <script type="text/javascript"> 
               $( document ).ready(function() {
                   fetchMainCate();
               });
 
+             //get main cat list and fetch to select ui
               function fetchMainCate(){
                   var xmlhttp;
                   if (window.XMLHttpRequest) {
@@ -27,6 +31,61 @@
                   xmlhttp.open("GET", "../backend/adAjax.aspx?action=fetchMainCate", true);
                   xmlhttp.send();
               }
+
+              function ResetView() {
+                  $('#ipSubCat1Name').val('');
+                  $('#ipSubCat1Desc').val('');
+                  $('#ipSubCat1Sort').val('');
+                  fetchMainCate();
+              }
+
+             //create subcate1 action
+              $(function () {
+                  $('#btnCreate').click(function () {
+                      var subCat1Name = $('#ipSubCat1Name').val();
+                      var subCat1Desc = $('#ipSubCat1Desc').val();
+                      var subCat1Sort = $('#ipSubCat1Sort').val();
+                      var mainCatID = $('#sltMainCate').val()
+                      if (subCat1Name != '' && subCat1Desc != '' && subCat1Sort != 0) {
+                          if (mainCatID != -1) {
+                              var action = $('#btnCreate').text();
+                              if (action == "Tạo") {
+                                  var xmlhttp;
+                                  if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                                      xmlhttp = new XMLHttpRequest();
+                                  }
+                                  else {// code for IE6, IE5
+                                      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                  }
+                                  xmlhttp.onreadystatechange = function () {
+                                      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                          if (xmlhttp.responseText != "error") {
+                                              //create success
+                                              ResetView()
+                                              $('#ContentPlaceHolder1_dvSubCate1List').html(xmlhttp.responseText);
+                                          }
+                                      }
+                                  }
+                                  xmlhttp.open("GET", "../backend/adAjax.aspx?action=createSubCat1&subCat1Name=" + subCat1Name + "&subCat1Desc=" + subCat1Desc + "&subCat1Sort=" + subCat1Sort + "&mainCatID=" + mainCatID + "", true);
+                                  xmlhttp.send();
+                              }
+                              if (action == "Sửa") {
+                                  EditConfirm(cateName)
+                              }
+                          } else {
+                              $(".modal-body").html("Vui lòng chọn một category");
+                              $("#alertDialog").modal();
+                              return false;
+                          }
+
+                      } else {
+                          $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                          $("#alertDialog").modal();
+                          return false;
+                      }
+                  });
+              });
+
         </script>
 
     <!-- page content -->
@@ -75,14 +134,14 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên Category Sub-1 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="ipCateName" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="text" id="ipSubCat1Name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mô tả nhanh <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="ipDesc" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="text" id="ipSubCat1Desc" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
@@ -105,7 +164,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort-arrange">Sort thứ tự <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="number" id="ipSort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="number" id="ipSubCat1Sort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="ln_solid"></div>
@@ -137,40 +196,9 @@
                         </ul>
                         <div class="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <table id="datatable" class="table table-striped table-bordered">
-                          <thead>
-                            <tr>
-                              <th>Tên Sub-1</th>
-                              <th>Mổ tả nhanh</th>
-                              <th>Thuộc MainCategory</th>
-                              <th>Tình trạng</th>
-                              <th>Ngày tạo</th>
-                              <th>Thao tác</th>
-                            </tr>
-                          </thead>
-       
-                          <tbody>                         
-                            <tr>
-                              <td>Sửa xe</td>
-                              <td>mô tả</td>
-                              <td>CÔng cụ, Dụng cụ</td>
-                              <td>Enable</td>
-                              <td>23/02/2018 15:25:50</td>
-                              <td><a href="#" class="btn btn-info btn-xs purple" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspEdit</a>
-                                <span><a href="#" class="btn btn-danger btn-xs black" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspDelete</a></span></td>
-                            </tr>
-                            <tr>
-                              <td>Tự lái</td>
-                              <td>mô tả</td>
-                              <td>Xe cộ</td>
-                              <td>Enable</td>
-                              <td>23/02/2018 15:25:50</td>
-                              <td><a href="#" class="btn btn-info btn-xs purple" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspEdit</a>
-                                <span><a href="#" class="btn btn-danger btn-xs black" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbspDelete</a></span></td>
-                            </tr>                                                     
-                          </tbody>
-                        </table>
+                      <div class="x_content" id="dvSubCate1List" runat="server">
+                     
+
                       </div>
                     </div>
                   </div>  <!-- /Table -->

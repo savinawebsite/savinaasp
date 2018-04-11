@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="savinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="savinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_About">
           <Key>
             <PropertyRef Name="AboutArticleID" />
@@ -55,6 +55,7 @@
           <Property Name="SubCate1Desc" Type="nvarchar" MaxLength="100" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Sort" Type="tinyint" />
         </EntityType>
         <EntityType Name="tb_CategorySub2">
           <Key>
@@ -67,6 +68,7 @@
           <Property Name="SubCate2Desc" Type="nvarchar" MaxLength="100" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Sort" Type="tinyint" />
         </EntityType>
         <EntityType Name="tb_CategorySub3">
           <Key>
@@ -79,6 +81,7 @@
           <Property Name="SubCate2Desc" Type="nvarchar" MaxLength="100" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Sort" Type="tinyint" />
         </EntityType>
         <EntityType Name="tb_ContactUs">
           <Key>
@@ -498,8 +501,7 @@
             <End Role="tb_Ward" EntitySet="tb_Ward" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="savinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -553,6 +555,7 @@
           <Property Name="SubCate1Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Sort" Type="Byte" />
         </EntityType>
         <EntityType Name="tb_CategorySub2">
           <Key>
@@ -565,6 +568,7 @@
           <Property Name="SubCate2Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Sort" Type="Byte" />
         </EntityType>
         <EntityType Name="tb_CategorySub3">
           <Key>
@@ -577,6 +581,7 @@
           <Property Name="SubCate2Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Sort" Type="Byte" />
         </EntityType>
         <EntityType Name="tb_ContactUs">
           <Key>
@@ -1053,6 +1058,7 @@
           <EntitySetMapping Name="tb_CategorySub1">
             <EntityTypeMapping TypeName="savinaModel.tb_CategorySub1">
               <MappingFragment StoreEntitySet="tb_CategorySub1">
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
                 <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
                 <ScalarProperty Name="SubCate1Name" ColumnName="SubCate1Name" />
                 <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
@@ -1066,6 +1072,7 @@
           <EntitySetMapping Name="tb_CategorySub2">
             <EntityTypeMapping TypeName="savinaModel.tb_CategorySub2">
               <MappingFragment StoreEntitySet="tb_CategorySub2">
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
                 <ScalarProperty Name="SubCate2ID" ColumnName="SubCate2ID" />
                 <ScalarProperty Name="SubCate2Name" ColumnName="SubCate2Name" />
                 <ScalarProperty Name="SubCate1ID" ColumnName="SubCate1ID" />
@@ -1079,6 +1086,7 @@
           <EntitySetMapping Name="tb_CategorySub3">
             <EntityTypeMapping TypeName="savinaModel.tb_CategorySub3">
               <MappingFragment StoreEntitySet="tb_CategorySub3">
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
                 <ScalarProperty Name="SubCate3ID" ColumnName="SubCate3ID" />
                 <ScalarProperty Name="SubCate3Name" ColumnName="SubCate3Name" />
                 <ScalarProperty Name="SubCate2ID" ColumnName="SubCate2ID" />

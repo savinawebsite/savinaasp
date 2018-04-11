@@ -47,7 +47,7 @@
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             if (xmlhttp.responseText != "error") {
                                 //delete success
-                                $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                                $('#ContentPlaceHolder1_dvMainCateList').html(xmlhttp.responseText);
                             }
                         }
                     }
@@ -72,7 +72,7 @@
                                 //edit success
                                 ResetView()
                                 $('#btnCreate').html('Tạo');
-                                $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                                $('#ContentPlaceHolder1_dvMainCateList').html(xmlhttp.responseText);
                             }
                         }
                     }
@@ -132,7 +132,7 @@
                                     if (xmlhttp.responseText != "error") {
                                         //create success
                                         ResetView()
-                                        $('#ContentPlaceHolder1_divMainCateList').html(xmlhttp.responseText);
+                                        $('#ContentPlaceHolder1_dvMainCateList').html(xmlhttp.responseText);
                                     }
                                 }
                             }
@@ -258,7 +258,7 @@
     
                       <div class="x_content">
     
-                        <div class="table-responsive" id="divMainCateList" runat="server">
+                        <div class="table-responsive" id="dvMainCateList" runat="server">
                              <!-- inner html from code behind -->
                         </div>     
                                                      
