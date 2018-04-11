@@ -18,7 +18,7 @@ public partial class backend_adAjax : System.Web.UI.Page
             string action = Request.QueryString["action"].ToString();
             switch (action)
             {
-                case "createSubCat1":
+                case "createSubCate1":
                     {
                         String html = "";
                         try
@@ -55,6 +55,30 @@ public partial class backend_adAjax : System.Web.UI.Page
                             html = "error";  
                         }
                         Response.Write(html);
+                    }
+                    break;
+
+                case "deleteSubCate1":
+                    {
+                        String subCate1HTML = "";
+                        try
+                        {
+                            int subCate1ID = 0;
+                            if (Request.QueryString["subCate1ID"].ToString() != null)
+                            {
+                                subCate1ID = int.Parse(Request.QueryString["subCate1ID"].ToString());
+                                tb_CategorySub1 t = (tb_CategorySub1)db.tb_CategorySub1.Where(b => b.SubCate1ID == subCate1ID).First();
+                                db.tb_CategorySub1.Remove(t);
+                                db.SaveChanges();
+                            }
+
+                            subCate1HTML = adGenerate.getSubCat1List();
+                        }
+                        catch (Exception exp)
+                        {
+                            subCate1HTML = "error";
+                        }
+                        Response.Write(subCate1HTML);
                     }
                     break;
 

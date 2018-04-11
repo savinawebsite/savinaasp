@@ -28,6 +28,7 @@ public class adGenerate
                          s1.SubCate1Name,
                          s1.IsDisplay,
                          s1.CreateDate,
+                         s1.Sort,
                          m.MainCateName
                      });
 
@@ -58,9 +59,9 @@ public class adGenerate
             {
                 html += "<td>Disable</td>";
             }
-                             html += "<td>"+item.CreateDate+"</td>";
-            html += "<td><a href = \"#\" class=\"btn btn-info btn-xs purple\" onclick=\"Edit($(this))\"><i class=\"fa fa-edit\"></i>&nbspEdit</a>";
-            html += "<span><a href = \"#\" class=\"btn btn-danger btn-xs black\" onclick=\"Edit($(this))\"><i class=\"fa fa-edit\"></i>&nbspDelete</a></span></td>";
+            html += "<td>"+item.CreateDate+"</td>";
+            html += "<td><a href = \"#\" class=\"btn btn-info btn-xs purple\" onclick=\"Edit(this, '" + item.SubCate1ID.ToString() + "','" + item.SubCate1Name.ToString() + "','" + item.SubCate1Desc.ToString() + "','" + item.Sort.ToString() + "','"+item.MainCateID.ToString()+"')\"><i class=\"fa fa-edit\"></i>&nbspEdit</a>";
+            html += "<span><a href = \"#\" class=\"btn btn-danger btn-xs black\" onclick=\"Delete(this,'" + item.SubCate1ID.ToString() + "','" + item.SubCate1Name.ToString() + "')\"><i class=\"fa fa-edit\"></i>&nbspDelete</a></span></td>";
             html += "</tr>";
         }
         html += "</tbody>";

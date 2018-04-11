@@ -4,7 +4,27 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
-      <input type="hidden" id="subCatID" />
+          <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center;">SAVINA</h4>
+                </div>
+            
+                <div class="modal-body">
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnCancel" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-danger btn-ok" id="btnConfirm">Đồng ý</a>
+                </div>
+            </div>
+        </div>
+    </div>
+          <input type="hidden" id="subCate1ID" /> 
+      <input type="hidden" id="cateID" />
     <input type="hidden" id="actionType" />    
 
          <script type="text/javascript"> 
@@ -32,10 +52,85 @@
                   xmlhttp.send();
               }
 
+              $('#btnCancel').click(function () {
+                  ResetView();
+              });
+
+              $('#btnConfirm').click(function () {
+                  var actionType = $('#actionType').val();
+                  if (actionType == 'delete') {
+                      var subCate1ID = $('#subCate1ID').val();
+                      var xmlhttp;
+                      if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                          xmlhttp = new XMLHttpRequest();
+                      }
+                      else {// code for IE6, IE5
+                          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                      xmlhttp.onreadystatechange = function () {
+                          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                              if (xmlhttp.responseText != "error") {
+                                  //delete success
+                                  ResetView()
+                                  $('#ContentPlaceHolder1_dvSubCate1List').html(xmlhttp.responseText);
+                              }
+                          }
+                      }
+                      xmlhttp.open("GET", "../backend/adAjax.aspx?action=deleteSubCate1&subCate1ID=" + subCate1ID + "", true);
+                      xmlhttp.send();
+                  }
+                  if (actionType == 'edit') {
+                      var cateName = $('#ipCateName').val();
+                      var desc = $('#ipDesc').val();
+                      var cateSort = $('#ipSort').val();
+                      var cateID = $('#cateID').val();
+                      var xmlhttp;
+                      if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                          xmlhttp = new XMLHttpRequest();
+                      }
+                      else {// code for IE6, IE5
+                          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                      xmlhttp.onreadystatechange = function () {
+                          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                              if (xmlhttp.responseText != "error") {
+                                  //edit success
+                                  ResetView()
+                                  $('#btnCreate').html('Tạo');
+                                  $('#ContentPlaceHolder1_dvMainCateList').html(xmlhttp.responseText);
+                              }
+                          }
+                      }
+                      xmlhttp.open("GET", "../backend/adAjax.aspx?action=editMainCate&cateID=" + cateID + "&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
+                      xmlhttp.send();
+                  }
+                  $('#confirm-dialog').modal('hide');
+              });
+
+              function Edit(elmnt, subCate1ID, subCate1Name, subCate1Desc, subCate1Sort, cateID) {
+                  $('#ipSubCat1Name').val(subCate1Name);
+                  $('#ipSubCat1Desc').val(subCate1Desc);
+                  $('#ipSubCat1Sort').val(subCate1Sort);
+                  $('#subCate1ID').val(subCate1ID);
+                  $('#cateID').val(cateID);
+                  $('#actionType').val('edit');
+                  $('#btnCreate').html('Sửa');
+              }
+
+              function Delete(elmnt, cateID, cateName) {
+                  $(".modal-body").html("Bạn chắc chắn muốn xóa mục \"" + cateName + "\"?");
+                  $("#confirm-dialog").modal();
+                  $('#cateID').val(cateID);
+                  $('#actionType').val('delete');
+              }
+
               function ResetView() {
                   $('#ipSubCat1Name').val('');
                   $('#ipSubCat1Desc').val('');
                   $('#ipSubCat1Sort').val('');
+                  $('#subCate1ID').val('');
+                  $('#cateID').val('');
+                  $('#actionType').val('');
                   fetchMainCate();
               }
 
@@ -66,7 +161,7 @@
                                           }
                                       }
                                   }
-                                  xmlhttp.open("GET", "../backend/adAjax.aspx?action=createSubCat1&subCat1Name=" + subCat1Name + "&subCat1Desc=" + subCat1Desc + "&subCat1Sort=" + subCat1Sort + "&mainCatID=" + mainCatID + "", true);
+                                  xmlhttp.open("GET", "../backend/adAjax.aspx?action=createSubCate1&subCat1Name=" + subCat1Name + "&subCat1Desc=" + subCat1Desc + "&subCat1Sort=" + subCat1Sort + "&mainCatID=" + mainCatID + "", true);
                                   xmlhttp.send();
                               }
                               if (action == "Sửa") {
