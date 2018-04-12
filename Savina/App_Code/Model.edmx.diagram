@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="savinaModel.tb_Counteronline" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Country" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Customer" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="savinaModel.tb_DeliverySelection" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_DeliverySelection" Width="1.625" PointX="2.625" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_District" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_DocumentSelection" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_HomeBanner" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />

@@ -161,6 +161,8 @@
           <Property Name="DeliverySelectionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DeliveryName" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="SortBy" Type="int" />
+          <Property Name="DeliveryCost" Type="float" />
         </EntityType>
         <EntityType Name="tb_District">
           <Key>
@@ -304,6 +306,7 @@
           <Property Name="ProductSubCate2" Type="bigint" Nullable="false" />
           <Property Name="ProductSubCate3" Type="bigint" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ProductValue" Type="float" />
         </EntityType>
         <EntityType Name="tb_ProductAccessorySelection">
           <Key>
@@ -329,7 +332,7 @@
           </Key>
           <Property Name="ImageID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="bigint" Nullable="false" />
-          <Property Name="ImageName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tb_ProductHomeProductGroup">
           <Key>
@@ -374,6 +377,8 @@
           <Property Name="ServiceSelectionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceName" Type="nvarchar" MaxLength="200" />
           <Property Name="ServiceDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="ServiceCost" Type="float" />
+          <Property Name="SortBy" Type="int" />
         </EntityType>
         <EntityType Name="tb_SiteMap">
           <Key>
@@ -662,6 +667,8 @@
           <Property Name="DeliverySelectionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DeliveryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SortBy" Type="Int32" />
+          <Property Name="DeliveryCost" Type="Double" />
         </EntityType>
         <EntityType Name="tb_District">
           <Key>
@@ -807,6 +814,7 @@
           <Property Name="ProductSubCate2" Type="Int64" Nullable="false" />
           <Property Name="ProductSubCate3" Type="Int64" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ProductValue" Type="Double" />
         </EntityType>
         <EntityType Name="tb_ProductAccessorySelection">
           <Key>
@@ -832,7 +840,7 @@
           </Key>
           <Property Name="ImageID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int64" Nullable="false" />
-          <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_ProductHomeProductGroup">
           <Key>
@@ -879,6 +887,8 @@
           <Property Name="ServiceSelectionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ServiceDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceCost" Type="Double" />
+          <Property Name="SortBy" Type="Int32" />
         </EntityType>
         <EntityType Name="tb_SiteMap">
           <Key>
@@ -1175,6 +1185,8 @@
           <EntitySetMapping Name="tb_DeliverySelection">
             <EntityTypeMapping TypeName="savinaModel.tb_DeliverySelection">
               <MappingFragment StoreEntitySet="tb_DeliverySelection">
+                <ScalarProperty Name="DeliveryCost" ColumnName="DeliveryCost" />
+                <ScalarProperty Name="SortBy" ColumnName="SortBy" />
                 <ScalarProperty Name="DeliverySelectionID" ColumnName="DeliverySelectionID" />
                 <ScalarProperty Name="DeliveryName" ColumnName="DeliveryName" />
                 <ScalarProperty Name="DeliveryDescription" ColumnName="DeliveryDescription" />
@@ -1312,6 +1324,7 @@
           <EntitySetMapping Name="tb_Product">
             <EntityTypeMapping TypeName="savinaModel.tb_Product">
               <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="ProductValue" ColumnName="ProductValue" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -1358,9 +1371,9 @@
           <EntitySetMapping Name="tb_ProductGallery">
             <EntityTypeMapping TypeName="savinaModel.tb_ProductGallery">
               <MappingFragment StoreEntitySet="tb_ProductGallery">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="ImageID" ColumnName="ImageID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1406,6 +1419,8 @@
           <EntitySetMapping Name="tb_ServiceSelection">
             <EntityTypeMapping TypeName="savinaModel.tb_ServiceSelection">
               <MappingFragment StoreEntitySet="tb_ServiceSelection">
+                <ScalarProperty Name="SortBy" ColumnName="SortBy" />
+                <ScalarProperty Name="ServiceCost" ColumnName="ServiceCost" />
                 <ScalarProperty Name="ServiceSelectionID" ColumnName="ServiceSelectionID" />
                 <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
                 <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
