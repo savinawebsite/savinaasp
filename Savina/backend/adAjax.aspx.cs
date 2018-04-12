@@ -18,6 +18,47 @@ public partial class backend_adAjax : System.Web.UI.Page
             string action = Request.QueryString["action"].ToString();
             switch (action)
             {
+                case "editSubCate1":
+                    {
+                        String html = "";
+                        try
+                        {
+                            String subCat1Name = Request.QueryString["subCat1Name"].ToString();
+                            String subCat1Desc = Request.QueryString["subCat1Desc"].ToString();
+                            byte subCat1Sort = 0;
+                            if (Request.QueryString["subCat1Sort"].ToString() != null)
+                            {
+                                subCat1Sort = byte.Parse(Request.QueryString["subCat1Sort"].ToString());
+                            }
+                            int mainCatID = 0;
+                            if (Request.QueryString["mainCatID"].ToString() != null)
+                            {
+                                mainCatID = int.Parse(Request.QueryString["mainCatID"].ToString());
+                            }
+                            int subCate1ID = 0;
+                            if (Request.QueryString["subCate1ID"].ToString() != null)
+                            {
+                                subCate1ID = int.Parse(Request.QueryString["subCate1ID"].ToString());
+                            }
+
+                            //update to Database
+                            var update = db.tb_CategorySub1.Where(t => t.SubCate1ID == subCate1ID).FirstOrDefault();
+                            update.SubCate1Name = subCat1Name;
+                            update.SubCate1Desc = subCat1Desc;
+                            update.Sort = subCat1Sort;
+                            update.MainCateID = mainCatID;
+                            db.SaveChanges();
+
+                            html = adGenerate.getSubCat1List();
+                        }
+                        catch (Exception exp)
+                        {
+                            html = "error";
+                        }
+                        Response.Write(html);
+                    }
+                    break;
+
                 case "createSubCate1":
                     {
                         String html = "";

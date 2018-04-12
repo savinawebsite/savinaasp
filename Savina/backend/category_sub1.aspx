@@ -80,29 +80,41 @@
                       xmlhttp.send();
                   }
                   if (actionType == 'edit') {
-                      var cateName = $('#ipCateName').val();
-                      var desc = $('#ipDesc').val();
-                      var cateSort = $('#ipSort').val();
-                      var cateID = $('#cateID').val();
-                      var xmlhttp;
-                      if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-                          xmlhttp = new XMLHttpRequest();
-                      }
-                      else {// code for IE6, IE5
-                          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                      }
-                      xmlhttp.onreadystatechange = function () {
-                          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                              if (xmlhttp.responseText != "error") {
-                                  //edit success
-                                  ResetView()
-                                  $('#btnCreate').html('Tạo');
-                                  $('#ContentPlaceHolder1_dvMainCateList').html(xmlhttp.responseText);
+                      var subCate1ID = $('#subCate1ID').val();
+                      var subCat1Name = $('#ipSubCat1Name').val();
+                      var subCat1Desc = $('#ipSubCat1Desc').val();
+                      var subCat1Sort = $('#ipSubCat1Sort').val();
+                      var mainCatID = $('#sltMainCate').val()
+                      if (subCat1Name != '' && subCat1Desc != '' && subCat1Sort != 0) {
+                          if (mainCatID != -1) {
+                              var xmlhttp;
+                              if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                                  xmlhttp = new XMLHttpRequest();
                               }
+                              else {// code for IE6, IE5
+                                  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                              }
+                              xmlhttp.onreadystatechange = function () {
+                                  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                      if (xmlhttp.responseText != "error") {
+                                          //edit sub cate 1 success
+                                          ResetView()
+                                          $('#ContentPlaceHolder1_dvSubCate1List').html(xmlhttp.responseText);
+                                      }
+                                  }
+                              }
+                              xmlhttp.open("GET", "../backend/adAjax.aspx?action=editSubCate1&subCate1ID=" + subCate1ID + "&subCat1Name=" + subCat1Name + "&subCat1Desc=" + subCat1Desc + "&subCat1Sort=" + subCat1Sort + "&mainCatID=" + mainCatID + "", true);
+                              xmlhttp.send();
+                          } else {
+                              $(".modal-body").html("Vui lòng chọn một category");
+                              $("#alertDialog").modal();
+                              return false;
                           }
+                      } else {
+                          $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                          $("#alertDialog").modal();
+                          return false;
                       }
-                      xmlhttp.open("GET", "../backend/adAjax.aspx?action=editMainCate&cateID=" + cateID + "&cateName=" + cateName + "&desc=" + desc + "&cateSort=" + cateSort + "", true);
-                      xmlhttp.send();
                   }
                   $('#confirm-dialog').modal('hide');
               });
@@ -113,14 +125,20 @@
                   $('#ipSubCat1Sort').val(subCate1Sort);
                   $('#subCate1ID').val(subCate1ID);
                   $('#cateID').val(cateID);
+                  $("#sltMainCate").val(cateID).change();
                   $('#actionType').val('edit');
                   $('#btnCreate').html('Sửa');
               }
 
-              function Delete(elmnt, cateID, cateName) {
+              function EditConfirm(subCate1Name) {
+                  $(".modal-body").html("Bạn chắc chắn muốn sửa mục \"" + subCate1Name + "\"?");
+                  $("#confirm-dialog").modal();
+              }
+
+              function Delete(elmnt, subCate1ID, cateName) {
                   $(".modal-body").html("Bạn chắc chắn muốn xóa mục \"" + cateName + "\"?");
                   $("#confirm-dialog").modal();
-                  $('#cateID').val(cateID);
+                  $('#subCate1ID').val(subCate1ID);
                   $('#actionType').val('delete');
               }
 
@@ -131,6 +149,7 @@
                   $('#subCate1ID').val('');
                   $('#cateID').val('');
                   $('#actionType').val('');
+                  $('#btnCreate').html('Tạo');
                   fetchMainCate();
               }
 
@@ -165,7 +184,7 @@
                                   xmlhttp.send();
                               }
                               if (action == "Sửa") {
-                                  EditConfirm(cateName)
+                                  EditConfirm(subCat1Name)
                               }
                           } else {
                               $(".modal-body").html("Vui lòng chọn một category");
