@@ -27,8 +27,8 @@
         <EntityTypeShape EntityType="savinaModel.tb_OrderTrackingUpdate" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Permission" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Product" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="savinaModel.tb_ProductAccessorySelection" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="savinaModel.tb_ProductAccompany" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ProductAccessorySelection" Width="1.5" PointX="6.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_ProductAccompany" Width="1.5" PointX="8.125" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_ProductGallery" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_ProductHomeProductGroup" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Promotion" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />

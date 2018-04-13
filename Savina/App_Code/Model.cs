@@ -358,11 +358,13 @@ public partial class tb_HomeBanner
 
     public long HomeBannerID { get; set; }
 
-    public string BannerName { get; set; }
-
     public string BannerDescription { get; set; }
 
-    public string BannerLink { get; set; }
+    public string BannerGroup { get; set; }
+
+    public string BannerLandingpage { get; set; }
+
+    public string BannerPath { get; set; }
 
 }
 
@@ -372,11 +374,15 @@ public partial class tb_HomeMainBanner
 
     public long HomeMainBannerID { get; set; }
 
-    public string ImageALT { get; set; }
-
-    public string ImageName { get; set; }
-
     public Nullable<byte> Sort { get; set; }
+
+    public string BannerPath { get; set; }
+
+    public string BannerDescription { get; set; }
+
+    public Nullable<byte> SortBy { get; set; }
+
+    public string BannerLandingpage { get; set; }
 
 }
 
@@ -574,6 +580,12 @@ public partial class tb_ProductAccessorySelection
 
     public string ProductCode { get; set; }
 
+    public Nullable<double> PricePerBlock { get; set; }
+
+    public Nullable<double> PricePerDay { get; set; }
+
+    public Nullable<double> ProductValue { get; set; }
+
 }
 
 
@@ -587,6 +599,8 @@ public partial class tb_ProductAccompany
     public string ProductName { get; set; }
 
     public string ProductCode { get; set; }
+
+    public string productAccAvatar { get; set; }
 
 }
 

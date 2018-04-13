@@ -190,18 +190,20 @@
             <PropertyRef Name="HomeBannerID" />
           </Key>
           <Property Name="HomeBannerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BannerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BannerGroup" Type="nvarchar" MaxLength="50" />
           <Property Name="BannerDescription" Type="nvarchar" MaxLength="100" />
-          <Property Name="BannerLink" Type="varchar" MaxLength="100" />
+          <Property Name="BannerLandingpage" Type="varchar" MaxLength="100" />
+          <Property Name="BannerPath" Type="ntext" />
         </EntityType>
         <EntityType Name="tb_HomeMainBanner">
           <Key>
             <PropertyRef Name="HomeMainBannerID" />
           </Key>
           <Property Name="HomeMainBannerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ImageALT" Type="nvarchar" MaxLength="100" />
-          <Property Name="ImageName" Type="nvarchar" MaxLength="250" />
-          <Property Name="Sort" Type="tinyint" />
+          <Property Name="BannerPath" Type="nvarchar" MaxLength="100" />
+          <Property Name="BannerDescription" Type="nvarchar" MaxLength="250" />
+          <Property Name="SortBy" Type="tinyint" />
+          <Property Name="BannerLandingpage" Type="ntext" />
         </EntityType>
         <EntityType Name="tb_HomeProductGroup">
           <Key>
@@ -316,6 +318,9 @@
           <Property Name="ProductID" Type="bigint" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="PricePerBlock" Type="float" />
+          <Property Name="PricePerDay" Type="float" />
+          <Property Name="ProductValue" Type="float" />
         </EntityType>
         <EntityType Name="tb_ProductAccompany">
           <Key>
@@ -325,6 +330,7 @@
           <Property Name="ProductID" Type="bigint" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="productAccAvatar" Type="ntext" />
         </EntityType>
         <EntityType Name="tb_ProductGallery">
           <Key>
@@ -698,18 +704,21 @@
             <PropertyRef Name="HomeBannerID" />
           </Key>
           <Property Name="HomeBannerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BannerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BannerDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="BannerLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BannerGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BannerLandingpage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BannerPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_HomeMainBanner">
           <Key>
             <PropertyRef Name="HomeMainBannerID" />
           </Key>
           <Property Name="HomeMainBannerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImageALT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Sort" Type="Byte" />
+          <Property Name="BannerPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BannerDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SortBy" Type="Byte" />
+          <Property Name="BannerLandingpage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_HomeProductGroup">
           <Key>
@@ -824,6 +833,9 @@
           <Property Name="ProductID" Type="Int64" Nullable="false" />
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PricePerBlock" Type="Double" />
+          <Property Name="PricePerDay" Type="Double" />
+          <Property Name="ProductValue" Type="Double" />
         </EntityType>
         <EntityType Name="tb_ProductAccompany">
           <Key>
@@ -833,6 +845,7 @@
           <Property Name="ProductID" Type="Int64" />
           <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="productAccAvatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_ProductGallery">
           <Key>
@@ -1219,21 +1232,23 @@
           <EntitySetMapping Name="tb_HomeBanner">
             <EntityTypeMapping TypeName="savinaModel.tb_HomeBanner">
               <MappingFragment StoreEntitySet="tb_HomeBanner">
+                <ScalarProperty Name="BannerPath" ColumnName="BannerPath" />
+                <ScalarProperty Name="BannerLandingpage" ColumnName="BannerLandingpage" />
+                <ScalarProperty Name="BannerGroup" ColumnName="BannerGroup" />
                 <ScalarProperty Name="HomeBannerID" ColumnName="HomeBannerID" />
-                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
                 <ScalarProperty Name="BannerDescription" ColumnName="BannerDescription" />
-                <ScalarProperty Name="BannerLink" ColumnName="BannerLink" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_HomeMainBanner">
             <EntityTypeMapping TypeName="savinaModel.tb_HomeMainBanner">
               <MappingFragment StoreEntitySet="tb_HomeMainBanner">
+                <ScalarProperty Name="BannerLandingpage" ColumnName="BannerLandingpage" />
+                <ScalarProperty Name="SortBy" ColumnName="SortBy" />
+                <ScalarProperty Name="BannerDescription" ColumnName="BannerDescription" />
+                <ScalarProperty Name="BannerPath" ColumnName="BannerPath" />
                 <ScalarProperty Name="HomeMainBannerID" ColumnName="HomeMainBannerID" />
-                <ScalarProperty Name="ImageALT" ColumnName="ImageALT" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_HomeProductGroup">
@@ -1351,6 +1366,9 @@
           <EntitySetMapping Name="tb_ProductAccessorySelection">
             <EntityTypeMapping TypeName="savinaModel.tb_ProductAccessorySelection">
               <MappingFragment StoreEntitySet="tb_ProductAccessorySelection">
+                <ScalarProperty Name="ProductValue" ColumnName="ProductValue" />
+                <ScalarProperty Name="PricePerDay" ColumnName="PricePerDay" />
+                <ScalarProperty Name="PricePerBlock" ColumnName="PricePerBlock" />
                 <ScalarProperty Name="ProductAccessorySelectionID" ColumnName="ProductAccessorySelectionID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -1361,6 +1379,7 @@
           <EntitySetMapping Name="tb_ProductAccompany">
             <EntityTypeMapping TypeName="savinaModel.tb_ProductAccompany">
               <MappingFragment StoreEntitySet="tb_ProductAccompany">
+                <ScalarProperty Name="productAccAvatar" ColumnName="productAccAvatar" />
                 <ScalarProperty Name="ProductAccompany" ColumnName="ProductAccompany" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
