@@ -3,7 +3,35 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- MODEL DIALOG CONFIRM -->
+      <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" style="text-align:center;">SAVINA</h4>
+                </div>
+            
+                <div class="modal-body">
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnCancel" data-dismiss="modal">Hủy</button>
+                    <a class="btn btn-danger btn-ok" id="btnConfirm">Đồng ý</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIDDEN FIELD -->
+     <input type="hidden" id="subCate2ID" /> 
+      <input type="hidden" id="subCate1ID" /> 
+      <input type="hidden" id="cateID" />
+      <input type="hidden" id="actionType" /> 
+      <input type="hidden" value="false" id="loadSubCate1Flag" />  
+
+     
          <script type="text/javascript"> 
               $( document ).ready(function() {
                   fetchMainCate();
@@ -12,6 +40,12 @@
 
               function mainCateOnChange(sel) {
                   fetchSubCate1(sel.value);
+                  var loadSubCate1Flag = $("#loadSubCate1Flag").val();
+                  if (loadSubCate1Flag == 'true') {
+                      var subCate1ID = $('#subCate1ID').val();
+                      $("#sltSubCate1").val(subCate1ID).change();
+                      $("#loadSubCate1Flag").val('false');
+                  }
               }
 
               //get MAIN CATE list and fetch to select ui
@@ -53,6 +87,160 @@
                   xmlhttp.open("GET", "../backend/adAjax.aspx?action=fetchSubCate1&mainCateID=" + mainCateID + "", true);
                   xmlhttp.send();
               }
+
+              $('#btnCancel').click(function () {
+                  ResetView();
+              });
+
+              $('#btnConfirm').click(function () {
+                  var actionType = $('#actionType').val();
+                  if (actionType == 'delete') {
+                      var subCate2ID = $('#subCate2ID').val();
+                      var xmlhttp;
+                      if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                          xmlhttp = new XMLHttpRequest();
+                      }
+                      else {// code for IE6, IE5
+                          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                      xmlhttp.onreadystatechange = function () {
+                          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                              if (xmlhttp.responseText != "error") {
+                                  //delete success
+                                  ResetView()
+                                  $('#ContentPlaceHolder1_dvSubCate2List').html(xmlhttp.responseText);
+                              }
+                          }
+                      }
+                      xmlhttp.open("GET", "../backend/adAjax.aspx?action=deleteSubCate2&subCate2ID=" + subCate2ID + "", true);
+                      xmlhttp.send();
+                  }
+                  if (actionType == 'edit') {
+                      var subCate1ID = $('#subCate1ID').val();
+                      var subCat1Name = $('#ipSubCat1Name').val();
+                      var subCat1Desc = $('#ipSubCat1Desc').val();
+                      var subCat1Sort = $('#ipSubCat1Sort').val();
+                      var mainCatID = $('#sltMainCate').val()
+                      if (subCat1Name != '' && subCat1Desc != '' && subCat1Sort != 0) {
+                          if (mainCatID != -1) {
+                              var xmlhttp;
+                              if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                                  xmlhttp = new XMLHttpRequest();
+                              }
+                              else {// code for IE6, IE5
+                                  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                              }
+                              xmlhttp.onreadystatechange = function () {
+                                  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                      if (xmlhttp.responseText != "error") {
+                                          //edit sub cate 1 success
+                                          ResetView()
+                                          $('#ContentPlaceHolder1_dvSubCate1List').html(xmlhttp.responseText);
+                                      }
+                                  }
+                              }
+                              xmlhttp.open("GET", "../backend/adAjax.aspx?action=editSubCate1&subCate1ID=" + subCate1ID + "&subCat1Name=" + subCat1Name + "&subCat1Desc=" + subCat1Desc + "&subCat1Sort=" + subCat1Sort + "&mainCatID=" + mainCatID + "", true);
+                              xmlhttp.send();
+                          } else {
+                              $(".modal-body").html("Vui lòng chọn một category");
+                              $("#alertDialog").modal();
+                              return false;
+                          }
+                      } else {
+                          $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                          $("#alertDialog").modal();
+                          return false;
+                      }
+                  }
+                  $('#confirm-dialog').modal('hide');
+              });
+
+              function Edit(elmnt, subCate2ID, subCate2Name, subCate2Desc, subCate2Sort, mainCateID, subCate1ID) {
+                  $('#ipSubCate2Name').val(subCate2Name);
+                  $('#ipSubCate2Desc').val(subCate2Desc);
+                  $('#ipSubCate2Sort').val(subCate2Sort);
+                  $('#subCate1ID').val(subCate1ID);
+                  $('#subCate2ID').val(subCate2ID);
+                  $('#cateID').val(mainCateID);
+                  $("#loadSubCate1Flag").val('true');
+                  $("#sltMainCate").val(mainCateID).change();
+                  $('#actionType').val('edit');
+                  $('#btnCreate').html('Sửa');
+              }
+
+              function EditConfirm(subCate2Name) {
+                  $(".modal-body").html("Bạn chắc chắn muốn sửa mục \"" + subCate2Name + "\"?");
+                  $("#confirm-dialog").modal();
+              }
+
+              function Delete(elmnt, subCate2ID, subCate2Name) {
+                  $(".modal-body").html("Bạn chắc chắn muốn xóa mục \"" + subCate2Name + "\"?");
+                  $("#confirm-dialog").modal();
+                  $('#subCate2ID').val(subCate2ID);
+                  $('#actionType').val('delete');
+              }
+
+              //create subcate1 action
+              $(function () {
+                  $('#btnCreate').click(function () {
+                      var subCate2Name = $('#ipSubCate2Name').val();
+                      var subCate2Desc = $('#ipSubCate2Desc').val();
+                      var subCate2Sort = $('#ipSubCate2Sort').val();
+                      var mainCateID = $('#sltMainCate').val()
+                      var subCate1ID = $('#sltSubCate1').val()
+                      if (subCate2Name != '' && subCate2Desc != '' && subCate2Sort != 0) {
+                          if (mainCateID != -1 || subCate1ID != -1) {
+                              var action = $('#btnCreate').text();
+                              if (action == "Tạo") {
+                                  var xmlhttp;
+                                  if (window.XMLHttpRequest) {
+                                      xmlhttp = new XMLHttpRequest();
+                                  }
+                                  else {
+                                      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                  }
+                                  xmlhttp.onreadystatechange = function () {
+                                      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                          if (xmlhttp.responseText != "error") {
+                                              //create success
+                                              ResetView()
+                                              $('#ContentPlaceHolder1_dvSubCate2List').html(xmlhttp.responseText);
+                                          }
+                                      }
+                                  }
+                                  xmlhttp.open("GET", "../backend/adAjax.aspx?action=createSubCate2&subCate2Name=" + subCate2Name + "&subCate2Desc=" + subCate2Desc + "&subCate2Sort=" + subCate2Sort + "&mainCateID=" + mainCateID + "&subCate1ID=" + subCate1ID + "", true);
+                                  xmlhttp.send();
+                              }
+                              if (action == "Sửa") {
+                                  EditConfirm(subCate2Name)
+                              }
+                          } else {
+                              $(".modal-body").html("Vui lòng chọn một category và sub category");
+                              $("#alertDialog").modal();
+                              return false;
+                          }
+
+                      } else {
+                          $(".modal-body").html("Vui lòng điền đầy đủ các thông tin");
+                          $("#alertDialog").modal();
+                          return false;
+                      }
+                  });
+              });
+
+              function ResetView() {
+                  $('#ipSubCate2Name').val('');
+                  $('#ipSubCate2Desc').val('');
+                  $('#ipSubCate2Sort').val('');
+                  $('#subCate2ID').val('');
+                  $('#cateID').val('');
+                  $('#actionType').val('');
+                  $('#btnCreate').html('Tạo');
+                  fetchMainCate();
+                  fetchSubCate1(0);
+              }
+
+
 
           </script>
 
@@ -105,14 +293,14 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên Category Sub-2 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="text" id="ipSubCate2Name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Mô tả nhanh <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="text" id="ipSubCate2Desc" name="last-name" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="form-group">
@@ -128,7 +316,7 @@
                               </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Thuộc Sub Category 1</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Thuộc Sub Category 1 <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12" id="dvSubCate1">
                                   <!--<select class="form-control">
                                     <option>Lựa chọn Category-1</option>
@@ -143,7 +331,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sort-arrange">Sort thứ tự <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="number" id="ipSort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
+                              <input type="number" id="ipSubCate2Sort" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
                             </div>
                           </div>
                           <div class="ln_solid"></div>
@@ -151,7 +339,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                               <button class="btn btn-primary" type="button">Hủy</button>
                               <button class="btn btn-primary" type="reset">Reset</button>
-                              <button type="submit" class="btn btn-success">Tạo</button>
+                              <button id="btnCreate" type="button" class="btn btn-success">Tạo</button>
                             </div>
                           </div>
     
@@ -175,12 +363,13 @@
                         </ul>
                         <div class="clearfix"></div>
                       </div>
-                      <div class="x_content">
+                      <div class="x_content" id="dvSubCate2List" runat="server">
+                          <!--
                         <table id="datatable" class="table table-striped table-bordered">
                           <thead>
                             <tr>
                               <th>Tên Sub-2</th>
-                              <th>Mổ tả nhanh</th>
+                              <th>Mô tả nhanh</th>
                               <th>Thuộc Sub-1</th>
                               <th>Thuộc MainCategory</th>
                               <th>Tình trạng</th>
@@ -212,6 +401,7 @@
                             </tr>                                                     
                           </tbody>
                         </table>
+                          -->
                       </div>
                     </div>
                   </div>  <!-- /Table -->

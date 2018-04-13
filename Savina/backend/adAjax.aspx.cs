@@ -18,6 +18,80 @@ public partial class backend_adAjax : System.Web.UI.Page
             string action = Request.QueryString["action"].ToString();
             switch (action)
             {
+                #region CREATE SUBCATE2
+                case "createSubCate2":
+               {
+                String html = "";
+                try
+                {
+                    String subCate2Name = Request.QueryString["subCate2Name"].ToString();
+                    String subCate2Desc = Request.QueryString["subCate2Desc"].ToString();
+                    byte subCate2Sort = 0;
+                    if (Request.QueryString["subCate2Sort"].ToString() != null)
+                    {
+                                subCate2Sort = byte.Parse(Request.QueryString["subCate2Sort"].ToString());
+                    }
+                    int mainCateID = 0;
+                    if (Request.QueryString["mainCateID"].ToString() != null)
+                    {
+                                mainCateID = int.Parse(Request.QueryString["mainCateID"].ToString());
+                    }
+                    int subCate1ID = 0;
+                    if (Request.QueryString["subCate1ID"].ToString() != null)
+                    {
+                        subCate1ID = int.Parse(Request.QueryString["subCate1ID"].ToString());
+                    }
+
+                            //Insert to Database
+                     tb_CategorySub2 subCat1 = new tb_CategorySub2();
+                    subCat1.SubCate1ID = subCate1ID;
+                    subCat1.SubCate2Name = subCate2Name;
+                    subCat1.SubCate2Desc = subCate2Desc;
+                    subCat1.Sort = subCate2Sort;
+                    subCat1.CreateDate = DateTime.Now;
+                    subCat1.IsDeleted = false;
+                    subCat1.IsDisplay = true;
+                    db.tb_CategorySub2.Add(subCat1);
+                    db.SaveChanges();
+
+                    html = adGenerate.getSubCate2List();
+
+                }
+                catch (Exception exp)
+                {
+                    html = "error";
+                }
+                Response.Write(html);
+            }
+            break;
+                #endregion
+
+                #region DELETE SUBCATE2
+                case "deleteSubCate2":
+                    {
+                        String subCate2HTML = "";
+                        try
+                        {
+                            int subCate2ID = 0;
+                            if (Request.QueryString["subCate2ID"].ToString() != null)
+                            {
+                                subCate2ID = int.Parse(Request.QueryString["subCate2ID"].ToString());
+                                tb_CategorySub2 t = (tb_CategorySub2)db.tb_CategorySub2.Where(b => b.SubCate2ID == subCate2ID).First();
+                                db.tb_CategorySub2.Remove(t);
+                                db.SaveChanges();
+                            }
+
+                            subCate2HTML = adGenerate.getSubCate2List();
+                        }
+                        catch (Exception exp)
+                        {
+                            subCate2HTML = "error";
+                        }
+                        Response.Write(subCate2HTML);
+                    }
+                    break;
+                #endregion
+
                 #region EDIT SUBCATE1
                 case "editSubCate1":
                     {

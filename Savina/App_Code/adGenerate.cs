@@ -45,6 +45,67 @@ public class adGenerate
         return html;
     }
 
+
+    public static String getSubCate2List()
+    {
+        string html = "";
+        var query = (from m in db.tb_CategoryMain
+                     join s1 in db.tb_CategorySub1 on m.MainCateID equals s1.MainCateID
+                     join s2 in db.tb_CategorySub2 on s1.SubCate1ID equals s2.SubCate1ID
+                     select new
+                     {
+                         m.MainCateName,
+                         s1.MainCateID,
+                         s1.SubCate1Name,
+                         s2.SubCate1ID,
+                         s2.SubCate2ID,
+                         s2.SubCate2Name,
+                         s2.SubCate2Desc,
+                         s1.IsDisplay,
+                         s1.CreateDate,
+                         s1.Sort 
+                     });
+
+        html += "<table id = \"datatable\" class=\"table table-striped table-bordered\">";
+        html += "<thead>";
+        html += "<tr>";
+        html += "<th>Tên Sub-2</th>";
+        html += "<th>Mô tả nhanh</th>";
+        html += "<th>Thuộc Sub-1</th>";
+        html += "<th>Thuộc MainCategory</th>";
+        html += "<th>Tình trạng</th>";
+        html += "<th>Ngày tạo</th>";
+        html += "<th>Thao tác</th>";
+        html += "</tr>";
+        html += "</thead>";
+        html += "<tbody>";
+
+        foreach (var item in query)
+        {
+            html += "<tr>";
+            html += "<td>" + item.SubCate2Name + "</td>";
+            html += "<td>" + item.SubCate2Desc + "</td>";
+            html += "<td>" + item.SubCate1Name + "</td>";
+            html += "<td>" + item.MainCateName + "</td>";
+            if (item.IsDisplay == true)
+            {
+                html += "<td>Enable</td>";
+            }
+            else
+            {
+                html += "<td>Disable</td>";
+            }
+            html += "<td>" + item.CreateDate + "</td>";
+            html += "<td><a href = \"#\" class=\"btn btn-info btn-xs purple\" onclick=\"Edit(this, '" + item.SubCate2ID.ToString() + "','" + item.SubCate2Name.ToString() + "','" + item.SubCate2Desc.ToString() + "','" + item.Sort.ToString() + "','" + item.MainCateID.ToString() + "','"+item.SubCate1ID.ToString()+"')\"><i class=\"fa fa-edit\"></i>&nbspEdit</a>";
+            html += "<span><a href = \"#\" class=\"btn btn-danger btn-xs black\" onclick=\"Delete(this,'" + item.SubCate2ID.ToString() + "','" + item.SubCate2Name.ToString() + "')\"><i class=\"fa fa-edit\"></i>&nbspDelete</a></span></td>";
+            html += "</tr>";
+        }
+        html += "</tbody>";
+        html += "</table>";
+
+        return html;
+    }
+
     public static String getSubCat1List()
     {
         string html = "";
@@ -65,7 +126,7 @@ public class adGenerate
         html += "<thead>";
         html += "<tr>";
         html += "<th>Tên Sub-1</th>";
-        html += "<th>Mổ tả nhanh</th>";
+        html += "<th>Mô tả nhanh</th>";
         html += "<th>Thuộc MainCategory</th>";
         html += "<th>Tình trạng</th>";
         html += "<th>Ngày tạo</th>";

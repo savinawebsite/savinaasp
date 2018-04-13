@@ -176,6 +176,30 @@
 		<!-- header -->
 	</div>
 </header>
+<script type="text/javascript"> 
+    $( document ).ready(function() {
+        getCategoryList();
+    });
+
+    function getCategoryList() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                if (xmlhttp.responseText != "error") {
+                    $('#ulMainCateList').html(xmlhttp.responseText);
+                }
+            }
+        }
+        xmlhttp.open("GET", "../Ajax.aspx?action=getCategoryList", true);
+        xmlhttp.send();
+    }
+</script>
     <div id="navigation">
 		<!-- container -->
 		<div class="container">
@@ -183,11 +207,18 @@
 				<!-- category nav -->
 				<div class="category-nav show-on-click">
 					<span class="category-header">Categories <i class="fa fa-list"></i></span>
-					<ul class="category-list">
+					<ul class="category-list" id="ulMainCateList" runat="server">
+
+                        <!--
 						<li class="dropdown side-dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-gear category-icon"></i>CÔNG CỤ, DỤNG CỤ</span> <i class="fa fa-angle-right"></i></a>
-							<div class="custom-menu">
+							
+                            
+                            
+                            
+                            <div class="custom-menu">
 								<div class="row">
+
 									<div class="col-md-4">
 										<ul class="list-links">
 											<li>
@@ -197,6 +228,9 @@
 										</ul>
 										<hr class="hidden-md hidden-lg">
 									</div>
+
+
+
 									<div class="col-md-4">
 										<ul class="list-links">
 											<li>
@@ -206,6 +240,8 @@
 										</ul>
 										<hr class="hidden-md hidden-lg">
 									</div>
+
+
 									<div class="col-md-4">
 										<ul class="list-links">
 											<li>
@@ -215,6 +251,11 @@
 										</ul>
 									</div>
 								</div>
+
+
+
+
+
 								<div class="row hidden-sm hidden-xs">
 									<div class="col-md-12">
 										<hr>
@@ -227,8 +268,23 @@
 										</a>
 									</div>
 								</div>
+
+
+
+
 							</div>
-						</li>						
+
+
+
+
+
+
+						</li>
+                        
+                        
+                        
+                        
+                        						
 						<li class="dropdown side-dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span><i class="fa fa-automobile category-icon"></i>XE CỘ</span> <i class="fa fa-angle-right"></i></a>
 							<div class="custom-menu">
@@ -292,9 +348,16 @@
 						<li><a href="#"><span><i class="fa fa-desktop category-icon"></i>MÁY TÍNH, LINH KIỆN</span></a></li>
 						<li><a href="#"><span><i class="fa fa-diamond category-icon"></i>THỜI TRANG, PHỤ KIỆN</span></a></li>
 						<li><a href="#"><span><i class="fa fa-hospital-o category-icon"></i>NỘI THẤT, NGOẠI THẤT</span></a></li>
+                       -->
 					</ul>
 				</div>
 				<!-- /category nav -->
+
+
+
+
+
+
 
 				<!-- menu nav -->
 				<div class="menu-nav">
