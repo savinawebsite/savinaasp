@@ -78,33 +78,19 @@ public class Generate
                     }
                     result += "</div>";
 
+                    result += "<div class=\"row hidden-sm hidden-xs\">";
+                    result += "<div class=\"col-md-12\">";
+                    result += "<hr>";
+                    result += "<a class=\"banner banner-1\" href=\"#\">";
+                    result += "<img src = \"./img/banner_congcu.jpg\" alt=\"\">";
+                    result += "<div class=\"banner-caption text-center\">";
+                    result += "<h2 class=\"white-color\">NEW COLLECTION</h2>";
+                    result += "<h3 class=\"white-color font-weak\">HOT DEAL</h3>";
+                    result += "</div>";
+                    result += "</a>";
+                    result += "</div>";
+                    result += "</div>";
 
-
-                    string html1 = "";
-                    html1 += "<div class=\"row hidden-sm hidden-xs\">";
-					html1 += "				<div class="col-md-12">
-										<hr>
-										<a class="banner banner-1" href="#">
-											<img src = "./img/banner_congcu.jpg" alt="">
-											<div class="banner-caption text-center">
-												<h2 class="white-color">NEW COLLECTION</h2>
-												<h3 class="white-color font-weak">HOT DEAL</h3>
-											</div>
-										</a>
-									</div>
-								</div>
-
-
-
-
-
-
-
-
-
-
-
-                    //show image category
                     result += "</div>";
                     result += "</li>";
                 }
