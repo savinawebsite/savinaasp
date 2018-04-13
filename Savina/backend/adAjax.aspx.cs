@@ -18,6 +18,7 @@ public partial class backend_adAjax : System.Web.UI.Page
             string action = Request.QueryString["action"].ToString();
             switch (action)
             {
+                #region EDIT SUBCATE1
                 case "editSubCate1":
                     {
                         String html = "";
@@ -58,7 +59,9 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(html);
                     }
                     break;
+                #endregion
 
+                #region CREATE SUBCATE1
                 case "createSubCate1":
                     {
                         String html = "";
@@ -98,7 +101,9 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(html);
                     }
                     break;
+                #endregion
 
+                #region DELETE SUBCATE1
                 case "deleteSubCate1":
                     {
                         String subCate1HTML = "";
@@ -122,7 +127,31 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(subCate1HTML);
                     }
                     break;
+                #endregion
 
+                #region FETCH SUBCATE1
+                case "fetchSubCate1":
+                    {
+                        String subCate1ListHTML = "";
+                        try
+                        {
+                            int mainCateID = 0;
+                            if (Request.QueryString["mainCateID"].ToString() != null)
+                            {
+                                mainCateID = int.Parse(Request.QueryString["mainCateID"].ToString());
+                                subCate1ListHTML = adGenerate.getSubCate1List(mainCateID);
+                            }
+                        }
+                        catch (Exception exp)
+                        {
+                            subCate1ListHTML = "error";
+                        }
+                        Response.Write(subCate1ListHTML);
+                    }
+                    break;
+                #endregion
+
+                #region FETCH MAINCATE
                 case "fetchMainCate":
                     {
                         String mainCateListHTML = "";
@@ -141,6 +170,9 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(mainCateListHTML);
                     }
                     break;
+                #endregion
+
+                #region DELETE MAINCATE
                 case "deleteMainCate":
                     {
                         String mainCateListHTML = "";
@@ -168,7 +200,9 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(mainCateListHTML);
                     }
                     break;
+                #endregion
 
+                #region EDIT MAINCATE
                 case "editMainCate":
                     {
                         String mainCateListHTML = "";
@@ -208,7 +242,9 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(mainCateListHTML);
                     }
                     break;
+                #endregion
 
+                #region CREATE MAINCATE
                 case "createMainCate":
                     {
                         String mainCateListHTML = "";
@@ -247,9 +283,8 @@ public partial class backend_adAjax : System.Web.UI.Page
                         Response.Write(mainCateListHTML);
                     }
                     break;
+                    #endregion
             }
         }
-    }
-
-   
+    } 
 }

@@ -16,6 +16,35 @@ public class adGenerate
         //
     }
 
+    public static String getSubCate1List(int mainCateID)
+    {
+        string html = "";
+        try
+        {
+            var query = (from m in db.tb_CategorySub1
+                         where m.MainCateID == mainCateID
+                         select new
+                         {
+                             m.SubCate1ID,
+                             m.SubCate1Name
+                         });
+
+            html += "<select id=\"sltSubCate1\" class=\"form-control\">";
+            html += "<option value=\"-1\">Lựa chọn Sub Category 1</ option >";
+            foreach (var item in query)
+            {
+                html += "<option value=\"" + item.SubCate1ID + "\">" + item.SubCate1Name + "</ option >";
+            }
+            html += "</select>";
+        }
+
+        catch (Exception exp)
+        {
+            html = "error";
+        }
+        return html;
+    }
+
     public static String getSubCat1List()
     {
         string html = "";
@@ -105,7 +134,7 @@ public class adGenerate
     public static String generateHTMLMainCateSelect(List<tb_CategoryMain> tbMainCate)
     {
         string html = "";
-        html += "<select id=\"sltMainCate\" class=\"form-control\">";
+        html += "<select id=\"sltMainCate\" onchange=\"mainCateOnChange(this)\" class=\"form-control\">";
         html += "<option value=\"-1\">Lựa chọn Main Category</ option >";
         foreach (var item in tbMainCate)
         {

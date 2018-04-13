@@ -7,6 +7,7 @@
     <title>Savina Website | Admin page</title>
     <!--  jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
     <!-- Bootstrap -->   
     <link href="../backend/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
