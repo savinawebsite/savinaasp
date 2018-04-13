@@ -44,41 +44,42 @@
 				<!--  Product Details -->
 				<div class="product product-details clearfix">
 					<div class="col-md-6">
-						<div id="product-main-view" style="height: 415px;">
-							<%--<div class="product-view">
-								<img src="./img/main-product04.jpg" alt="">
+                        <div id="dvProductSlideList" runat="server">
+            
+                        </div>
+						<%--<div id="product-main-view" style="height: 415px;">
+							<div class="product-view">
+								<img src="../image_product/khoan-slide-1.jpg" alt="">
 							</div>
 							<div class="product-view">
-								<img src="./img/main-product03.jpg" alt="">
+								<img src="../image_product/khoan-slide-2.jpg" alt="">
 							</div>
 							<div class="product-view">
-								<img src="./img/main-product02.jpg" alt="">
-							</div>--%>
-							<div class="product-view">
-								<img src="./img/main-product01.jpg" alt="">
+								<img src="../image_product/khoan-slide-3.jpg" alt="">
 							</div>
 						</div>
 						<div id="product-view">
 							<div class="product-view">
-								<img src="./img/thumb-product01.jpg" alt="">
+								<img src="../image_product/khoan-slide-1.jpg" alt="">
 							</div>
 							<div class="product-view">
-								<img src="./img/thumb-product02.jpg" alt="">
+								<img src="../image_product/khoan-slide-2.jpg" alt="">
 							</div>
 							<div class="product-view">
-								<img src="./img/thumb-product03.jpg" alt="">
+								<img src="../image_product/khoan-slide-3.jpg" alt="">
 							</div>
-							<div class="product-view">
-								<img src="./img/thumb-product04.jpg" alt="">
-							</div>
-						</div>
+						</div>--%>
 					<!-- THÔNG TIN SẢN PHẨM ĐI KÈM NẾU CÓ -->	
 					<hr class="hrProductPackage"/>										
 							<h3 style="font-size:18px; margin-top:20px;">DANH SÁCH SẢN PHẨM ĐI KÈM</h3>
-							<div class="col-md-12 col-xs-12 ">
-								<div id="product-slick-7" class="product-slick"> <!--Start slide product San Pham moi-->
-									<!-- Product Single -->							
-										<div class="product product-inpackage">
+                            <div id="dvProductAccompaniedList" runat="server">
+
+							</div>
+							<%--<div class="col-md-12 col-xs-12 ">
+								<div id="product-slick-7" class="product-slick">--%> <!--Start slide product San Pham moi-->
+									
+                                    <!-- Product Single -->							
+										<%--<div class="product product-inpackage">
 											<div class="product-thumb">
 												<img src="./img/product-come01.jpg" alt="">
 											</div>
@@ -106,9 +107,19 @@
 												<h2 class="product-name" style="font-size:12px;font-weight: bold; margin-top: 5px;text-align: center;">Tắc kê</h2>
 											</div>
 										</div>							
+									<!-- /Product Single -->
+                                    <!-- Product Single -->							
+										<div class="product product-inpackage">
+											<div class="product-thumb">
+												<img src="./img/product-come02.jpg" alt="">
+											</div>
+											<div class="product-body">
+												<h2 class="product-name" style="font-size:12px;font-weight: bold; margin-top: 5px;text-align: center;">Tay cầm nhựa</h2>
+											</div>
+										</div>	--%>						
 									<!-- /Product Single -->								
-								</div>	<!-- end slide product San pham moi -->
-							</div>
+								<%--</div>	<!-- end slide product San pham moi -->
+							</div>--%>
 							<hr class="hrProductPackage"/>
 						
 					
@@ -185,7 +196,7 @@
 									<span style="padding-left:24px;">Giá thuê tạm tính:</span>
 									<span style="padding-left:31px;">Giá trị sản phẩm:</span>
 									<div class="qty-input">
-										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="product_qty" value="1" style="height: 32px; width: 55px;"/>
+										<input class="input" type="number" onchange="javascript:callMeOnChangeProductQty()" id="product_qty" value="1" style="height: 32px; width: 55px;"/>
 									</div>
 									<div class="dvPriceTamTinh dvPriceTamTinh-BookTime">
 										<p style="display:inline" id="product_temp_p1">0</p><span>&nbsp đ</span>
@@ -201,78 +212,14 @@
 							<hr class="hrProductPackage"/>
 
 							<!-- section Accessories selection -->
-							<div class="dvBookAccessory">
-								<div class="col-md-5 col-xs-12 accessories-titleBar">
-									<p class="accessories-title">Chọn thêm phụ kiện:</p>
-								</div>
-								<div class="col-md-7 col-xs-12 accessories-titleBar">
-									<p class="accessories-title">Số lượng:</p>
-									<p class="accessories-title" style="padding-left:24px;">Giá thuê tạm tính:</p>
-									<p class="accessories-title" style=" padding-left:31px;">Giá trị sản phẩm:</p>
-								</div>
-
-								<div class="col-md-5 col-xs-12 BookAccessories-productName">
-									<div class="accessories-checkbox">
-										<input type="checkbox" id="accessoriesCheckbox1" name="GiaChoThue" value="2"/>
-									</div>
-									<h3 class="productDetail-lable-accessories" style="display:inline;">Thước đo điện tử</h3>	
-								</div>
-								<div class="col-md-7 col-xs-12">
-									<div class="qty-input">
-										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="access_qty_1" value="0" style="height: 32px; width: 55px;">
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p id="access_temp_p1">0 đ</p>
-                                       <%-- accounting.formatNumber(<p id="access_temp_p1">0 đ</p>);--%>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p id="access_value_p1">0 đ</p>
-									</div>
-								</div>
-
-								<div class="col-md-5 col-xs-12 BookAccessories-productName">
-									<div class="accessories-checkbox">
-										<input type="checkbox" id="accessoriesCheckbox2" name="GiaChoThue" value="2"/>
-									</div>
-									<h3 class="productDetail-lable-accessories" style="display:inline;">Bộ mũi khoan cao cấp</h3>	
-								</div>
-								<div class="col-md-7 col-xs-12">
-									<div class="qty-input">
-										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="access_qty_2" value="0" style="height: 32px; width: 55px;"/>
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p id="access_temp_p2">0 đ</p>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p id="access_value_p2">0 đ</p>
-									</div>
-								</div>
-
-								<div class="col-md-5 col-xs-12 BookAccessories-productName">
-									<div class="accessories-checkbox">
-										<input type="checkbox" id="accessoriesCheckbox3" name="GiaChoThue" value="2">
-									</div>
-									<h3 class="productDetail-lable-accessories" style="display:inline;">Găng tay lao động</h3>	
-								</div>
-								<div class="col-md-7 col-xs-12">
-									<div class="qty-input">
-										<input class="input" type="number" onchange="javascript:callMeOnChange()" id="access_qty_3" value="0" style="height: 32px; width: 55px;">
-									</div>
-									<div class="dvPriceTamTinh" style="display: inline-block;margin-left: 20px; margin-top: 6px;">
-										<p id="access_temp_p3">0 đ</p>
-									</div>
-									<div class="dvProductValue" style="display: inline-block;margin-left: 16px;">
-										<p id="access_value_p3"> đ</p>
-									</div>
-								</div>
-							</div>
+							<div class="dvBookAccessory" id="dvProductAccessoryList" runat="server">
+                            </div>															
 							<!-- /section Accessories selection -->
 
 							<hr class="hrProductPackage"/>
 
 							<!-- section Services selection -->
 							<div class="dvBookServices" id="dvBookServices" runat="server">                          
-
 							</div>
 							<!-- /section Services selection -->
 
@@ -280,54 +227,8 @@
 
 							<!-- section Delivery selection -->
                             <div class="dvBookDelivery" id="dvBookDelivery" runat="server">                          
-
-							</div>
-							<%--    <div class="dvBookDelivery">
-									    <div class="col-md-7 col-xs-12">
-										    <div class="col-md-6 col-xs-5">
-											    <p class="delivery-title">Chọn vận chuyển:</p>
-											    <div style="padding:5px 0 5px;">
-												    <div class="accessories-checkbox" style="margin-top: 3px;">
-													    <input type="radio" id="DeliverySelect-1" onchange="javascript:callMeOnChangeDelivery()" name="Deliveryy" value="1" checked>
-												    </div>
-												    <h3 class="productDetail-lable-accessories" style="display:inline;">Giao/nhận tận nhà</h3>																	
-											    </div>
-											    <div style="padding:5px 0 5px;">
-												    <div class="accessories-checkbox">
-													    <input type="radio" id="DeliverySelect-2" onchange="javascript:callMeOnChangeDelivery()" name="Deliveryy" value="2"  >
-												    </div>
-												    <h3 class="productDetail-lable-accessories" style="display:inline;">Giao tận nhà</h3>																	
-											    </div>
-											    <div style="padding:5px 0 5px;">
-												    <div class="accessories-checkbox">
-													    <input type="radio" id="DeliverySelect-3" onchange="javascript:callMeOnChangeDelivery()" name="Deliveryy" value="3">
-												    </div>
-												    <h3 class="productDetail-lable-accessories" style="display:inline;">Tự đến lấy</h3>																	
-											    </div>	
-										    </div>
-										    <div class="col-md-6 col-xs-7">
-											    <div class="dvServiceDescription" style="margin-left:-16px;margin-top: 28px;">
-												    <P id="delivery_des_p">Vui lòng điền đầy đủ thông tin nơi nhận hàng ở Giỏ Hàng và Đặt Hàng, nhân viên chúng tôi sẽ liên hệ lại sớm nhất để xác nhận.</P>	
-											    </div>
-										    </div>								
-	
-									    </div>
-									    <div class="col-md-5">
-										    <p class="delivery-title delivery-title-price" style="margin-left:-14px;">Giá thuê tạm tính:</p>		
-	
-										    <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_1 ">
-											    <p id="delivery_cost_1_p"> </p>
-										    </div>
-                                            <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_2">
-											    <p id="delivery_cost_2_p"> </p>
-										    </div>
-                                            <div class="dvPriceTamTinh dvPriceTamTinh-Delivery delivery_cost_3">
-											    <p id="delivery_cost_3_p"> </p>
-										    </div>
-									
-									    </div>
-								    </div>--%>
-								<!-- /section Delivery selection -->
+							</div>							
+							<!-- /section Delivery selection -->
 
 								<hr class="hrProductPackage"/>	
 																									
@@ -399,136 +300,6 @@
 					</div>
 
 					<div class="col-md-12">  <!-- /Product full description tab -->
-						<%--<div class="product-tab">
-							<ul class="tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả sản phẩm</a></li>
-								<li><a data-toggle="tab" href="#tab2">Thông số kỹ thuật</a></li>
-								<li><a data-toggle="tab" href="#tab3">Hướng dẫn sử dụng</a></li>
-								<li><a data-toggle="tab" href="#tab4">Reviews (3)</a></li>
-							</ul>
-							<div class="tab-content">
-								<div id="tab1" class="tab-pane fade in active">
-									<p>Kính nghe nhạc Bluetooth mp3 NBC BT-2 vừa bảo vệ đôi mắt vừa tích hợp tính năng nghe nhạc, kết nối điện thoại giúp bạn giải trí không giới hạn đồng thời không bỏ lỡ bất kỳ cuộc gọi quan trọng nào.</br>
-										Bluetooth: V4.1 + EDR Khoảng cách: 10m Thời gian làm việc liên tục: 4 tiếng</br>
-										Chế độ chờ: tương đương 100 giờ Sạc lại: khoảng 2 tiếng Công suất Pin: 130mA</br>
-									</p>
-								</div>
-								<div id="tab2" class="tab-pane fade in active">
-									<p>Màu sắc: Đen</br>
-										Loại kính: Kính bluetooth</br>
-										Phương thức bảo hành: Bằng tem bảo hành</br>
-										Bảo hành: 6 tháng</br>
-									</p>
-									<!-- <img src="/img/kinhbluetooth.jpg" alt="Mắt Kính Nghe Nhạc Bluetooth 15"> -->
-								</div>
-								<div id="tab3" class="tab-pane fade in active">
-									<h3 style="margin-bottom: 40px;font-size: 18px;">HƯỚNG DẪN SỬ DỤNG SẢN PHẨM GỒM VIDEO VÀ MÔ TẢ</h3>
-									<div class="col-md-5 col-sm-6">
-										<p>Hướng dẫn dùng sản phẩm dòng 1</p>
-										<p>Welcome to Sense Property, the leading Bangkok property agent dedicated to helping expats and international clients find the best properties for rent, for sale and to renovate in Bangkok. With the support of our highly experienced team, you'll enjoy access to the highest quality condos, apartments, houses, land and commercial properties throughout Bangkok and greater Thailand.</p>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<!-- <iframe width="380" height="300" src="https://www.youtube.com/embed/tV1A51hLGZk" style="height:255px; width: 365px; margin-left:26px;"></iframe> -->
-									</div>			
-								</div>
-								<div id="tab4" class="tab-pane fade in">
-									<div class="row">
-										<div class="col-md-6">
-											<div class="product-reviews">
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<div class="single-review">
-													<div class="review-heading">
-														<div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-														<div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0 PM</a></div>
-														<div class="review-rating pull-right">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o empty"></i>
-														</div>
-													</div>
-													<div class="review-body">
-														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute
-															irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-													</div>
-												</div>
-
-												<ul class="reviews-pages">
-													<li class="active">1</li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<h4 class="text-uppercase">Write Your Review</h4>
-											<p>Your email address will not be published.</p>
-											<form class="review-form">
-												<div class="form-group">
-													<input class="input" type="text" placeholder="Your Name" />
-												</div>
-												<div class="form-group">
-													<input class="input" type="email" placeholder="Email Address" />
-												</div>
-												<div class="form-group">
-													<textarea class="input" placeholder="Your review"></textarea>
-												</div>
-												<div class="form-group">
-													<div class="input-rating">
-														<strong class="text-uppercase">Your Rating: </strong>
-														<div class="stars">
-															<input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-															<input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-															<input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-															<input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-															<input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
-														</div>
-													</div>
-												</div>
-												<button class="primary-btn">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>--%>
                         <div class="fullDescription-tab-dynamic" role="tabpanel" data-example-id="togglable-tabs">
                                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                   <li role="presentation" class="active"><a href="#tab_content_fullDescription" role="tab" id="fullDescription-tab"  data-toggle="tab" aria-expanded="true">MÔ TẢ SẢN PHẨM</a>
@@ -540,14 +311,14 @@
                                 </ul>
                                  <div id="myTabContent" class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content_fullDescription" aria-labelledby="home-tab" style="margin-top:20px"> <!-- Tab Mo Ta San Pham --> 
-                                           <p>Kính nghe nhạc Bluetooth mp3 NBC BT-2 vừa bảo vệ đôi mắt vừa tích hợp tính năng nghe nhạc, kết nối điện thoại giúp bạn giải trí không giới hạn đồng thời không bỏ lỡ bất kỳ cuộc gọi quan trọng nào.</br>
+                                           <p id="productDescriptionDb" runat="server">Kính nghe nhạc Bluetooth mp3 NBC BT-2 vừa bảo vệ đôi mắt vừa tích hợp tính năng nghe nhạc, kết nối điện thoại giúp bạn giải trí không giới hạn đồng thời không bỏ lỡ bất kỳ cuộc gọi quan trọng nào.</br>
 										    Bluetooth: V4.1 + EDR Khoảng cách: 10m Thời gian làm việc liên tục: 4 tiếng</br>
 										    Chế độ chờ: tương đương 100 giờ Sạc lại: khoảng 2 tiếng Công suất Pin: 130mA</br>
-									</p>
+									        </p>
                                     </div>  <!-- /Tab Mo Ta San Pham -->
                           
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content_specification" aria-labelledby="profile-tab" style="margin-top:20px">  <!-- Tab Thong So Ky Thuat -->                           
-                                        <p>Màu sắc: Đen</br>
+                                        <p id="productSpecificationDb" runat="server">Màu sắc: Đen</br>
 										    Loại kính: Kính bluetooth</br>
 										    Phương thức bảo hành: Bằng tem bảo hành</br>
 										    Bảo hành: 6 tháng</br>
@@ -741,6 +512,29 @@
              document.getElementById("service_cost_3_p").innerHTML = accounting.formatNumber(cc);
          });
 
+         $(document).ready(function () {
+             var a = document.getElementById("access_temp_p1").innerText
+             document.getElementById("access_temp_p1").innerHTML = accounting.formatNumber(a);
+             var b = document.getElementById("access_temp_p2").innerText
+             document.getElementById("access_temp_p2").innerHTML = accounting.formatNumber(b);
+             var c = document.getElementById("access_temp_p3").innerText
+             document.getElementById("access_temp_p3").innerHTML = accounting.formatNumber(c);
+            // var d = document.getElementById("access_temp_p4").innerText
+             //document.getElementById("access_temp_p4").innerHTML = accounting.formatNumber(d);
+             //var e = document.getElementById("access_temp_p5").innerText
+             //document.getElementById("access_temp_p5").innerHTML = accounting.formatNumber(e);
+             //var aa = document.getElementById("access_value_p1").innerText
+             document.getElementById("access_value_p1").innerHTML = accounting.formatNumber(aa);
+             var bb = document.getElementById("access_value_p2").innerText
+             document.getElementById("access_value_p2").innerHTML = accounting.formatNumber(bb);
+             var cc = document.getElementById("access_value_p3").innerText
+             document.getElementById("access_value_p3").innerHTML = accounting.formatNumber(cc);
+             //var dd = document.getElementById("access_value_p4").innerText
+             //document.getElementById("access_value_p4").innerHTML = accounting.formatNumber(dd);
+             //var ee = document.getElementById("access_value_p5").innerText
+             //document.getElementById("access_value_p5").innerHTML = accounting.formatNumber(ee);
+         });
+
      
 
          $(document).ready(function () {
@@ -808,7 +602,7 @@
             }
         }
 
-        function callMeOnChange() {                     
+        function callMeOnChangeProductQty() {
             //auto update gia tam tinh va gia tri SP section MAIN PRODUCT
             var x = document.getElementById("product_qty").value;
             if (document.getElementById('GiaChoChueTheoBlock').checked) {
@@ -824,9 +618,10 @@
             //document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(y);
             //document.getElementById("product_value_p1").innerHTML = accounting.formatNumber(z);
             document.getElementById("product_temp_p1").innerHTML = y;
-            document.getElementById("product_value_p1").innerHTML = z;
+            document.getElementById("product_value_p1").innerHTML = z;           
+        }
 
-
+        function callMeOnChangeAccessory() {
             //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
             var x1 = document.getElementById("access_qty_1").value;
             var temp1 = 15000;

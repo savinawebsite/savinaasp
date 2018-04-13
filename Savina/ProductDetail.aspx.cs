@@ -11,20 +11,23 @@ public partial class ProductDetail : System.Web.UI.Page
     private savinaEntities db = new savinaEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["ProductID"] != null)
+        int productID = 0;
+        if (Request.QueryString["ProductID"].ToString() != null)
         {
-            String productKey = Request.QueryString["ProductID"].ToString();
-            getProductName(productKey);
-            getProductPercentage(productKey);
-            getProductBriefDescription(productKey);
-            getProductPrice(productKey);
-            getProductValue(productKey);
-    
+            productID = int.Parse(Request.QueryString["ProductID"].ToString());
+            //String productCode = Request.QueryString["ProductID"].ToString();
+            getProductName(productID);
+            getProductPercentage(productID);
+            getProductBriefDescription(productID);
+            getProductPrice(productID);
+            getProductValue(productID);
+            getProductAccompanied(productID);
+            getProductAccessory(productID);
+            getProducSlider(productID);
+
         }
         getProductServices();
-        getProductDelivery();
-
-
+        getProductDelivery();       
     }
 
     private void getProductServices()
@@ -139,36 +142,36 @@ public partial class ProductDetail : System.Web.UI.Page
         this.dvBookDelivery.InnerHtml = proDeliveryHtml;
     }
 
-    private void getProductName(string productCode)
+    private void getProductName(int productID)
     {
-        var product = db.tb_Product.Where(p => p.ProductCode == productCode).FirstOrDefault();
+        var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string prNameHtml = "";
         prNameHtml = product.ProductName.ToString();
 
         this.productNameDb.InnerHtml = prNameHtml;
     }
 
-    private void getProductPercentage(string productCode)
+    private void getProductPercentage(int productID)
     {
-        var product = db.tb_Product.Where(p => p.ProductCode == productCode).FirstOrDefault();
+        var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string percentageHtml = "";
         percentageHtml = product.StatusPercentage.ToString();
 
         this.productPercentage.InnerHtml = percentageHtml;
     }
 
-    private void getProductBriefDescription(string productCode)
+    private void getProductBriefDescription(int productID)
     {
-        var product = db.tb_Product.Where(p => p.ProductCode == productCode).FirstOrDefault();
+        var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string shortDescHtml = "";
         shortDescHtml = product.ShortDescription.ToString();
 
         this.BriefDescription.InnerHtml = shortDescHtml;
     }
    
-    private void getProductPrice(string productCode)
+    private void getProductPrice(int productID)
     {
-        var product = db.tb_Product.Where(p => p.ProductCode == productCode).FirstOrDefault();
+        var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string pricebyBlock = "";
         string pricebyDay = "";
         pricebyBlock = product.PricePerBlock.ToString();
@@ -178,12 +181,158 @@ public partial class ProductDetail : System.Web.UI.Page
         this.price_day_p.InnerHtml = pricebyDay;
     }
 
-    private void getProductValue(string productCode)
+    private void getProductValue(int productID)
     {
-        var product = db.tb_Product.Where(p => p.ProductCode == productCode).FirstOrDefault();
+        var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string productValueHtml = "";
         productValueHtml = product.ProductValue.ToString();
 
         this.product_value_p.InnerHtml = productValueHtml;
     }
+
+    private void getProductAccompanied(int productID)
+    {
+        string proAccompaniedHtml = "";
+        string html1 = "";
+        //string html2 = "";
+
+        var prAccompList = (from pr in db.tb_Product
+                         join prac in db.tb_ProductAccompany
+                         on pr.ProductID equals prac.ProductID
+                         where prac.ProductID == productID
+                            select new
+                         {
+                             pr.ProductID,
+                             prac.ProductAccompany,
+                             prac.ProductCode,
+                             prac.ProductName,
+                             prac.productAccAvatar
+                         }
+               ).OrderByDescending(p => p.ProductAccompany).ToList();   
+            
+        proAccompaniedHtml += "<div class=\"col-md-12 col-xs-12\">";
+        proAccompaniedHtml += "<div id=\"product-slick-7\" class=\"product-slick\">";
+        int kk = 0;
+        foreach (var item in prAccompList)
+        {
+            kk++;
+            html1 += "<div class=\"product product-inpackage\">";
+            html1 += "<div class=\"product-thumb\">";
+            html1 += "<img src = \"" +item.productAccAvatar + "\">";
+            html1 += "</div>";
+
+            html1 += "<div class=\"product-body\">";
+            html1 += "<h2 class=\"product-name\" style=\"font-size:12px;font-weight: bold; margin-top: 5px;text-align: center;\">"+item.ProductName+"</h2>";
+            html1 += "</div>";
+            html1 += "</div>";
+        }
+        proAccompaniedHtml += html1;
+        proAccompaniedHtml += "</div>";
+        proAccompaniedHtml += "</div>";
+
+        this.dvProductAccompaniedList.InnerHtml = proAccompaniedHtml;
+    }
+
+    private void getProductAccessory(int productID)
+    {
+        string proAccessoryHtml = "";
+        string html1 = "";
+
+        var prAccessoryList = (from pr in db.tb_Product
+                                join prac in db.tb_ProductAccessorySelection
+                                on pr.ProductID equals prac.ProductID
+                               where prac.ProductID == productID
+                               select new
+                             {
+                                pr.ProductID,
+                                prac.ProductAccessorySelectionID,
+                                prac.ProductCode,
+                                prac.ProductName,
+                                prac.ProductValue,
+                                prac.PricePerBlock,
+                                prac.PricePerDay
+                            }
+               ).OrderByDescending(p => p.ProductAccessorySelectionID).ToList();
+
+        proAccessoryHtml += "<div class=\"col-md-5 col-xs-12 accessories-titleBar\">";
+            proAccessoryHtml += "<p class=\"accessories-title\">Chọn thêm phụ kiện:</p>";
+        proAccessoryHtml += "</div>";
+        proAccessoryHtml += "<div class=\"col-md-7 col-xs-12 accessories-titleBar\">";
+            proAccessoryHtml += "<p class=\"accessories-title\">Số lượng:</p>";
+            proAccessoryHtml += "<p class=\"accessories-title\" style=\"padding-left:24px;\">Giá thuê tạm tính:</p>";
+            proAccessoryHtml += "<p class=\"accessories-title\" style=\"padding-left:31px;\">Giá trị sản phẩm:</p>";
+        proAccessoryHtml += "</div>";
+
+        int kk = 0;
+        foreach (var item in prAccessoryList)
+        {
+            kk++;
+            html1 += "<div class=\"col-md-5 col-xs-12 BookAccessories-productName\">";
+                html1 += "<div class=\"accessories-checkbox\">";
+                    html1 += "<input type=\"checkbox\" id=\"accessoriesCheckbox1\" name=\"GiaChoThue\" value=\"2\"/>";
+                html1 += "</div>";
+                html1 += "<h3 class=\"productDetail-lable-accessories\" style=\"display:inline;\">"+item.ProductName+"</h3>";
+            html1 += "</div>";
+            html1 += "<div class=\"col-md-7 col-xs-12\">";
+                html1 += "<div class=\"qty-input\">";
+                    html1 += "<input class=\"input\" type=\"number\" onchange=\"javascript:callMeOnChangeAccessory()\" id=\"access_qty_"+kk+"\" value=\"0\" style=\"height: 32px; width: 55px;\">";
+                html1 += "</div>";
+                html1 += "<div class=\"dvPriceTamTinh\" style=\"display: inline-block;margin-left: 20px; margin-top: 6px;\">";
+                    html1 += "<p id=\"access_temp_p"+kk+"\">"+item.PricePerDay+"</p>";
+                html1 += "</div>";
+                html1 += "<div class=\"dvProductValue\" style=\"display: inline-block;margin-left: 16px;\">";
+                    html1 += "<p id=\"access_value_p"+kk+"\">"+item.ProductValue+"</p>";
+                html1 += "</div>";
+            html1 += "</div>";
+        }
+        proAccessoryHtml += html1;
+
+        this.dvProductAccessoryList.InnerHtml = proAccessoryHtml;
+    }
+
+    private void getProducSlider(int productID)
+    {
+        string proSlideHtml = "";
+        string html1 = "";
+        string html2 = "";
+
+        var prSlideList = (from pr in db.tb_Product
+                           join prac in db.tb_ProductGallery
+                           on pr.ProductID equals prac.ProductID
+                           where prac.ProductID == productID
+                           select new
+                           {
+                               pr.ProductID,
+                               prac.ImageID,
+                               prac.ImagePath
+                           }
+               ).OrderByDescending(p => p.ImageID).ToList();
+
+
+        int kk = 0;
+        foreach (var item in prSlideList)
+        {
+            kk++;
+            html1 += "<div class=\"product-view\">";
+            html1 += "<img src=\"" + item.ImagePath + "\"/>";
+            html1 += "</div>";
+
+            html2 += "<div class=\"product-view\">";
+            html2 += "<img src=\"" + item.ImagePath + "\"/>";
+            html2 += "</div>";
+        }
+
+        proSlideHtml += "<div id=\"product-main-view\" style=\"height: 415px;\">";
+        proSlideHtml += html1;
+        proSlideHtml += "</div>";
+
+        proSlideHtml += "<div id=\"product-view\">";
+        proSlideHtml += html2;
+        proSlideHtml += "</div>";
+
+        this.dvProductSlideList.InnerHtml = proSlideHtml;
+    }
+
+    
+    //---------
 }
