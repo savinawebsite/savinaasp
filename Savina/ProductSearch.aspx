@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="ProductSearch.aspx.cs" Inherits="ProductSearch" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     
 	<!-- BREADCRUMB -->
@@ -182,18 +183,22 @@
 
 					<!-- STORE -->
 					<div id="store">
+                        <div id="dvLoadProductList" runat="server">
+
+                        </div>
 						<!-- row -->
 						<div class="row">
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
+							<!-- Product Single 1 -->
+							<%--<div class="col-md-4 col-sm-6 col-xs-6 rowMobile">
 									<div class="product product-single product-ext1 ">
 										<div class="product-thumb">
 												<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
-											<img src="./img/product01.jpg" alt="">
+											    <img src="./img/product01.jpg" alt="">
 										</div>
 										<div class="product-body">
 											<h2 class="product-name"><a href="#">Sản phẩm số 1</a></h2>
-											<h3 class="product-price">35,000/month</h3>
+                                            <h3 class="product-price">35,000/month</h3>
+											
 											<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
 											<div class="product-btns">
 												<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
@@ -201,11 +206,11 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							<!-- /Product Single -->
+								</div>--%>
+							<!-- /Product Single 1 -->
 
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
+							<!-- Product Single 2 -->
+							<%--<div class="col-md-4 col-sm-6 col-xs-6 rowMobile">
 									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
@@ -225,13 +230,13 @@
 												</div>
 											</div>
 									</div>
-								</div>
-							<!-- /Product Single -->
+								</div>--%>
+							<!-- /Product Single 2 -->
 
-							<div class="clearfix visible-sm visible-xs"></div>
+							<%--<div class="clearfix visible-sm visible-xs"></div>--%>
 
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
+							<!-- Product Single 3 -->
+							<%--<div class="col-md-4 col-sm-6 col-xs-6 rowMobile">
 									<div class="product product-single product-ext1">
 										<div class="product-thumb">
 											<div class="product-label">
@@ -250,154 +255,10 @@
 												</div>
 											</div>
 									</div>
-								</div>
-							<!-- /Product Single -->
-
-							<div class="clearfix visible-md visible-lg"></div>
+								</div>--%>
+							<!-- /Product Single 3 -->
 							
-							<hr>
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single product-ext1">
-										<div class="product-thumb">
-											<div class="product-label">
-												<span class="available">Đang có sẵn</span>
-											</div>
-											<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
-											<img src="./img/product04.jpg" alt="">
-										</div>
-										<div class="product-body">
-												<h2 class="product-name"><a href="#">Sản phẩm số 4</a></h2>
-												<h3 class="product-price">33,000/month</h3>
-												<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
-												<div class="product-btns">
-													<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-													<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-												</div>
-											</div>
-									</div>
-								</div>
-							<!-- /Product Single -->
-
-							<div class="clearfix visible-sm visible-xs"></div>
-
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single product-ext1">
-										<div class="product-thumb">
-											<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
-											<img src="./img/product01.jpg" alt="">
-										</div>
-										<div class="product-body">
-											<h2 class="product-name"><a href="#">Sản phẩm số 1</a></h2>
-											<h3 class="product-price">35,000/month</h3>
-											<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
-											<div class="product-btns">
-												<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-												<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							<!-- /Product Single -->
-
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single product-ext1">
-										<div class="product-thumb">
-											<div class="product-label">
-												<span>New</span>
-												<span class="sale">-20%</span>
-											</div>
-											<button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Giá thuê theo block <br> Gia thue theo ngay <br> Gia thue theo thoi gian</button>
-											<img src="./img/product02.jpg" alt="">
-										</div>
-										<div class="product-body">
-												<h2 class="product-name"><a href="#">Sản phẩm số 2</a></h2>
-												<h3 class="product-price">14,000/month</h3>
-												<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
-												<div class="product-btns">
-													<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-													<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-												</div>
-											</div>
-									</div>
-								</div>
-							<!-- /Product Single -->
-
-							<div class="clearfix visible-md visible-lg visible-sm visible-xs"></div>
-
-							<hr>
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single product-ext1">
-										<div class="product-thumb">
-											<div class="product-label">
-												<span class="rent">Đã cho thuê</span>
-											</div>
-											<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
-											<img src="./img/product03.jpg" alt="">
-										</div>
-										<div class="product-body">
-												<h2 class="product-name"><a href="#">Sản phẩm số 3</a></h2>
-												<h3 class="product-price">20,000/month</h3>
-												<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
-												<div class="product-btns">
-													<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-													<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-												</div>
-											</div>
-									</div>
-								</div>
-							<!-- /Product Single -->
-
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single product-ext1">
-										<div class="product-thumb">
-											<div class="product-label">
-												<span class="available">Đang có sẵn</span>
-											</div>
-											<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
-											<img src="./img/product04.jpg" alt="">
-										</div>
-										<div class="product-body">
-												<h2 class="product-name"><a href="#">Sản phẩm số 4</a></h2>
-												<h3 class="product-price">33,000/month</h3>
-												<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
-												<div class="product-btns">
-													<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-													<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-												</div>
-											</div>
-									</div>
-								</div>
-							<!-- /Product Single -->
-
-							<div class="clearfix visible-sm visible-xs"></div>
-
-							<!-- Product Single -->
-							<div class="col-md-4 col-sm-6 col-xs-6">
-									<div class="product product-single product-ext1">
-										<div class="product-thumb">
-											<div class="product-label">
-												<span class="available">Đang có sẵn</span>
-											</div>
-											<button class="quickInfoHover quick-view">Giá thuê theo giờ: 30.000 đ <br> Gia thue theo ngay: 100.000 đ <br> Khu vực: Quận 2</button>
-											<img src="./img/product04.jpg" alt="">
-										</div>
-										<div class="product-body">
-												<h2 class="product-name"><a href="#">Sản phẩm số 4</a></h2>
-												<h3 class="product-price">33,000/month</h3>
-												<h4 class="product-location">Khu vực cửa hàng cho thuê</h4>
-												<div class="product-btns">
-													<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-													<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-												</div>
-											</div>
-									</div>
-								</div>
-							<!-- /Product Single -->
+							<hr />
 						</div>
 						<!-- /row -->
 					</div>
