@@ -10,10 +10,47 @@ public partial class backend_banner_management : System.Web.UI.Page
     private savinaEntities db = new savinaEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
+        getBannerMainSlider();
         getBannerGroup1();
         getBannerGroup2();
         getBannerGroup3();
         getBannerGroup4();
+    }
+
+    private void getBannerMainSlider()
+    {
+        string mainSliderHtml = "";
+        string html = "";
+
+        var bannerList = (from sl in db.tb_HomeMainBanner
+                          select new
+                          {
+                              sl.HomeMainBannerID,
+                              sl.BannerPath,
+                              sl.BannerLandingpage,
+                              sl.BannerUpload,
+                              sl.SortBy
+                          }
+             ).OrderBy(p => p.HomeMainBannerID).ToList();
+
+        int kk = 0;
+        foreach (var item in bannerList)
+        {
+            kk++;
+            html += "<tr>";
+            html += "<td>" +kk+"</td>";
+            html += "<td>" +item.SortBy+"</td>";
+            html += "<td>" +item.BannerLandingpage+"</td>";
+            html += "<td>" +item.BannerUpload+"</td>";
+            html += " <td><img src=\"" +item.BannerPath+"\" class=\"imgBannerInTable\"/></td>";
+            html += "<td><a href=\"#\" class=\"btn btn-info btn-xs\" onclick=\"Edit($(this))\"><i class=\"fa fa-edit\"></i>&nbsp Edit</a>";
+            html += "<span><a href=\"#\" class=\"btn btn-danger btn-xs\" onclick=\"Delete($(this))\"><i class=\"fa fa-trash\"></i>&nbsp Delete</a></span>";
+            html += "</td>";
+            html += "</tr>";
+        }
+
+        mainSliderHtml += html;
+        this.tblMainSlider.InnerHtml = mainSliderHtml;
     }
 
     private void getBannerGroup1()

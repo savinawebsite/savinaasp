@@ -14,7 +14,7 @@
                 <div class="title_right">
                   <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
+                      <input type="text" class="form-control" placeholder="Search for..."/>
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">Search!</button>
                       </span>
@@ -44,20 +44,19 @@
                     <div class="x_content">
                         <br />
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-    
+                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">   
                               <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Trang đích <span class="required">*</span>
                                 </label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                  <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                  <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12"/>
                                 </div>
                               </div>
                               <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sort thứ tự <span class="required">*</span>
                                 </label>
                                 <div class="col-md-8 col-sm-8 col-xs-12">
-                                  <input type="number" id="sortArrange" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12">
+                                  <input type="number" id="sortArrange" name="sort-arrange" required="required" class="form-control col-md-7 col-xs-12"/>
                                 </div>
                               </div>
                                <div class="form-group">
@@ -82,15 +81,15 @@
                             <tr>
                               <th>STT</th>
                               <th>Vị trí hiển thị</th>
-                                <th>trang đích</th>
+                              <th>trang đích</th>
                               <th>Ngày upload</th>
-                                <th>Image sẽ hiễn thị</th>
+                              <th>Image sẽ hiễn thị</th>
                               <th>Thao tác</th>                              
                             </tr>
                           </thead>
        
-                          <tbody>                         
-                            <tr>
+                          <tbody id="tblMainSlider" runat="server">                         
+                            <%--<tr>
                               <td>1</td>
                               <td>1</td>
                                 <td></td>
@@ -99,27 +98,7 @@
                               <td><a href="#" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Edit</a>
                                   <span><a href="#" class="btn btn-danger btn-xs" onclick="Delete($(this))"><i class="fa fa-trash"></i>&nbsp Delete</a></span>
                               </td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>3</td>
-                                <td></td>
-                              <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner01.jpg" class="imgBannerInTable" /></td>
-                              <td><a href="#" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Edit</a>
-                                  <span><a href="#" class="btn btn-danger btn-xs" onclick="Delete($(this))"><i class="fa fa-trash"></i>&nbsp Delete</a></span>
-                              </td>
-                            </tr>   
-                            <tr>
-                              <td>3</td>
-                              <td>4</td>
-                               <td></td>
-                              <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner01.jpg" class="imgBannerInTable"/></td>
-                              <td><a href="#" class="btn btn-info btn-xs" onclick="Edit($(this))"><i class="fa fa-edit"></i>&nbsp Edit</a>
-                                  <span><a href="#" class="btn btn-danger btn-xs" onclick="Delete($(this))"><i class="fa fa-trash"></i>&nbsp Delete</a></span>
-                              </td>
-                            </tr>                                                    
+                            </tr>  --%>                                               
                           </tbody>
                         </table>
                         </div>
