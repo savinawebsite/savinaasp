@@ -386,6 +386,8 @@ public partial class tb_HomeMainBanner
 
     public string BannerLandingpage { get; set; }
 
+    public Nullable<System.DateTime> BannerUpload { get; set; }
+
 }
 
 

@@ -206,6 +206,7 @@
           <Property Name="BannerDescription" Type="nvarchar" MaxLength="250" />
           <Property Name="SortBy" Type="tinyint" />
           <Property Name="BannerLandingpage" Type="ntext" />
+          <Property Name="BannerUpload" Type="datetime" />
         </EntityType>
         <EntityType Name="tb_HomeProductGroup">
           <Key>
@@ -722,6 +723,7 @@
           <Property Name="BannerDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="SortBy" Type="Byte" />
           <Property Name="BannerLandingpage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BannerUpload" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tb_HomeProductGroup">
           <Key>
@@ -1248,6 +1250,7 @@
           <EntitySetMapping Name="tb_HomeMainBanner">
             <EntityTypeMapping TypeName="savinaModel.tb_HomeMainBanner">
               <MappingFragment StoreEntitySet="tb_HomeMainBanner">
+                <ScalarProperty Name="BannerUpload" ColumnName="BannerUpload" />
                 <ScalarProperty Name="BannerLandingpage" ColumnName="BannerLandingpage" />
                 <ScalarProperty Name="SortBy" ColumnName="SortBy" />
                 <ScalarProperty Name="BannerDescription" ColumnName="BannerDescription" />
