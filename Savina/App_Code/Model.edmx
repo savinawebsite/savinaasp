@@ -43,6 +43,7 @@
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="IsDisplay" Type="bit" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="MainCateIcon" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="tb_CategorySub1">
           <Key>
@@ -194,6 +195,7 @@
           <Property Name="BannerDescription" Type="nvarchar" MaxLength="100" />
           <Property Name="BannerLandingpage" Type="varchar" MaxLength="100" />
           <Property Name="BannerPath" Type="ntext" />
+          <Property Name="BannerUpload" Type="datetime" />
         </EntityType>
         <EntityType Name="tb_HomeMainBanner">
           <Key>
@@ -554,6 +556,7 @@
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="IsDisplay" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="MainCateIcon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tb_CategorySub1">
           <Key>
@@ -708,13 +711,13 @@
           <Property Name="BannerGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BannerLandingpage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BannerPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BannerUpload" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="tb_HomeMainBanner">
           <Key>
             <PropertyRef Name="HomeMainBannerID" />
           </Key>
           <Property Name="HomeMainBannerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sort" Type="Byte" />
           <Property Name="BannerPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BannerDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="SortBy" Type="Byte" />
@@ -1068,6 +1071,7 @@
           <EntitySetMapping Name="tb_CategoryMain">
             <EntityTypeMapping TypeName="savinaModel.tb_CategoryMain">
               <MappingFragment StoreEntitySet="tb_CategoryMain">
+                <ScalarProperty Name="MainCateIcon" ColumnName="MainCateIcon" />
                 <ScalarProperty Name="MainCateID" ColumnName="MainCateID" />
                 <ScalarProperty Name="MainCateName" ColumnName="MainCateName" />
                 <ScalarProperty Name="Sort" ColumnName="Sort" />
@@ -1232,6 +1236,7 @@
           <EntitySetMapping Name="tb_HomeBanner">
             <EntityTypeMapping TypeName="savinaModel.tb_HomeBanner">
               <MappingFragment StoreEntitySet="tb_HomeBanner">
+                <ScalarProperty Name="BannerUpload" ColumnName="BannerUpload" />
                 <ScalarProperty Name="BannerPath" ColumnName="BannerPath" />
                 <ScalarProperty Name="BannerLandingpage" ColumnName="BannerLandingpage" />
                 <ScalarProperty Name="BannerGroup" ColumnName="BannerGroup" />

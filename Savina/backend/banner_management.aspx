@@ -155,9 +155,9 @@
                             <tr>
                               <td>1</td>
                               <td>Banner hiển thị bên trái</td>
-                              <td></td>
+                              <td id="group1_Landingpage1" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                              <td><img src="../backend/images/banner01.jpg" class="imgBannerInTable"/></td>
+                              <td id="group1_Avatar1" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -169,9 +169,9 @@
                             <tr>
                               <td>2</td>
                               <td>Banner hiển thị ở giữa</td>
-                                <td></td>
+                                <td id="group1_Landingpage2" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                              <td><img src="../backend/images/banner01.jpg" class="imgBannerInTable" /></td>
+                              <td id="group1_Avatar2" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -183,9 +183,9 @@
                             <tr>
                               <td>3</td>
                               <td>Banner hiển thị bên phải</td>
-                              <td></td>
+                              <td id="group1_Landingpage3" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner01.jpg" class="imgBannerInTable"/></td>
+                               <td id="group1_Avatar3" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -227,9 +227,9 @@
                             <tr>
                               <td>1</td>
                               <td>Banner hiển thị bên trái</td>
-                                <td></td>
+                               <td id="group2_Landingpage1" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner02.jpg" class="imgBannerInTable"/></td>
+                                <td id="group2_Avatar1" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -241,9 +241,9 @@
                             <tr>
                               <td>2</td>
                               <td>Banner hiển thị ở giữa</td>
-                                <td></td>
+                                <td id="group2_Landingpage2" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner02.jpg" class="imgBannerInTable" /></td>
+                                <td id="group2_Avatar2" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -255,9 +255,9 @@
                             <tr>
                               <td>3</td>
                               <td>Banner hiển thị bên phải</td>
-                                <td></td>
+                                <td id="group2_Landingpage3" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner02.jpg" class="imgBannerInTable"/></td>
+                                <td id="group2_Avatar3" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -299,9 +299,9 @@
                             <tr>
                               <td>1</td>
                               <td>Thứ 1 từ trên xuống</td>
-                                <td></td>
+                               <td id="group3_Landingpage1" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner03.jpg" class="imgBannerInTable"/></td>
+                              <td id="group3_Avatar1" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -313,9 +313,9 @@
                             <tr>
                               <td>2</td>
                               <td>Thứ 2 từ trên xuống</td>
-                                <td></td>
+                                <td id="group3_Landingpage2" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner03.jpg" class="imgBannerInTable" /></td>
+                               <td id="group3_Avatar2" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -327,9 +327,9 @@
                             <tr>
                               <td>3</td>
                               <td>Thứ 3 từ trên xuống</td>
-                                <td></td>
+                                <td id="group3_Landingpage3" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner03.jpg" class="imgBannerInTable"/></td>
+                               <td id="group3_Avatar3" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -341,9 +341,9 @@
                             <tr>
                               <td>4</td>
                               <td>Thứ 4 từ trên xuống</td>
-                                <td></td>
+                                <td id="group3_Landingpage4" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner03.jpg" class="imgBannerInTable"/></td>
+                              <td id="group3_Avatar4" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -355,9 +355,9 @@
                             <tr>
                               <td>5</td>
                               <td>Thứ 5 từ trên xuống</td>
-                                <td></td>
+                                <td id="group3_Landingpage5" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner03.jpg" class="imgBannerInTable"/></td>
+                               <td id="group3_Avatar5" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -399,10 +399,10 @@
                             <tr>
                               <td>1</td>
                               <td>Banner lớn hiển thị bên trái</td>
-                                <td></td>
+                              <td id="group4_Landingpage1" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner02.jpg" class="imgBannerInTable"/></td>
-                             <td>
+                              <td id="group4_Avatar1" runat="server"></td>
+                              <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
                                    </div>
@@ -413,9 +413,9 @@
                             <tr>
                               <td>2</td>
                               <td>Banner nhỏ hiển thị bên phải trên</td>
-                                <td></td>
+                              <td id="group4_Landingpage2" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner02.jpg" class="imgBannerInTable" /></td>
+                              <td id="group4_Avatar2" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
@@ -427,9 +427,9 @@
                             <tr>
                               <td>3</td>
                               <td>Banner nhỏ hiển thị bên phải dưới</td>
-                                <td></td>
+                              <td id="group4_Landingpage3" runat="server"></td>
                               <td>23/3/2018 10:00</td>
-                                <td><img src="../backend/images/banner02.jpg" class="imgBannerInTable"/></td>
+                              <td id="group4_Avatar3" runat="server"></td>
                               <td>
                                   <div class="btn-group btn btn-info btn-xs" style="width:220px">
                                     <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage"/>
