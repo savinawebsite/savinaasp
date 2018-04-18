@@ -20,59 +20,16 @@
 		<div class="container">
 			<!-- home wrap -->
 			<div class="home-wrap">
-				<!-- home slick -->
-				<div id="home-slick" class="mainbanner-height">
-					<!-- banner -->
-					<div class="banner banner-1">
-						<img src="./img/banner01.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h1>Bags sale</h1>
-							<h3 class="white-color font-weak">Up to 50% Discount</h3>
-							<button class="primary-btn">Shop Now</button>
-						</div>
-					</div>
-					<!-- /banner -->
+				    <!-- Main Banner Slider - home slick-->
+                     <div id="home_mainBannerSlide" runat="server"> 
 
-					<!-- banner -->
-					<div class="banner banner-1">
-						<img src="./img/banner02.jpg" alt="">
-						<div class="banner-caption">
-							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
-							<button class="primary-btn">Shop Now</button>
-						</div>
-					</div>
-					<!-- /banner -->
+                    </div>
+				    <!-- /Main Banner Slider - home slick -->
 
-					<!-- banner -->
-					<div class="banner banner-1">
-						<img src="./img/banner03.jpg" alt="">
-						<div class="banner-caption">
-							<h1 class="white-color">New Product <span>Collection</span></h1>
-							<button class="primary-btn">Shop Now</button>
-						</div>
-					</div>
-					<!-- /banner -->
+				<!-- 3 banner GROUP 1 -->
+				<div id="home_3banner_group1" runat="server">
 				</div>
-				<!-- /home slick -->
-				<!-- 3 banner under main slider -->
-				<div id="home-3banner-small">
-					<div class="col-md-4">
-						<a href="#">
-							<img src="./img/banner_mainslider_1.jpg" alt="" style="width: 98%;">
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a href="#">
-							<img src="./img/banner_mainslider_2.jpg" alt="" style="width: 98%;float: right">
-						</a>
-					</div>
-					<div class="col-md-4">
-						<a href="#">
-							<img src="./img/banner_mainslider_3.jpg" alt="" style="width: 98%;float: right">
-						</a>
-					</div>
-				</div>
-					<!-- /3 banner under main slider -->
+					<!-- /3 banner  GROUP 1 -->
 			</div>
 			<!-- /home wrap -->
 			
@@ -81,43 +38,11 @@
 	</div>
 	<!-- /HOME -->
 
-	<!-- section -->
-	<div id="home-3banner-large" class="section" style="background: #E9E9E9;">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1" href="#">
-						<img src="./img/banner_home_3img_1.png" alt="">
-					</a>
-				</div>
-				<!-- /banner -->
+	<!-- 3 banner GROUP 2  -->
+	<div id="home_3banner_group2" runat="server" class ="section" style="background: #E9E9E9;">
 
-				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1" href="#">
-						<img src="./img/banner_home_3img_2.png" alt="">
-					</a>
-				</div>
-				<!-- /banner -->
-
-				<!-- banner -->
-				<div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
-					<a class="banner banner-1" href="#">
-						<img src="./img/banner_home_3img_3.png" alt="">
-					</a>
-				</div>
-				<!-- /banner -->								
-			</div>
-			<!-- /row -->
-			
-			
-		</div>
-		<!-- /container -->
 	</div>
-	<!-- /section -->
+	<!-- 3 banner GROUP 2  -->
 
 	<!-- all product show in body -->
 	<div class="container">		
@@ -1010,9 +935,9 @@
 			</div>
 		<!--/end slide ALl product on left -->	
 
-		<!-- Advertisement panel on right -->
-			<div id="home-advpanel-right" class="col-md-2 col-sm-2 col-xs-2">
-					<div class="banner">
+		<!-- 5 banner GROUP 3 - Advertisement panel on right -->
+			<div id="home_5banner_group3" runat="server" class="col-md-2 col-sm-2 col-xs-2">
+					<%--<div class="banner">
 						<img src="./img/adv-banner-1.png" alt="Banner quảng cáo 1">
 					</div>
 					<div class="banner" style="margin-top:25px;">
@@ -1026,59 +951,28 @@
 					</div>
 					<div class="banner" style="margin-top:25px;">
 						<img src="./img/adv-banner-5.png" alt="Banner quảng cáo 2">
-					</div>
+					</div>--%>
 			</div>
-		<!-- /End Advertisement panel on right -->
+		<!-- /5 banner GROUP 3 - Advertisement panel on right -->
 
 		</div>	 <!-- /end all product show in body -->
 	</div> <!-- container -->
 	
 
-	<!-- section HOT DEAL 3 block -->
+	<!-- 3 banner GROUP 4 -->
 	<div class="section section-grey" style="background: #E9E9E9;">
 		<!-- container -->
 		<div class="container" style="background: #fff;">
 			<!-- row -->
-			<div class="row">
-				<!-- banner -->
-				<div class="col-md-8">
-					<div class="banner banner-1 banner-bottom-1">
-						<img src="./img/banner13.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
-							<button class="primary-btn">Shop Now</button>
-						</div>
-					</div>
-				</div>
-				<!-- /banner -->
+			<div class="row" id="home_3banner_group4" runat="server">
 
-				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1 banner-bottom-1" href="#">
-						<img src="./img/banner11.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">NEW COLLECTION</h2>
-						</div>
-					</a>
-				</div>
-				<!-- /banner -->
-
-				<!-- banner -->
-				<div class="col-md-4 col-sm-6">
-					<a class="banner banner-1 banner-bottom-1" href="#">
-						<img src="./img/banner12.jpg" alt="">
-						<div class="banner-caption text-center">
-							<h2 class="white-color">NEW COLLECTION</h2>
-						</div>
-					</a>
-				</div>
-				<!-- /banner -->
 			</div>
 			<!-- /row -->
 		</div>
 		<!-- /container -->
 	</div>
-	<!-- /section -->
+	<!-- /3 banner GROUP 4  -->
+
 
 	<!-- section RAO VAT, CHO TANG -->
 	<div class="section" style="background: #E9E9E9;">
@@ -1461,11 +1355,7 @@
 				</div>
 						<!-- /Product Single -->
 			</div>
-			<!-- /row -->
-            <button type="button" id="btnLoginForm" class="btSignIn"></button>	
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
-    Open modal
-  </button>
+			<!-- /row -->          
 		</div>
 		<!-- /container -->
        

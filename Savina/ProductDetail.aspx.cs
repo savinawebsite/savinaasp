@@ -15,7 +15,6 @@ public partial class ProductDetail : System.Web.UI.Page
         if (Request.QueryString["ProductID"].ToString() != null)
         {
             productID = int.Parse(Request.QueryString["ProductID"].ToString());
-            //String productCode = Request.QueryString["ProductID"].ToString();
             getProductName(productID);
             getProductPercentage(productID);
             getProductBriefDescription(productID);
@@ -69,7 +68,8 @@ public partial class ProductDetail : System.Web.UI.Page
 			html2 +="</div>";
 
             html3 += "<div class=\"dvPriceTamTinh dvPriceTamTinh-Services service_cost_"+kk+"\">";
-            html3 += "<p id = \"service_cost_"+kk+"_p\">"+item.ServiceCost+"</p>";
+            html3 += "<p style=\"display: inline-block;\" id = \"service_cost_" + kk+"_p\">"+ float.Parse(item.ServiceCost.ToString()).ToString("#,###") +"</p>";
+            html3 += "<span> đ</span>";
             html3 += "</div>";
         }
 
@@ -125,7 +125,8 @@ public partial class ProductDetail : System.Web.UI.Page
             html2 += "</div>";
 
             html3 += "<div class=\"dvPriceTamTinh dvPriceTamTinh-Services delivery_cost_" + kk + "\">";
-            html3 += "<p id = \"delivery_cost_" + kk + "_p\">" + item.DeliveryCost + "</p>";
+            html3 += "<p style=\"display: inline-block;\" id = \"delivery_cost_" + kk + "_p\">" + float.Parse(item.DeliveryCost.ToString()).ToString("#,###") + "</p>";
+            html3 += "<span> đ</span>";
             html3 += "</div>";
         }
 
@@ -174,10 +175,10 @@ public partial class ProductDetail : System.Web.UI.Page
         var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string pricebyBlock = "";
         string pricebyDay = "";
-        pricebyBlock = product.PricePerBlock.ToString();
-        pricebyDay = product.PricePerDay.ToString();
+        pricebyBlock = float.Parse(product.PricePerBlock.ToString()).ToString("#,###");
+        pricebyDay =  float.Parse(product.PricePerDay.ToString()).ToString("#,###");
 
-        this.price_block_p.InnerHtml = pricebyBlock;
+        this.price_block_p.InnerHtml = pricebyBlock; 
         this.price_day_p.InnerHtml = pricebyDay;
     }
 
@@ -185,7 +186,7 @@ public partial class ProductDetail : System.Web.UI.Page
     {
         var product = db.tb_Product.Where(p => p.ProductID == productID).FirstOrDefault();
         string productValueHtml = "";
-        productValueHtml = product.ProductValue.ToString();
+        productValueHtml = float.Parse(product.ProductValue.ToString()).ToString("#,###");
 
         this.product_value_p.InnerHtml = productValueHtml;
     }
@@ -269,20 +270,24 @@ public partial class ProductDetail : System.Web.UI.Page
             kk++;
             html1 += "<div class=\"col-md-5 col-xs-12 BookAccessories-productName\">";
                 html1 += "<div class=\"accessories-checkbox\">";
-                    html1 += "<input type=\"checkbox\" id=\"accessoriesCheckbox1\" name=\"GiaChoThue\" value=\"2\"/>";
+                    html1 += "<input type=\"checkbox\" id=\"accessoriesCheckbox"+kk+"\" name=\"GiaChoThue\" value=\"2\"/>";
                 html1 += "</div>";
                 html1 += "<h3 class=\"productDetail-lable-accessories\" style=\"display:inline;\">"+item.ProductName+"</h3>";
             html1 += "</div>";
             html1 += "<div class=\"col-md-7 col-xs-12\">";
                 html1 += "<div class=\"qty-input\">";
-                    html1 += "<input class=\"input\" type=\"number\" onchange=\"javascript:callMeOnChangeAccessory()\" id=\"access_qty_"+kk+"\" value=\"0\" style=\"height: 32px; width: 55px;\">";
+                    html1 += "<input class=\"input\" type=\"number\" onchange=\"javascript:callMeOnChangeAccessory()\" id=\"access_qty_"+kk+"\" value=\"1\" style=\"height: 32px; width: 55px;\">";
                 html1 += "</div>";
                 html1 += "<div class=\"dvPriceTamTinh\" style=\"display: inline-block;margin-left: 20px; margin-top: 6px;\">";
-                    html1 += "<p id=\"access_temp_p"+kk+"\">"+item.PricePerDay+"</p>";
-                html1 += "</div>";
+                    html1 += "<p style=\"display: inline-block;\" id=\"access_tempDisplay_p" + kk+ "\">" + float.Parse(item.PricePerDay.ToString()).ToString("#,###") + " </p>";
+                    html1 += "<span> đ</span>";
+                    html1 += "<p style=\"display: none;\" id=\"access_temp_p" + kk + "\">" + float.Parse(item.PricePerDay.ToString()).ToString("#,###") + "</p>";
+            html1 += "</div>";
                 html1 += "<div class=\"dvProductValue\" style=\"display: inline-block;margin-left: 16px;\">";
-                    html1 += "<p id=\"access_value_p"+kk+"\">"+item.ProductValue+"</p>";
-                html1 += "</div>";
+                    html1 += "<p style=\"display: inline-block;\" id=\"access_valueDisplay_p" + kk+"\">"+ float.Parse(item.ProductValue.ToString()).ToString("#,###") + "</p>";
+                    html1 += "<span> đ</span>";
+                    html1 += "<p style=\"display: none;\" id=\"access_value_p" + kk + "\">" + float.Parse(item.ProductValue.ToString()).ToString("#,###") + "</p>";
+            html1 += "</div>";
             html1 += "</div>";
         }
         proAccessoryHtml += html1;

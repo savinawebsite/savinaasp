@@ -29,26 +29,27 @@ public partial class ProductSearch : System.Web.UI.Page
                                s.ProductName,
                                s.ProductDistrict,
                                s.ProductAvatar
-                           });
+                           }
+                           ).OrderByDescending(p => p.ProductID).ToList();
 
         proListHtml += "<div class=\"row\">";
         int kk = 0;
-
         foreach (var item in productList)
         {
             kk++;
+ 
             html1 += "<div class=\"col-md-4 col-sm-6 col-xs-6 rowMobile\">";
             html1 += "<div class=\"product product-single product-ext1\">";
             html1 += "<div class=\"product-thumb\">";
-            html1 += "<button class=\"quickInfoHover quick-view\">Giá thuê theo giờ: "+item.PricePerBlock+" đ<br> Gia thue theo ngay: "+item.PricePerDay+" đ<br> Khu vực: "+item.ProductDistrict+"</button>";
+            html1 += "<button class=\"quickInfoHover quick-view\">Giá thuê theo giờ: "+ float.Parse(item.PricePerBlock.ToString()).ToString("#,###") + " đ<br> Gia thue theo ngay: "+ float.Parse(item.PricePerDay.ToString()).ToString("#,###") + " đ<br> Khu vực: "+item.ProductDistrict+"</button>";
             html1 += "<img src=\""+item.ProductAvatar+"\" alt=\"\">";
             html1 += "</div>";
             html1 += "<div class=\"product-body\">";
             html1 += "<h2 class=\"product-name\"><a href=\"../productdetail?productID=" + kk + "\">" + item.ProductName+"</a></h2>";
-            html1 += "<h3 class=\"product-price\">" + item.PricePerBlock + "</h3>";
+            html1 += "<h3 class=\"product-price\">" + float.Parse(item.PricePerBlock.ToString()).ToString("#,###") + "</h3>";
             html1 += "<span class=\"price-per\">&nbsp/block &nbsp</span>";
             html1 += "<span class=\"product-price\"> - &nbsp </span>";
-            html1 += "<h3 class=\"product-price\">" + item.PricePerDay + "</h3>";
+            html1 += "<h3 class=\"product-price\">" + float.Parse(item.PricePerDay.ToString()).ToString("#,###") + "</h3>";
             html1 += "<span class=\"price-per\">&nbsp/ ngày &nbsp</span>";
             html1 += "<h4 class=\"product-location\">"+item.ProductDistrict+"</h4>";
             html1 += "<div class=\"product-btns\">";
