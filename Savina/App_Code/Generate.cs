@@ -28,7 +28,7 @@ public class Generate
                         mc.MainCateName,
                         mc.MainCateDesc,
                         mc.Sort
-                    }).OrderByDescending(p => p.Sort);
+                    }).OrderBy(p => p.Sort);
         if(mainCateList.Count() > 0)
         {
             foreach(var mainCateItem in mainCateList)
@@ -41,7 +41,7 @@ public class Generate
                                         s1.SubCate1Name,
                                         s1.SubCate1Desc,
                                         s1.Sort
-                                    }).OrderByDescending(p => p.Sort);
+                                    }).OrderBy(p => p.Sort);
                 if(subCate1List.Count() > 0)
                 {
                     result += "<li class=\"dropdown side-dropdown\">";
@@ -64,7 +64,7 @@ public class Generate
                                                 s2.SubCate2Name,
                                                 s2.SubCate2Desc,
                                                 s2.Sort
-                                            }).OrderByDescending(p => p.Sort);
+                                            }).OrderBy(p => p.Sort);
                         if (subCate2List.Count() > 0)
                         {
                             foreach (var subCate2Item in subCate2List)

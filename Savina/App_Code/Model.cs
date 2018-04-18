@@ -76,6 +76,8 @@ public partial class tb_CategoryMain
 
     public Nullable<bool> IsDeleted { get; set; }
 
+    public string MainCateIcon { get; set; }
+
 }
 
 
@@ -366,6 +368,8 @@ public partial class tb_HomeBanner
 
     public string BannerPath { get; set; }
 
+    public Nullable<System.DateTime> BannerUpload { get; set; }
+
 }
 
 
@@ -374,8 +378,6 @@ public partial class tb_HomeMainBanner
 
     public long HomeMainBannerID { get; set; }
 
-    public Nullable<byte> Sort { get; set; }
-
     public string BannerPath { get; set; }
 
     public string BannerDescription { get; set; }
@@ -383,6 +385,8 @@ public partial class tb_HomeMainBanner
     public Nullable<byte> SortBy { get; set; }
 
     public string BannerLandingpage { get; set; }
+
+    public Nullable<System.DateTime> BannerUpload { get; set; }
 
 }
 

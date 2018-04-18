@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="savinaModel.tb_CategoryMain" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_CategorySub1" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_CategorySub2" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="savinaModel.tb_CategorySub3" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="savinaModel.tb_CategorySub3" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_ContactUs" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Counteronline" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="savinaModel.tb_Country" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
