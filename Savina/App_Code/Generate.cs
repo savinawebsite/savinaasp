@@ -27,7 +27,8 @@ public class Generate
                         mc.MainCateID,
                         mc.MainCateName,
                         mc.MainCateDesc,
-                        mc.Sort
+                        mc.Sort,
+                        mc.MainCateIcon
                     }).OrderBy(p => p.Sort);
         if(mainCateList.Count() > 0)
         {
@@ -45,8 +46,8 @@ public class Generate
                 if(subCate1List.Count() > 0)
                 {
                     result += "<li class=\"dropdown side-dropdown\">";
-                    result += "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"true\"><span><i class=\"fa fa-gear category-icon\"></i>"+mainCateItem.MainCateName+"</span> <i class=\"fa fa-angle-right\"></i></a>";
-                    result += "<div class=\"custom - menu\">";
+                    result += "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"true\"><span><i class=\""+mainCateItem.MainCateIcon+" category-icon\"></i>"+mainCateItem.MainCateName+"</span> <i class=\"fa fa-angle-right\"></i></a>";
+                    result += "<div class=\"custom-menu\">";
                     result += "<div class=\"row\">";
                     foreach (var subCate1Item in subCate1List)
                     {
@@ -96,7 +97,7 @@ public class Generate
                 }
                 else
                 {
-                    result += "<li><a href=\"#\"><span><i class=\"fa fa-camera category-icon\"></i>"+mainCateItem.MainCateName+"</span></a></li>";
+                    result += "<li><a href=\"#\"><span><i class=\"" + mainCateItem.MainCateIcon + "  category-icon\"></i>" + mainCateItem.MainCateName+"</span></a></li>";
                 }
             }
 

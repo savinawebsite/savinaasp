@@ -158,7 +158,7 @@
 							</div>
 							<div style="float:lefts; padding:5px 0 5px;">
 								<div class="dvRadioPrice">
-									<input type="radio" id="GiaChoChueTheoBlock" onchange="javascript:callMeOnChange1()" name="GiaChoThue" value="1"/>
+									<input type="radio" id="GiaChoChueTheoBlock" onchange="javascript:callMeOnChange1()" name="GiaChoThue" value="1" checked="checked"/>
 								</div>					
 								<h3 class="productDetail-lable" style="display:inline;">Giá cho thuê theo block:</h3>
 								<p class="productDetail-price" style="display:inline;" id="price_block_p" runat="server"> </p>
@@ -480,79 +480,32 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            if (document.getElementById('ServiceSelect-1').checked) {
+                var tPrVal = document.getElementById("service_cost_1_p").innerHTML;
+            }
+            if (document.getElementById('ServiceSelect-2').checked) {
+                var tPrVal = document.getElementById("service_cost_2_p").innerHTML;
+            }
+            if (document.getElementById('ServiceSelect-3').checked) {
+                var tPrVal = document.getElementById("service_cost_3_p").innerHTML;
+            }
+            document.getElementById("total_product_value_p").innerHTML = tPrVal + " đ";
+            document.getElementById("total_product_deposit_p").innerHTML = accounting.formatNumber(510000) + " đ";
+           
+        });
+
+    </script>
+
      <script type="text/javascript">
-
+         String.prototype.convertfloat = function () {
+             return parseFloat(this.replace(/[^\d\.\-]/g, ""));
+         }
+         
          $(document).ready(function () {
-             var a = document.getElementById("MainContent_price_block_p").innerText
-             document.getElementById("MainContent_price_block_p").innerHTML = accounting.formatNumber(a);
-         });
-
-         $(document).ready(function () {
-             var a = document.getElementById("MainContent_price_day_p").innerText
-             document.getElementById("MainContent_price_day_p").innerHTML = accounting.formatNumber(a);
-         });
-
-         $(document).ready(function () {
-             var a = document.getElementById("MainContent_product_value_p").innerText
-             document.getElementById("MainContent_product_value_p").innerHTML = accounting.formatNumber(a);
-         });
-
-         $(document).ready(function () {
-             var a = document.getElementById("delivery_cost_1_p").innerText
-             document.getElementById("delivery_cost_1_p").innerHTML = accounting.formatNumber(a);
-             var c = document.getElementById("delivery_cost_2_p").innerText
-             document.getElementById("delivery_cost_2_p").innerHTML = accounting.formatNumber(c);
-             var b = document.getElementById("delivery_cost_2_p").innerText
-             document.getElementById("delivery_cost_2_p").innerHTML = accounting.formatNumber(b);
-             var aa = document.getElementById("service_cost_1_p").innerText
-             document.getElementById("service_cost_1_p").innerHTML = accounting.formatNumber(aa);
-             var bb = document.getElementById("service_cost_2_p").innerText
-             document.getElementById("service_cost_2_p").innerHTML = accounting.formatNumber(bb);
-             var cc = document.getElementById("service_cost_3_p").innerText
-             document.getElementById("service_cost_3_p").innerHTML = accounting.formatNumber(cc);
-         });
-
-         $(document).ready(function () {
-             var a = document.getElementById("access_temp_p1").innerText
-             document.getElementById("access_temp_p1").innerHTML = accounting.formatNumber(a);
-             var b = document.getElementById("access_temp_p2").innerText
-             document.getElementById("access_temp_p2").innerHTML = accounting.formatNumber(b);
-             var c = document.getElementById("access_temp_p3").innerText
-             document.getElementById("access_temp_p3").innerHTML = accounting.formatNumber(c);
-            // var d = document.getElementById("access_temp_p4").innerText
-             //document.getElementById("access_temp_p4").innerHTML = accounting.formatNumber(d);
-             //var e = document.getElementById("access_temp_p5").innerText
-             //document.getElementById("access_temp_p5").innerHTML = accounting.formatNumber(e);
-             //var aa = document.getElementById("access_value_p1").innerText
-             document.getElementById("access_value_p1").innerHTML = accounting.formatNumber(aa);
-             var bb = document.getElementById("access_value_p2").innerText
-             document.getElementById("access_value_p2").innerHTML = accounting.formatNumber(bb);
-             var cc = document.getElementById("access_value_p3").innerText
-             document.getElementById("access_value_p3").innerHTML = accounting.formatNumber(cc);
-             //var dd = document.getElementById("access_value_p4").innerText
-             //document.getElementById("access_value_p4").innerHTML = accounting.formatNumber(dd);
-             //var ee = document.getElementById("access_value_p5").innerText
-             //document.getElementById("access_value_p5").innerHTML = accounting.formatNumber(ee);
-         });
-
-     
-
-         $(document).ready(function () {
-             //document.getElementById("price_day_p").innerHTML = accounting.formatNumber(110000) + " đ";
-             //document.getElementById("price_block_p").innerHTML = accounting.formatNumber(35000) + " đ";
-
-             //document.getElementById("service_cost_1_p").innerHTML = accounting.formatNumber(120000) + " đ";
-            // document.getElementById("service_cost_2_p").innerHTML = accounting.formatNumber(55000) + " đ";
-            // document.getElementById("service_cost_3_p").innerHTML = accounting.formatNumber(0) + " đ";
-
-            // document.getElementById("delivery_cost_1_p").innerHTML = accounting.formatNumber(100000) + " đ";
-             //document.getElementById("delivery_cost_2_p").innerHTML = accounting.formatNumber(75000) + " đ";
-            // document.getElementById("delivery_cost_3_p").innerHTML = accounting.formatNumber(0) + " đ";
-
-             document.getElementById("total_product_value_p").innerHTML = accounting.formatNumber(2510000) + " đ";
-             document.getElementById("total_product_deposit_p").innerHTML = accounting.formatNumber(510000) + " đ";
-             
-
              var dateToday = new Date();
              dateToday.setDate(dateToday.getDate());
              
@@ -586,67 +539,74 @@
 	</script>
 
     <script>
-
         function callMeOnChange1() {
             if (document.getElementById('GiaChoChueTheoBlock').checked)
             {
                 var xxx = document.getElementById("MainContent_price_block_p").innerHTML;
-                document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(xxx);
-                document.getElementById("product_value_p1").innerHTML = document.getElementById("MainContent_product_value_p").innerHTML;
+                var zzz = document.getElementById("MainContent_product_value_p").innerHTML;
+                document.getElementById("product_temp_p1").innerHTML = xxx;
+                document.getElementById("product_value_p1").innerHTML = zzz;
             }
             else if (document.getElementById('GiaChoChueTheoNgay').checked)
             {
-                var xxx = document.getElementById("MainContent_price_day_p").innerHTML;
-                document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(xxx);
-                document.getElementById("product_value_p1").innerHTML = document.getElementById("MainContent_product_value_p").innerHTML;
+                var yyy = document.getElementById("MainContent_price_day_p").innerHTML;
+                var zzz = document.getElementById("MainContent_product_value_p").innerHTML;
+                document.getElementById("product_temp_p1").innerHTML = yyy
+                document.getElementById("product_value_p1").innerHTML = zzz;
             }
         }
 
-        function callMeOnChangeProductQty() {
-            //auto update gia tam tinh va gia tri SP section MAIN PRODUCT
+        //auto update gia tam tinh va gia tri SP section MAIN PRODUCT
+        function callMeOnChangeProductQty() {            
             var x = document.getElementById("product_qty").value;
-            if (document.getElementById('GiaChoChueTheoBlock').checked) {
-                var temp = document.getElementById("MainContent_price_block_p").innerHTML;
-            }
-            else if (document.getElementById('GiaChoChueTheoNgay').checked) {
-                var temp = document.getElementById("MainContent_price_day_p").innerHTML;
-            }
+                if (document.getElementById('GiaChoChueTheoBlock').checked) {
+                    var temp = document.getElementById("MainContent_price_block_p").innerHTML;
+                }
+                else if (document.getElementById('GiaChoChueTheoNgay').checked) {
+                    var temp = document.getElementById("MainContent_price_day_p").innerHTML;
+                }
 
-            var value = document.getElementById("MainContent_product_value_p").innerHTML;
-            var y = temp * x;
-            var z = value * x;
-            //document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(y);
-            //document.getElementById("product_value_p1").innerHTML = accounting.formatNumber(z);
-            document.getElementById("product_temp_p1").innerHTML = y;
-            document.getElementById("product_value_p1").innerHTML = z;           
+            var prdTempFloat = temp.convertfloat();
+            var prdVal = document.getElementById("MainContent_product_value_p").innerText;
+            var prdValFloat = prdVal.convertfloat();
+            var y = prdTempFloat * x;
+            var z = prdValFloat * x;
+            document.getElementById("product_temp_p1").innerHTML = accounting.formatNumber(y);
+            document.getElementById("product_value_p1").innerHTML = accounting.formatNumber(z);
         }
 
+        //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
         function callMeOnChangeAccessory() {
-            //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
             var x1 = document.getElementById("access_qty_1").value;
-            var temp1 = 15000;
-            var value1 = 1900000;
-            var y1 = temp1 * x1;
-            var z1 = value1 * x1;
-            document.getElementById("access_temp_p1").innerHTML = accounting.formatNumber(y1) + " đ";
-            document.getElementById("access_value_p1").innerHTML = accounting.formatNumber(z1) + " đ";
+            var temp1 = document.getElementById("access_temp_p1").innerHTML;
+            var temp1Float = temp1.convertfloat();
+            var value1 = document.getElementById("access_value_p1").innerHTML;
+            var value1Float = value1.convertfloat();
+            var y1 = temp1Float * x1;
+            var z1 = value1Float * x1;
+            document.getElementById("access_tempDisplay_p1").innerHTML = accounting.formatNumber(y1);
+            document.getElementById("access_valueDisplay_p1").innerHTML = accounting.formatNumber(z1);
 
             var x2 = document.getElementById("access_qty_2").value;
-            var temp2 = 60000;
-            var value2 = 370000;
-            var y2 = temp2 * x2;
-            var z2 = value2 * x2;
-            document.getElementById("access_temp_p2").innerHTML = accounting.formatNumber(y2) + " đ";
-            document.getElementById("access_value_p2").innerHTML = accounting.formatNumber(z2) + " đ";
+            var temp2 = document.getElementById("access_temp_p2").innerHTML;
+            var temp2Float = temp2.convertfloat();
+            var value2 = document.getElementById("access_value_p2").innerHTML;
+            var value2Float = value2.convertfloat();
+            var y2 = temp2Float * x2;
+            var z2 = value2Float * x2;
+            document.getElementById("access_tempDisplay_p2").innerHTML = accounting.formatNumber(y2);
+            document.getElementById("access_valueDisplay_p2").innerHTML = accounting.formatNumber(z2);
 
             var x3 = document.getElementById("access_qty_3").value;
-            var temp3 = 10000;
-            var value3 = 50000;
-            var y3 = temp3 * x3;
-            var z3 = value3 * x3;
-            document.getElementById("access_temp_p3").innerHTML = accounting.formatNumber(y3) + " đ";
-            document.getElementById("access_value_p3").innerHTML = accounting.formatNumber(z3) + " đ";
-            //auto update gia tam tinh va gia tri SP section CHON THEM PHU KIEN
+            var temp3 = document.getElementById("access_temp_p3").innerHTML;
+            var temp3Float = temp3.convertfloat();
+            var value3 = document.getElementById("access_value_p3").innerHTML;
+            var value3Float = value3.convertfloat();
+            var y3 = temp3Float * x3;
+            var z3 = value3Float * x3;
+            document.getElementById("access_tempDisplay_p3").innerHTML = accounting.formatNumber(y3);
+            document.getElementById("access_valueDisplay_p3").innerHTML = accounting.formatNumber(z3);
+
         }
 
         function callMeOnChangeService() {
